@@ -175,11 +175,13 @@ class MultiVector:
 
     def broadcast(self) -> "MultiVector":
         """
-        Broadcast all blade coefficients to a common shape using numpy broadcasting rules.
+        Broadcast all blade coefficients to a common shape using numpy/torch broadcasting rules.
         
         If the coefficients of different blades have different shapes, this method reshapes them
         so that all blades have the same shape. This is useful when you have array-like coefficients
         with inconsistent shapes that can be broadcast together.
+        
+        Works with NumPy arrays, PyTorch tensors, and any array-like type with a 'shape' attribute.
         
         :return: A new MultiVector with all coefficients broadcast to a common shape.
         :raises ValueError: If the coefficients cannot be broadcast together.
@@ -187,33 +189,55 @@ class MultiVector:
         if len(self._values) == 0:
             return self
         
-        # Get shapes of all values
+        # Get shapes and types of all values
         shapes = []
+        array_module = None  # Will be set to np or torch based on detected types
+        
         for v in self._values:
             if hasattr(v, 'shape'):
                 shapes.append(v.shape)
+                # Detect the module/type of array-like objects
+                if array_module is None:
+                    if hasattr(v, 'is_cuda'):  # PyTorch tensor
+                        import torch
+                        array_module = torch
+                    elif isinstance(v, np.ndarray):
+                        array_module = np
             else:
                 shapes.append(())
+        
+        # Default to numpy if no array-like objects found
+        if array_module is None:
+            array_module = np
         
         # If all shapes are the same, no need to broadcast
         if len(set(shapes)) == 1:
             return self
         
-        # Determine the broadcast shape using numpy's broadcasting rules
+        # Determine the broadcast shape using the appropriate module's broadcasting rules
         try:
-            broadcast_shape = np.broadcast_shapes(*shapes)
-        except ValueError as e:
+            if array_module.__name__ == 'torch':
+                broadcast_shape = torch.broadcast_shapes(*shapes)
+            else:
+                broadcast_shape = np.broadcast_shapes(*shapes)
+        except (ValueError, RuntimeError) as e:
             raise ValueError(f"Cannot broadcast coefficients with shapes {shapes}: {e}")
         
         # Broadcast each value to the common shape
         broadcasted_values = []
         for v in self._values:
             if hasattr(v, 'shape'):
-                # It's array-like, use numpy broadcasting
-                broadcasted_values.append(np.broadcast_to(v, broadcast_shape))
+                # It's array-like, use the detected module's broadcasting
+                if array_module.__name__ == 'torch':
+                    broadcasted_values.append(torch.broadcast_to(v, broadcast_shape))
+                else:
+                    broadcasted_values.append(np.broadcast_to(v, broadcast_shape))
             else:
                 # It's a scalar, broadcast to the target shape
-                broadcasted_values.append(np.full(broadcast_shape, v))
+                if array_module.__name__ == 'torch':
+                    broadcasted_values.append(torch.full(broadcast_shape, v, dtype=torch.float64))
+                else:
+                    broadcasted_values.append(np.full(broadcast_shape, v))
         
         return self.fromkeysvalues(self.algebra, keys=self._keys, values=broadcasted_values)
 
@@ -231,13 +255,24 @@ class MultiVector:
 
     @property
     def shape(self):
-        """ Return the shape of the .values() attribute of this multivector. """
+        """ 
+        Return the shape of the .values() attribute of this multivector.
+        
+        Works with NumPy arrays, PyTorch tensors, and any array-like type with a 'shape' attribute.
+        """
+        if len(self._values) == 0:
+            return (0,)
+        
+        # Check if values is itself array-like (e.g., a stacked array)
         if hasattr(self._values, 'shape'):
             return self._values.shape
-        elif hasattr(self._values[0], 'shape'):
-            return len(self), *self._values[0].shape
-        else:
-            return len(self),
+        
+        # Check if individual values are array-like
+        if hasattr(self._values[0], 'shape'):
+            return (len(self), *self._values[0].shape)
+        
+        # Fallback for scalar values
+        return (len(self),)
 
     @cached_property
     def grades(self):
