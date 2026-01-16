@@ -225,17 +225,30 @@ class MultiVector:
         
         # Broadcast each value to the common shape
         broadcasted_values = []
+        
+        # For PyTorch, determine the target device
+        target_device = None
+        if array_module.__name__ == 'torch':
+            for v in self._values:
+                if hasattr(v, 'device'):
+                    target_device = v.device
+                    break
+        
         for v in self._values:
             if hasattr(v, 'shape'):
                 # It's array-like, use the detected module's broadcasting
                 if array_module.__name__ == 'torch':
-                    broadcasted_values.append(torch.broadcast_to(v, broadcast_shape))
+                    v_broadcast = torch.broadcast_to(v, broadcast_shape)
+                    # Move to target device if needed
+                    if target_device is not None and v_broadcast.device != target_device:
+                        v_broadcast = v_broadcast.to(target_device)
+                    broadcasted_values.append(v_broadcast)
                 else:
                     broadcasted_values.append(np.broadcast_to(v, broadcast_shape))
             else:
                 # It's a scalar, broadcast to the target shape
                 if array_module.__name__ == 'torch':
-                    broadcasted_values.append(torch.full(broadcast_shape, v, dtype=torch.float64))
+                    broadcasted_values.append(torch.full(broadcast_shape, v, dtype=torch.float64, device=target_device))
                 else:
                     broadcasted_values.append(np.full(broadcast_shape, v))
         
