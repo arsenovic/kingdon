@@ -1261,6 +1261,7 @@ def test_blades_of_grade_properties(vga2d):
             assert len(blade) == 1
             # Each blade should have coefficient 1
             assert list(blade.values())[0] == 1.0
+<<<<<<< HEAD
 
 
 def test_even_odd_properties(vga2d, vga3d):
@@ -1289,3 +1290,5 @@ def test_even_odd_properties(vga2d, vga3d):
     odd_3d = mv_3d.odd
     assert 0 in even_3d.grades and 2 in even_3d.grades
     assert 1 in odd_3d.grades and 3 in odd_3d.grades
+=======
+>>>>>>> arsenovic_add_calculus
