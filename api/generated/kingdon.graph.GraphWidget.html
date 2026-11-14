@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="cyan" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GraphWidget - Kingdon</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="encode" href="kingdon.graph.encode.html" /><link rel="prev" title="kingdon.graph" href="../graph.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=ad592e98" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-codeautolink.css?v=b2176991" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kingdon.css?v=be060e35" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="GraphWidget"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      <img class="light-logo" src="../../_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <img class="dark-logo" src="../../_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <strong>Kingdon</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link"><a href="../../index.html">Home</a></li><li class="link"><a href="../../examples/index.html">Examples</a></li><li class="link"><a href="../index.html">API</a></li><li class="link">
+          <a href="https://tbuli.github.io/teahouse/">
+            <span>Teahouse</span><i class="i-lucide external-link"></i></a>
+        </li><li class="link">
+          <a href="https://github.com/tBuLi/kingdon">
+            <span>GitHub</span><i class="i-lucide external-link"></i></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../operators.html">Operators</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../arrays.html">Array Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../types.html">Type system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">History</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../workings.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget"><code class="docutils literal notranslate"><span class="pre">GraphWidget</span></code></a><ul>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.algebra"><code class="docutils literal notranslate"><span class="pre">algebra</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.basis"><code class="docutils literal notranslate"><span class="pre">basis</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.draggable_points"><code class="docutils literal notranslate"><span class="pre">draggable_points</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.draggable_points_idxs"><code class="docutils literal notranslate"><span class="pre">draggable_points_idxs</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.get_basis"><code class="docutils literal notranslate"><span class="pre">get_basis</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.get_draggable_points"><code class="docutils literal notranslate"><span class="pre">get_draggable_points</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.get_draggable_points_idxs"><code class="docutils literal notranslate"><span class="pre">get_draggable_points_idxs</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.get_graded"><code class="docutils literal notranslate"><span class="pre">get_graded</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.get_key2idx"><code class="docutils literal notranslate"><span class="pre">get_key2idx</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.get_pre_subjects"><code class="docutils literal notranslate"><span class="pre">get_pre_subjects</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.get_signature"><code class="docutils literal notranslate"><span class="pre">get_signature</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.get_subjects"><code class="docutils literal notranslate"><span class="pre">get_subjects</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.get_types"><code class="docutils literal notranslate"><span class="pre">get_types</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.graded"><code class="docutils literal notranslate"><span class="pre">graded</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.inplacereplace"><code class="docutils literal notranslate"><span class="pre">inplacereplace()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.key2idx"><code class="docutils literal notranslate"><span class="pre">key2idx</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.options"><code class="docutils literal notranslate"><span class="pre">options</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.pre_subjects"><code class="docutils literal notranslate"><span class="pre">pre_subjects</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.raw_subjects"><code class="docutils literal notranslate"><span class="pre">raw_subjects</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.signature"><code class="docutils literal notranslate"><span class="pre">signature</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.subjects"><code class="docutils literal notranslate"><span class="pre">subjects</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.types"><code class="docutils literal notranslate"><span class="pre">types</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.graph.GraphWidget.update"><code class="docutils literal notranslate"><span class="pre">update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">Kingdon</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../graph.html"><span itemprop="name">kingdon.graph</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="3" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">GraphWidget</strong>
+        <meta itemprop="position" content="4" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="graphwidget">
+<h1>GraphWidget<a class="headerlink" href="#graphwidget" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">kingdon.graph.</span></span><span class="sig-name descname"><span class="pre">GraphWidget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">t.Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">t.Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/graph.html#GraphWidget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.graph.GraphWidget" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AnyWidget</span></code></p>
+<p>Widget that draws multivectors with <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code>. Made by <a class="reference internal" href="kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.graph" title="kingdon.algebra.Algebra.graph"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Algebra.graph</span></code></a>.</p>
+<p class="rubric">Methods</p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.graph.GraphWidget.inplacereplace" title="kingdon.graph.GraphWidget.inplacereplace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inplacereplace</span></code></a></p></td>
+<td><p>Given the old and the new subjects, replace the values inplace iff they have changed.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.graph.GraphWidget.update" title="kingdon.graph.GraphWidget.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a></p></td>
+<td><p>Update the subjects and options.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.algebra">
+<span class="sig-name descname"><span class="pre">algebra</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.algebra" title="Link to this definition">#</a></dt>
+<dd><p>A trait whose value must be an instance of a specified class.</p>
+<p>The value can also be an instance of a subclass of the specified class.</p>
+<p>Subclasses can declare default classes by overriding the klass attribute</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.basis">
+<span class="sig-name descname"><span class="pre">basis</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.basis" title="Link to this definition">#</a></dt>
+<dd><p>An instance of a Python list.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.draggable_points">
+<span class="sig-name descname"><span class="pre">draggable_points</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.draggable_points" title="Link to this definition">#</a></dt>
+<dd><p>An instance of a Python list.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.draggable_points_idxs">
+<span class="sig-name descname"><span class="pre">draggable_points_idxs</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.draggable_points_idxs" title="Link to this definition">#</a></dt>
+<dd><p>An instance of a Python list.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.get_basis">
+<span class="sig-name descname"><span class="pre">get_basis</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.get_basis" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.get_draggable_points">
+<span class="sig-name descname"><span class="pre">get_draggable_points</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.get_draggable_points" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.get_draggable_points_idxs">
+<span class="sig-name descname"><span class="pre">get_draggable_points_idxs</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.get_draggable_points_idxs" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.get_graded">
+<span class="sig-name descname"><span class="pre">get_graded</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.get_graded" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.get_key2idx">
+<span class="sig-name descname"><span class="pre">get_key2idx</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.get_key2idx" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.get_pre_subjects">
+<span class="sig-name descname"><span class="pre">get_pre_subjects</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.get_pre_subjects" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.get_signature">
+<span class="sig-name descname"><span class="pre">get_signature</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.get_signature" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.get_subjects">
+<span class="sig-name descname"><span class="pre">get_subjects</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.get_subjects" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.get_types">
+<span class="sig-name descname"><span class="pre">get_types</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.get_types" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.graded">
+<span class="sig-name descname"><span class="pre">graded</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.graded" title="Link to this definition">#</a></dt>
+<dd><p>A boolean (True, False) trait.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.inplacereplace">
+<span class="sig-name descname"><span class="pre">inplacereplace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_subjects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_subjects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="(in Python v3.15)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple" title="(in Python v3.15)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><span class="pre">dict</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/graph.html#GraphWidget.inplacereplace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.graph.GraphWidget.inplacereplace" title="Link to this definition">#</a></dt>
+<dd><p>Given the old and the new subjects, replace the values inplace iff they have changed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.key2idx">
+<span class="sig-name descname"><span class="pre">key2idx</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.key2idx" title="Link to this definition">#</a></dt>
+<dd><p>An instance of a Python dict.</p>
+<p>One or more traits can be passed to the constructor
+to validate the keys and/or values of the dict.
+If you need more detailed validation,
+you may use a custom validator method.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 5.0: </span>Added key_trait for validating dict keys.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 5.0: </span>Deprecated ambiguous <code class="docutils literal notranslate"><span class="pre">trait</span></code>, <code class="docutils literal notranslate"><span class="pre">traits</span></code> args in favor of <code class="docutils literal notranslate"><span class="pre">value_trait</span></code>, <code class="docutils literal notranslate"><span class="pre">per_key_traits</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.options">
+<span class="sig-name descname"><span class="pre">options</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.options" title="Link to this definition">#</a></dt>
+<dd><p>An instance of a Python dict.</p>
+<p>One or more traits can be passed to the constructor
+to validate the keys and/or values of the dict.
+If you need more detailed validation,
+you may use a custom validator method.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 5.0: </span>Added key_trait for validating dict keys.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 5.0: </span>Deprecated ambiguous <code class="docutils literal notranslate"><span class="pre">trait</span></code>, <code class="docutils literal notranslate"><span class="pre">traits</span></code> args in favor of <code class="docutils literal notranslate"><span class="pre">value_trait</span></code>, <code class="docutils literal notranslate"><span class="pre">per_key_traits</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.pre_subjects">
+<span class="sig-name descname"><span class="pre">pre_subjects</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.pre_subjects" title="Link to this definition">#</a></dt>
+<dd><p>An instance of a Python list.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.raw_subjects">
+<span class="sig-name descname"><span class="pre">raw_subjects</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.raw_subjects" title="Link to this definition">#</a></dt>
+<dd><p>An instance of a Python list.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.signature">
+<span class="sig-name descname"><span class="pre">signature</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.signature" title="Link to this definition">#</a></dt>
+<dd><p>An instance of a Python list.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.subjects">
+<span class="sig-name descname"><span class="pre">subjects</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.subjects" title="Link to this definition">#</a></dt>
+<dd><p>An instance of a Python list.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.types">
+<span class="sig-name descname"><span class="pre">types</span></span><a class="headerlink" href="#kingdon.graph.GraphWidget.types" title="Link to this definition">#</a></dt>
+<dd><p>An instance of a Python dict.</p>
+<p>One or more traits can be passed to the constructor
+to validate the keys and/or values of the dict.
+If you need more detailed validation,
+you may use a custom validator method.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 5.0: </span>Added key_trait for validating dict keys.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 5.0: </span>Deprecated ambiguous <code class="docutils literal notranslate"><span class="pre">trait</span></code>, <code class="docutils literal notranslate"><span class="pre">traits</span></code> args in favor of <code class="docutils literal notranslate"><span class="pre">value_trait</span></code>, <code class="docutils literal notranslate"><span class="pre">per_key_traits</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.graph.GraphWidget.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">subjects</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/graph.html#GraphWidget.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.graph.GraphWidget.update" title="Link to this definition">#</a></dt>
+<dd><p>Update the subjects and options. Same API as <a class="reference internal" href="kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.graph" title="kingdon.algebra.Algebra.graph"><code class="xref py py-meth docutils literal notranslate"><span class="pre">graph()</span></code></a>.
+if no <cite>options</cite> are provided, then the existing options are kept; if
+options are provided, then the existing options are replaced.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../graph.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">kingdon.graph</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="kingdon.graph.encode.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">encode</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2022, Martin Roelfs</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=796a81b5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="../../_static/shibuya.js?v=50760d75"></script>
+      <script src="../../_static/kingdon.js?v=5907dcdc"></script></body>
+</html>

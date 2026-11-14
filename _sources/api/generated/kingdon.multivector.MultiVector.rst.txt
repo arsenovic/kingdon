@@ -1,0 +1,68 @@
+﻿MultiVector
+===========
+
+.. currentmodule:: kingdon.multivector
+
+.. autoclass:: MultiVector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~MultiVector.acp
+      ~MultiVector.add
+      ~MultiVector.asfullmv
+      ~MultiVector.asmatrix
+      ~MultiVector.asmvtype
+      ~MultiVector.conjugate
+      ~MultiVector.cp
+      ~MultiVector.div
+      ~MultiVector.dual
+      ~MultiVector.exp
+      ~MultiVector.filter
+      ~MultiVector.fromkeysvalues
+      ~MultiVector.frommatrix
+      ~MultiVector.fromname
+      ~MultiVector.gp
+      ~MultiVector.grade
+      ~MultiVector.hodge
+      ~MultiVector.inv
+      ~MultiVector.involute
+      ~MultiVector.ip
+      ~MultiVector.items
+      ~MultiVector.keys
+      ~MultiVector.layout
+      ~MultiVector.lc
+      ~MultiVector.map
+      ~MultiVector.neg
+      ~MultiVector.norm
+      ~MultiVector.normalized
+      ~MultiVector.normsq
+      ~MultiVector.op
+      ~MultiVector.outercos
+      ~MultiVector.outerexp
+      ~MultiVector.outersin
+      ~MultiVector.outertan
+      ~MultiVector.polarity
+      ~MultiVector.proj
+      ~MultiVector.rc
+      ~MultiVector.reverse
+      ~MultiVector.rp
+      ~MultiVector.sanitize_keys_grades
+      ~MultiVector.set
+      ~MultiVector.sp
+      ~MultiVector.sqrt
+      ~MultiVector.square
+      ~MultiVector.sub
+      ~MultiVector.sw
+      ~MultiVector.undual
+      ~MultiVector.unhodge
+      ~MultiVector.unpolarity
+      ~MultiVector.values
+   

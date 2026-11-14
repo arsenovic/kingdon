@@ -1,0 +1,19 @@
+﻿Bireflection
+============
+
+.. currentmodule:: kingdon.multivector
+
+.. autoclass:: Bireflection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~Bireflection.layout
+   

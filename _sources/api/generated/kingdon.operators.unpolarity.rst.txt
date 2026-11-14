@@ -1,0 +1,6 @@
+﻿unpolarity
+==========
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: unpolarity

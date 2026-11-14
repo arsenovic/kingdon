@@ -1,0 +1,6 @@
+﻿reverse
+=======
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: reverse

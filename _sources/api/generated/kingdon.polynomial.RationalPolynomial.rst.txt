@@ -1,0 +1,22 @@
+﻿RationalPolynomial
+==================
+
+.. currentmodule:: kingdon.polynomial
+
+.. autoclass:: RationalPolynomial
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~RationalPolynomial.diff
+      ~RationalPolynomial.fromname
+      ~RationalPolynomial.inv
+      ~RationalPolynomial.tosympy
+   

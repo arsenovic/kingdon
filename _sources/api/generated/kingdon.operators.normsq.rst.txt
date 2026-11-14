@@ -1,0 +1,6 @@
+﻿normsq
+======
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: normsq

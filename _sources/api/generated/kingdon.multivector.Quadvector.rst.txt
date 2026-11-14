@@ -1,0 +1,12 @@
+﻿Quadvector
+==========
+
+.. currentmodule:: kingdon.multivector
+
+.. autoclass:: Quadvector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   

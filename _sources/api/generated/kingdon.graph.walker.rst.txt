@@ -1,0 +1,6 @@
+﻿walker
+======
+
+.. currentmodule:: kingdon.graph
+
+.. autofunction:: walker

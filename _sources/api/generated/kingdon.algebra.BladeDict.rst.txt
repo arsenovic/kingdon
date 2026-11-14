@@ -1,0 +1,19 @@
+﻿BladeDict
+=========
+
+.. currentmodule:: kingdon.algebra
+
+.. autoclass:: BladeDict
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~BladeDict.grade
+   

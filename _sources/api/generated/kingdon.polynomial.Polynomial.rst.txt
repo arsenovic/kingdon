@@ -1,0 +1,21 @@
+﻿Polynomial
+==========
+
+.. currentmodule:: kingdon.polynomial
+
+.. autoclass:: Polynomial
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~Polynomial.diff
+      ~Polynomial.fromname
+      ~Polynomial.tosympy
+   

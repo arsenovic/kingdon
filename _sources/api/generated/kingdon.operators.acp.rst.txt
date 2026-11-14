@@ -1,0 +1,6 @@
+﻿acp
+===
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: acp

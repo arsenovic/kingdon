@@ -1,0 +1,6 @@
+﻿power\_supply
+=============
+
+.. currentmodule:: kingdon.powers
+
+.. autofunction:: power_supply

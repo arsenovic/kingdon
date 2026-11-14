@@ -1,0 +1,12 @@
+﻿Hexavector
+==========
+
+.. currentmodule:: kingdon.multivector
+
+.. autoclass:: Hexavector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   

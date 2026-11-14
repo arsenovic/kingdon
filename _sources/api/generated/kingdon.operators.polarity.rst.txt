@@ -1,0 +1,6 @@
+﻿polarity
+========
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: polarity

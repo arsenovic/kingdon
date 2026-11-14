@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="cyan" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Basic Usage - Kingdon</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Operators" href="operators.html" /><link rel="prev" title="Installation" href="installation.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=ad592e98" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-codeautolink.css?v=b2176991" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="_static/kingdon.css?v=be060e35" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="Basic Usage"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="index.html">
+      <img class="light-logo" src="_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <img class="dark-logo" src="_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <strong>Kingdon</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link"><a href="index.html">Home</a></li><li class="link"><a href="examples/index.html">Examples</a></li><li class="link"><a href="api/index.html">API</a></li><li class="link">
+          <a href="https://tbuli.github.io/teahouse/">
+            <span>Teahouse</span><i class="i-lucide external-link"></i></a>
+        </li><li class="link">
+          <a href="https://github.com/tBuLi/kingdon">
+            <span>GitHub</span><i class="i-lucide external-link"></i></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Array Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Type system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workings.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#symbolic-multivectors">Symbolic Multivectors</a><ul>
+<li><a class="reference internal" href="#more-control-over-basisvectors">More control over basisvectors</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#numerical-multivectors">Numerical Multivectors</a></li>
+<li><a class="reference internal" href="#multivector-types">Multivector Types</a></li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#graphing-using-ganja-js">Graphing using <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code></a><ul>
+<li><a class="reference internal" href="#the-graph-cell-magic">The <code class="code docutils literal notranslate"><span class="pre">%%graph</span></code> cell magic</a></li>
+<li><a class="reference internal" href="#meshes-and-point-clouds">Meshes and point clouds</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#large-algebra-s">Large Algebra&#8217;s</a></li>
+<li><a class="reference internal" href="#performance-tips">Performance Tips</a><ul>
+<li><a class="reference internal" href="#broadcasting">Broadcasting</a></li>
+<li><a class="reference internal" href="#adding-operators">Adding Operators</a></li>
+<li><a class="reference internal" href="#full-layout">Full layout</a></li>
+<li><a class="reference internal" href="#numba-jit">Numba JIT</a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">Kingdon</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Basic Usage</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="basic-usage">
+<h1>Basic Usage<a class="headerlink" href="#basic-usage" title="Link to this heading">#</a></h1>
+<p>The most important object in all of <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> is <code class="code docutils literal notranslate"><span class="pre">Algebra</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><a class="sphinx-codeautolink-a" href="api/index.html#module-kingdon"><span class="nn">kingdon</span></a><span class="w"> </span><span class="kn">import</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">Algebra</span></a>
+</span></pre></div>
+</div>
+<p>An <code class="code docutils literal notranslate"><span class="pre">Algebra</span></code> has to be initiated with a number of positive, negative,
+and null-dimensions, which are traditionally denoted by <code class="code docutils literal notranslate"><span class="pre">p</span></code>, <code class="code docutils literal notranslate"><span class="pre">q</span></code> and <code class="code docutils literal notranslate"><span class="pre">r</span></code>.
+For example, in order to create a 2D Geometric Algebra we can initiate</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">alg</span></a> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">Algebra</span></a><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">alg</span></a> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">Algebra</span></a><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Equivalent: default value for p, q, r is 0.</span>
+</span></pre></div>
+</div>
+<p>The basis blades of the algebra are available in the dictionary <code class="code docutils literal notranslate"><span class="pre">alg.blades</span></code>. This can be
+added to <code class="code docutils literal notranslate"><span class="pre">globals()</span></code> in order to allow for easy access to all the basis blades, and allows
+the initiation of multivectors using the basis-blades directly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/functions.html#globals"><span class="nb">globals</span></a><span class="p">()</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">alg</span><span class="o">.</span><span class="n">blades</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">e</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">e1</span> <span class="o">-</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">e2</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">e12</span>
+</span></pre></div>
+</div>
+<p>where <code class="code docutils literal notranslate"><span class="pre">e</span></code> is the identity element, i.e. <span class="math notranslate nohighlight">\(e = 1\)</span>.
+This way of creating multivectors is particularly useful when writing quick scripts
+in an interactive environment.
+Let’s look at some more general ways of making multivectors, starting with symbolic
+multivectors before we go on to numerical multivectors.</p>
+<section id="symbolic-multivectors">
+<h2>Symbolic Multivectors<a class="headerlink" href="#symbolic-multivectors" title="Link to this heading">#</a></h2>
+<p>In order to create symbolical multivectors in an algebra, we can call
+<a class="reference internal" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.multivector" title="kingdon.algebra.Algebra.multivector"><code class="xref py py-class docutils literal notranslate"><span class="pre">multivector</span></code></a> and explicitly pass a <code class="code docutils literal notranslate"><span class="pre">name</span></code> argument.
+For example, let us create two symbolic vectors <code class="code docutils literal notranslate"><span class="pre">u</span></code> and <code class="code docutils literal notranslate"><span class="pre">v</span></code> in this algebra:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="n">u</span></a> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.multivector" title="kingdon.algebra.Algebra.multivector"><span class="n">alg</span><span class="o">.</span><span class="n">multivector</span></a><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'u'</span><span class="p">,</span> <span class="n">grades</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="n">v</span></a> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.multivector" title="kingdon.algebra.Algebra.multivector"><span class="n">alg</span><span class="o">.</span><span class="n">multivector</span></a><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'v'</span><span class="p">,</span> <span class="n">grades</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="n">u</span></a>
+</span><span data-line="4"><span class="go">u1 𝐞₁ + u2 𝐞₂</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="n">v</span></a>
+</span><span data-line="6"><span class="go">v1 𝐞₁ + v2 𝐞₂</span>
+</span></pre></div>
+</div>
+<p>The return type of <a class="reference internal" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.multivector" title="kingdon.algebra.Algebra.multivector"><code class="xref py py-meth docutils literal notranslate"><span class="pre">multivector()</span></code></a> is an instance of <a class="reference internal" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiVector</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> offers constructors for common types of multivectors, such as the vectors above.
+For example, the vectors above can also be created using <code class="code docutils literal notranslate"><span class="pre">u</span> <span class="pre">=</span> <span class="pre">alg.vector(name='u')</span></code>,
+a scalar by <code class="code docutils literal notranslate"><span class="pre">alg.scalar</span></code>, a bivector by <code class="code docutils literal notranslate"><span class="pre">alg.bivector</span></code>, a pseudoscalar by
+<code class="code docutils literal notranslate"><span class="pre">alg.pseudoscalar</span></code>, and so on.
+More on <a class="reference internal" href="#multivector-types"><span class="std std-ref">multivector types</span></a> will follow later.</p>
+</div>
+<p><a class="reference internal" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiVector</span></code></a>’s support common math operators:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="n">u</span></a> <span class="o">+</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="n">v</span></a>
+</span><span data-line="2"><span class="go">(u1 + v1) 𝐞₁ + (u2 + v2) 𝐞₂</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="n">u</span></a> <span class="o">*</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="n">v</span></a>
+</span><span data-line="4"><span class="go">(u1*v1 + u2*v2) + (u1*v2 - u2*v1) 𝐞₁₂</span>
+</span></pre></div>
+</div>
+<p>We also have the inner and exterior “products”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="n">u</span></a> <span class="o">|</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="n">v</span></a>
+</span><span data-line="2"><span class="go">(u1*v1 + u2*v2)</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="n">u</span></a> <span class="o">^</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="n">v</span></a>
+</span><span data-line="4"><span class="go">(u1*v2 - u2*v1) 𝐞₁₂</span>
+</span></pre></div>
+</div>
+<p>We see that <em>in the case of vectors</em> the product is equal to the sum of the inner and exterior,
+which is the famous GA relationship <span class="math notranslate nohighlight">\(uv = u \cdot v + u \wedge v\)</span>.</p>
+<p>Since vectors in 2DVGA represent reflections in lines through the origin, we can reflect the
+line <code class="code docutils literal notranslate"><span class="pre">v</span></code> in the line <code class="code docutils literal notranslate"><span class="pre">u</span></code> by using conjugation: <span class="math notranslate nohighlight">\(u[v] = - u v u^{-1}\)</span>.
+This is implemented in kingdon as <code class="code docutils literal notranslate"><span class="pre">u</span> <span class="pre">&gt;&gt;</span> <span class="pre">v</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="n">u</span></a> <span class="o">&gt;&gt;</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="n">v</span></a>
+</span><span data-line="2"><span class="go">(-2*u1*u2*v2 + 2*u2**2*v1 - v1) 𝐞₁ + (2*u1**2*v2 - 2*u1*u2*v1 - v2) 𝐞₂</span>
+</span></pre></div>
+</div>
+<p>we see that the result is again a vector, as it should be.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Kingdon’s codegen <em>assumes</em> the versor satisfies <span class="math notranslate nohighlight">\(u \widetilde{u} = 1\)</span>,
+and hence <span class="math notranslate nohighlight">\(u^{-1} = \widetilde{u}\)</span>,
+for conjugation (<code class="code docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>) and projection (<code class="code docutils literal notranslate"><span class="pre">@</span></code>).
+This assumption allows kingdon to optimize the generated code even further
+for the common scenario where <span class="math notranslate nohighlight">\(u \in \text{Pin}(p,q,r)\)</span>.
+However, ensuring that <code class="code docutils literal notranslate"><span class="pre">u</span></code> is actually normalized is up to you.
+If you do not want to rely on this assumption, you can also define
+your own <a class="reference internal" href="#adding-operators"><span class="std std-ref">operators</span></a>.</p>
+</div>
+<p>These examples should show that the symbolic multivectors of <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code>
+make it easy to do symbolic computations. Moreover, we can also use <a class="reference external" href="https://docs.sympy.org/latest/index.html#module-sympy" title="(in SymPy v1.14.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sympy</span></code></a> expressions
+as values for the multivector:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><a class="sphinx-codeautolink-a" href="https://docs.sympy.org/latest/index.html#module-sympy"><span class="nn">sympy</span></a><span class="w"> </span><span class="kn">import</span> <a class="sphinx-codeautolink-a" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.Symbol" title="sympy.core.symbol.Symbol"><span class="n">Symbol</span></a><span class="p">,</span> <a class="sphinx-codeautolink-a" href="https://docs.sympy.org/latest/modules/functions/elementary.html#sympy.functions.elementary.trigonometric.sin" title="sympy.functions.elementary.trigonometric.sin"><span class="n">sin</span></a><span class="p">,</span> <a class="sphinx-codeautolink-a" href="https://docs.sympy.org/latest/modules/functions/elementary.html#sympy.functions.elementary.trigonometric.cos" title="sympy.functions.elementary.trigonometric.cos"><span class="n">cos</span></a>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.Symbol" title="sympy.core.symbol.Symbol"><span class="n">t</span></a> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.Symbol" title="sympy.core.symbol.Symbol"><span class="n">Symbol</span></a><span class="p">(</span><span class="s1">'t'</span><span class="p">)</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="https://docs.sympy.org/latest/modules/functions/elementary.html#sympy.functions.elementary.trigonometric.cos" title="sympy.functions.elementary.trigonometric.cos"><span class="n">cos</span></a><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.Symbol" title="sympy.core.symbol.Symbol"><span class="n">t</span></a><span class="p">)</span> <span class="o">*</span> <span class="n">e</span> <span class="o">+</span> <a class="sphinx-codeautolink-a" href="https://docs.sympy.org/latest/modules/functions/elementary.html#sympy.functions.elementary.trigonometric.sin" title="sympy.functions.elementary.trigonometric.sin"><span class="n">sin</span></a><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.Symbol" title="sympy.core.symbol.Symbol"><span class="n">t</span></a><span class="p">)</span> <span class="o">*</span> <span class="n">e12</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">normsq</span><span class="p">()</span>
+</span><span data-line="5"><span class="go">(1)</span>
+</span></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Strings are also automatically converted to symbolics with SymPy.
+So <code class="code docutils literal notranslate"><span class="pre">x</span></code> from the example above can also be created as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="n">x</span></a> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.multivector" title="kingdon.algebra.Algebra.multivector"><span class="n">alg</span><span class="o">.</span><span class="n">multivector</span></a><span class="p">(</span><span class="n">e</span><span class="o">=</span><span class="s1">'cos(t)'</span><span class="p">,</span> <span class="n">e12</span><span class="o">=</span><span class="s1">'sin(t)'</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector.normsq" title="kingdon.multivector.MultiVector.normsq"><span class="n">x</span><span class="o">.</span><span class="n">normsq</span></a><span class="p">()</span>
+</span><span data-line="3"><span class="go">(1)</span>
+</span></pre></div>
+</div>
+</div>
+<section id="more-control-over-basisvectors">
+<h3>More control over basisvectors<a class="headerlink" href="#more-control-over-basisvectors" title="Link to this heading">#</a></h3>
+<p>If we do not just want to create a symbolic multivector of a certain grade,
+but with specific blades, we can do so by providing the <code class="code docutils literal notranslate"><span class="pre">keys</span></code> argument.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="n">x</span></a> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.multivector" title="kingdon.algebra.Algebra.multivector"><span class="n">alg</span><span class="o">.</span><span class="n">multivector</span></a><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">(</span><span class="s1">'e1'</span><span class="p">,</span> <span class="s1">'e12'</span><span class="p">))</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="n">x</span></a>
+</span><span data-line="3"><span class="go">x1 𝐞₁ + x12 𝐞₁₂</span>
+</span></pre></div>
+</div>
+<p>This can be done either by providing a tuple of strings which indicate which basis-vectors should be present,
+or by passing them as integers, i.e. <code class="code docutils literal notranslate"><span class="pre">keys=(0b01,</span> <span class="pre">0b11)</span></code> is equivalent to the example above.
+Internally, <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> uses the binary representation.</p>
+</section>
+</section>
+<section id="numerical-multivectors">
+<h2>Numerical Multivectors<a class="headerlink" href="#numerical-multivectors" title="Link to this heading">#</a></h2>
+<p><code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> makes no assumptions about the data structures that are passed into a multivector
+in order to support ducktyping and customization as much as possible.
+This also means it works really well with e.g. <code class="code docutils literal notranslate"><span class="pre">numpy</span></code> arrays or <code class="code docutils literal notranslate"><span class="pre">torch</span></code> tensors.
+(See the <a class="reference internal" href="arrays.html#array-syntax"><span class="std std-ref">array section</span></a> for more specific info.)</p>
+<p>For example, to repeat some of the examples above with numerical values, we could do</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/index.html#module-numpy"><span class="nn">numpy</span></a><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">uvals</span><span class="p">,</span> <span class="n">vvals</span> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.random.html#numpy.random.random" title="numpy.random.random"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span></a><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="n">uvals</span><span class="p">)</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="n">vvals</span><span class="p">)</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">*</span> <span class="n">v</span>
+</span><span data-line="6"><span class="go">(0.1541) + (0.0886) 𝐞₁₂</span>
+</span></pre></div>
+</div>
+<p>A big performance bottleneck that we suffer from in Python, is that arrays over objects are very slow. (array of structures.)
+So while we could make a numpy array filled with <code class="code docutils literal notranslate"><span class="pre">~kingdon.multivector.MultiVector</span></code>’s, this would tank our performance.
+<code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> gets around this problem by instead accepting numpy arrays as input. (structure of arrays.)
+So to make a collection of 3 lines in kingdon, we do</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/index.html#module-numpy"><span class="nn">numpy</span></a><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">uvals</span> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.random.html#numpy.random.random" title="numpy.random.random"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span></a><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="n">uvals</span><span class="p">)</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span>
+</span><span data-line="5"><span class="go">([0.82499172 0.71181276 0.98052928]) 𝐞₁ + ([0.53395072 0.07312351 0.42464341]) 𝐞₂</span>
+</span></pre></div>
+</div>
+<p>what is important here is that the first dimension of the array has to have the expected length: 2 for a vector.
+All other dimensions are not used by <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code>. Now we can reflect this multivector in the <code class="code docutils literal notranslate"><span class="pre">e1</span></code> line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">&gt;&gt;</span> <span class="n">u</span>
+</span><span data-line="3"><span class="go">([0.82499172 0.71181276 0.98052928]) 𝐞₁ + ([-0.53395072 -0.07312351 -0.42464341]) 𝐞₂</span>
+</span></pre></div>
+</div>
+<p>Despite the different shapes, broadcasting is done correctly in the background thanks to the magic of numpy,
+and with vanishing performance penalties as the sizes of the arrays increase.</p>
+</section>
+<section id="multivector-types">
+<h2>Multivector Types<a class="headerlink" href="#multivector-types" title="Link to this heading">#</a></h2>
+<p>Every algebra comes with a list of
+multivector types, each available as a constructor on the algebra. The k-vectors
+(<code class="code docutils literal notranslate"><span class="pre">scalar</span></code>, <code class="code docutils literal notranslate"><span class="pre">vector</span></code>, <code class="code docutils literal notranslate"><span class="pre">bivector</span></code>, …) are always there, <code class="code docutils literal notranslate"><span class="pre">bireflection</span></code> from
+<span class="math notranslate nohighlight">\(d \geq 2\)</span>, and the PGA types <code class="code docutils literal notranslate"><span class="pre">direction</span></code>, <code class="code docutils literal notranslate"><span class="pre">evector</span></code>, <code class="code docutils literal notranslate"><span class="pre">upoint</span></code>, <code class="code docutils literal notranslate"><span class="pre">point</span></code>
+and <code class="code docutils literal notranslate"><span class="pre">translation</span></code> when a PGA is created from name:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">pga</span> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.fromname" title="kingdon.algebra.Algebra.fromname"><span class="n">Algebra</span><span class="o">.</span><span class="n">fromname</span></a><span class="p">(</span><span class="s1">'3DPGA'</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">pga</span><span class="o">.</span><span class="n">point</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'p'</span><span class="p">);</span> <span class="n">p</span>
+</span><span data-line="3"><span class="go">p032 𝐞₀₃₂ + p013 𝐞₀₁₃ + p021 𝐞₀₂₁ + 1.0 𝐞₁₂₃</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pga</span><span class="o">.</span><span class="n">direction</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'d'</span><span class="p">);</span> <span class="n">d</span>
+</span><span data-line="5"><span class="go">d032 𝐞₀₃₂ + d013 𝐞₀₁₃ + d021 𝐞₀₂₁</span>
+</span><span data-line="6"><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">pga</span><span class="o">.</span><span class="n">translation</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'t'</span><span class="p">);</span> <span class="n">t</span>
+</span><span data-line="7"><span class="go">1.0 + t01 𝐞₀₁ + t02 𝐞₀₂ + t03 𝐞₀₃</span>
+</span></pre></div>
+</div>
+<p>Notice that a point knows its <span class="math notranslate nohighlight">\(\mathbf{e}_{123}\)</span> coefficient is <code class="code docutils literal notranslate"><span class="pre">1.0</span></code>, and a translation
+knows its scalar part is <code class="code docutils literal notranslate"><span class="pre">1.0</span></code>. These are properties of the type, not values you have to supply:
+all three examples above are only three values in memory.
+The type-system also enables <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> to generate even shorter code.</p>
+<p>Every <span class="math notranslate nohighlight">\(k\)</span>-vector also has a <span class="math notranslate nohighlight">\(d - k\)</span> dual, which are available by prepending <code class="code docutils literal notranslate"><span class="pre">pseudo</span></code> to the name.
+So in 3DPGA a pseudoscalar is a quadvector, and a pseudovector is a trivector:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">pga</span><span class="o">.</span><span class="n">pseudoscalar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'s'</span><span class="p">)</span>
+</span><span data-line="2"><span class="go">s0123 𝐞₀₁₂₃</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">pga</span><span class="o">.</span><span class="n">pseudovector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'w'</span><span class="p">)</span>
+</span><span data-line="4"><span class="go">w032 𝐞₀₃₂ + w013 𝐞₀₁₃ + w021 𝐞₀₂₁ + w123 𝐞₁₂₃</span>
+</span></pre></div>
+</div>
+<p>Results of operations are typed as well, so <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> keeps track of what you are computing with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/functions.html#type"><span class="nb">type</span></a><span class="p">(</span><span class="n">pga</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'u'</span><span class="p">)</span> <span class="o">*</span> <span class="n">pga</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'v'</span><span class="p">))</span>
+</span><span data-line="2"><span class="go">&lt;class 'kingdon.multivector.Bireflection'&gt;</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/functions.html#type"><span class="nb">type</span></a><span class="p">(</span><span class="n">pga</span><span class="o">.</span><span class="n">point</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'p'</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">pga</span><span class="o">.</span><span class="n">point</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'q'</span><span class="p">))</span>
+</span><span data-line="4"><span class="go">&lt;class 'kingdon.multivector.Bivector'&gt;</span>
+</span></pre></div>
+</div>
+<p>Because points are defined as the dual of the “undual point” <code class="code docutils literal notranslate"><span class="pre">upoint</span></code>,
+they can be made in a dimension agnostic way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">pga</span><span class="o">.</span><span class="n">upoint</span><span class="p">(</span><span class="n">e1</span><span class="o">=</span><span class="s1">'x'</span><span class="p">)</span><span class="o">.</span><span class="n">dual</span><span class="p">()</span>
+</span><span data-line="2"><span class="go">x 𝐞₀₃₂ + 1.0 𝐞₁₂₃</span>
+</span></pre></div>
+</div>
+<p>You can add your own types with the <code class="code docutils literal notranslate"><span class="pre">extra_types</span></code> argument to <a class="reference internal" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Algebra</span></code></a>,
+or replace the standard list entirely with <code class="code docutils literal notranslate"><span class="pre">types</span></code>. See <a class="reference internal" href="types.html"><span class="doc">Type system</span></a> for how to define one.</p>
+</section>
+<section id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading">#</a></h2>
+<p>Instances of <a class="reference internal" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-mod docutils literal notranslate"><span class="pre">MultiVector</span></code></a> overload all common Geometric Algebra operators.
+Below is an overview:</p>
+<div class="table-wrapper colwidths-given docutils container" id="id1">
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Operators</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 40.0%"/>
+<col style="width: 20.0%"/>
+<col style="width: 20.0%"/>
+<col style="width: 20.0%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Expression</p></th>
+<th class="head"><p>Infix</p></th>
+<th class="head"><p>Inline</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Geometric product</p></td>
+<td><p><span class="math notranslate nohighlight">\(ab\)</span></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a*b</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.gp(b)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Inner</p></td>
+<td><p><span class="math notranslate nohighlight">\(a \cdot b\)</span></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a|b</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.ip(b)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Scalar product</p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle a \cdot b \rangle_0\)</span></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">(a|b).grade(0)</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.sp(b)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Left-contraction</p></td>
+<td><p><span class="math notranslate nohighlight">\(a \rfloor b\)</span></p></td>
+<td></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.lc(b)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Right-contraction</p></td>
+<td><p><span class="math notranslate nohighlight">\(a \lfloor b\)</span></p></td>
+<td></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.rc(b)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Outer (Exterior)</p></td>
+<td><p><span class="math notranslate nohighlight">\(a \wedge b\)</span></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">^</span> <span class="pre">b</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.op(b)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Regressive</p></td>
+<td><p><span class="math notranslate nohighlight">\(a \vee b\)</span></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">&amp;</span> <span class="pre">b</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.rp(b)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Conjugate <code class="code docutils literal notranslate"><span class="pre">a</span></code> by <code class="code docutils literal notranslate"><span class="pre">b</span></code> with <span class="math notranslate nohighlight">\(\widetilde{b}b = 1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\((-1)^{\text{grade}(b) \text{grade}(a)} b a \widetilde{b}\)</span></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">b</span> <span class="pre">&gt;&gt;</span> <span class="pre">a</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">b.sw(a)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Project <code class="code docutils literal notranslate"><span class="pre">a</span></code> onto <code class="code docutils literal notranslate"><span class="pre">b</span></code> with <span class="math notranslate nohighlight">\(\widetilde{b}b = 1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\((a \cdot b) \widetilde{b}\)</span></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">@</span> <span class="pre">b</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.proj(b)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Commutator of <code class="code docutils literal notranslate"><span class="pre">a</span></code> and <code class="code docutils literal notranslate"><span class="pre">b</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(a \times b = \tfrac{1}{2} [a, b]\)</span></p></td>
+<td></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.cp(b)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Anti-commutator of <code class="code docutils literal notranslate"><span class="pre">a</span></code> and <code class="code docutils literal notranslate"><span class="pre">b</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\tfrac{1}{2} \{a, b\}\)</span></p></td>
+<td></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.acp(b)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Sum of <code class="code docutils literal notranslate"><span class="pre">a</span></code> and <code class="code docutils literal notranslate"><span class="pre">b</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(a + b\)</span></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.add(b)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Difference of <code class="code docutils literal notranslate"><span class="pre">a</span></code> and <code class="code docutils literal notranslate"><span class="pre">b</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(a - b\)</span></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">-</span> <span class="pre">b</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.sub(b)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Reverse of <code class="code docutils literal notranslate"><span class="pre">a</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\widetilde{a}\)</span></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">~a</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.reverse()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Squared norm of <code class="code docutils literal notranslate"><span class="pre">a</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(a \widetilde{a}\)</span></p></td>
+<td></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.normsq()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Norm of <code class="code docutils literal notranslate"><span class="pre">a</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{a \widetilde{a}}\)</span></p></td>
+<td></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.norm()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Normalize <code class="code docutils literal notranslate"><span class="pre">a</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(a / \sqrt{a \widetilde{a}}\)</span></p></td>
+<td></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.normalized()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Square root of <code class="code docutils literal notranslate"><span class="pre">a</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{a}\)</span></p></td>
+<td></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.sqrt()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Dual of <code class="code docutils literal notranslate"><span class="pre">a</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(a*\)</span></p></td>
+<td></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.dual()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Undual of <code class="code docutils literal notranslate"><span class="pre">a</span></code></p></td>
+<td></td>
+<td></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.undual()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Grade <code class="code docutils literal notranslate"><span class="pre">k</span></code> part of <code class="code docutils literal notranslate"><span class="pre">a</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle a \rangle_k\)</span></p></td>
+<td></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">a.grade(k)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="graphing-using-ganja-js">
+<h2>Graphing using <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code><a class="headerlink" href="#graphing-using-ganja-js" title="Link to this heading">#</a></h2>
+<p><code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> supports the <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code> graphing syntax. For those already familiar with
+<code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code>, the API will feel very similar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">alg</span></a> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">Algebra</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">upoint</span><span class="p">(</span><span class="n">e1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">e2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dual</span><span class="p">(),</span> <span class="n">alg</span><span class="o">.</span><span class="n">upoint</span><span class="p">(</span><span class="n">e1</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">e2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dual</span><span class="p">(),</span> <span class="n">alg</span><span class="o">.</span><span class="n">upoint</span><span class="p">(</span><span class="n">e1</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">e2</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dual</span><span class="p">()</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.graph" title="kingdon.algebra.Algebra.graph"><span class="n">alg</span><span class="o">.</span><span class="n">graph</span></a><span class="p">(</span>
+</span><span data-line="4"><span class="gp">... </span>    <span class="mh">0xD0FFE1</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span>
+</span><span data-line="5"><span class="gp">... </span>    <span class="mh">0x224488</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span>
+</span><span data-line="6"><span class="gp">... </span>    <span class="n">lineWidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="mi">1</span>
+</span><span data-line="7"><span class="gp">... </span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Running this in a notebook produces:</p>
+<div id="kingdon-graph-demo" style="width: 100%; height: 220px; border: 1px solid #ddd; border-radius: 4px;"></div>
+<script>
+  // ganja.js registers itself via AMD if a `define.amd` loader (such as the
+  // RequireJS instance these docs load for notebook widgets) is present on the
+  // page, in which case it never attaches `Algebra` to `window`. So, exactly like
+  // kingdon.graph.js does for the notebook widget, we fetch the source and eval
+  // it with `define` shadowed to force the plain-global export path instead.
+  fetch("https://enki.ws/ganja.js/ganja.js")
+    .then((response) => response.text())
+    .then((ganja_source) => {
+      const ctx = {};
+      new Function("const define=1;" + ganja_source).apply(ctx);
+      const Algebra = ctx.Algebra;
+
+      Algebra(2, 0, 1, () => {
+        var A = !(1e0 + 1e1 + 1e2);
+        var B = !(1e0 + -1e1 + 1e2);
+        var C = !(1e0 + -1e1 - 1e2);
+        var el = this.graph([
+          0xD0FFE1, [A, B, C],
+          0x224488, A, "A", B, "B", C, "C",
+        ], {lineWidth: 3, grid: 1, labels: 1});
+        el.style.width = "100%";
+        el.style.height = "100%";
+        document.getElementById("kingdon-graph-demo").appendChild(el);
+      });
+    });
+</script><p>The rules are simple: all positional arguments will be passed on to <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code> as
+elements to graph, whereas keyword arguments are passed to <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code> as options.
+Hence, the example above will graph the filled triangle <code class="code docutils literal notranslate"><span class="pre">[A,</span> <span class="pre">B,</span> <span class="pre">C]</span></code> in a light green
+(<code class="code docutils literal notranslate"><span class="pre">0xD0FFE1</span></code>), and the points <code class="code docutils literal notranslate"><span class="pre">A</span></code>, <code class="code docutils literal notranslate"><span class="pre">B</span></code>, <code class="code docutils literal notranslate"><span class="pre">C</span></code> in dark blue (<code class="code docutils literal notranslate"><span class="pre">0x224488</span></code>)
+each with their own label, all with <code class="code docutils literal notranslate"><span class="pre">lineWidth</span> <span class="pre">=</span> <span class="pre">3</span></code>, and with the <code class="code docutils literal notranslate"><span class="pre">grid</span></code> and point
+<code class="code docutils literal notranslate"><span class="pre">labels</span></code> turned on.
+Identical to <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code>, valid inputs to <a class="reference internal" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.graph" title="kingdon.algebra.Algebra.graph"><code class="xref py py-meth docutils literal notranslate"><span class="pre">graph()</span></code></a> are (lists of) instances
+of <a class="reference internal" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiVector</span></code></a>, strings, and hexadecimal numbers to indicate colors,
+or a function without arguments that returns these things.
+The strings can be simple labels, or valid SVG syntax.</p>
+<p>See <a class="reference internal" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.graph" title="kingdon.algebra.Algebra.graph"><code class="xref py py-meth docutils literal notranslate"><span class="pre">graph()</span></code></a> for more details.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>kingdon supports <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code>’s animation and interactivity in jupyter notebooks,
+<a class="reference external" href="https://tbuli.github.io/teahouse/">try kingdon in your browser</a> to give it a go!</p>
+</div>
+<section id="the-graph-cell-magic">
+<h3>The <code class="code docutils literal notranslate"><span class="pre">%%graph</span></code> cell magic<a class="headerlink" href="#the-graph-cell-magic" title="Link to this heading">#</a></h3>
+<p>Importing <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> into a jupyter kernel registers the <code class="code docutils literal notranslate"><span class="pre">%%graph</span></code> cell magic, which
+enables a more convenient notation: every top level expression in the cell is a subject
+to be graphed, and the argument line holds the options. So the example above can also be written as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="o">%%</span><span class="n">graph</span> <span class="o">-</span><span class="n">lineWidth</span> <span class="mi">3</span> <span class="o">-</span><span class="n">grid</span> <span class="o">-</span><span class="n">labels</span>
+</span><span data-line="2"><span class="mh">0xD0FFE1</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">]</span>
+</span><span data-line="3"><span class="mh">0x224488</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s2">"C"</span>
+</span></pre></div>
+</div>
+<p>Options are written either as flags (<code class="code docutils literal notranslate"><span class="pre">-grid</span> <span class="pre">-pointRadius</span> <span class="pre">4</span></code>) or as keyword arguments
+(<code class="code docutils literal notranslate"><span class="pre">grid=1,</span> <span class="pre">pointRadius=4</span></code>), and a flag without a value is <code class="code docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p>Whatever an assignment assigns is a subject as well, and a line which ends in a semicolon is
+evaluated but left out of the scene, which is a quick way to drop a subject without deleting the
+line. Any other statement is simply executed, which means a scene can be built up in the cell
+itself:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="o">%%</span><span class="n">graph</span> <span class="o">-</span><span class="n">animate</span>
+</span><span data-line="2"><span class="n">L</span> <span class="o">=</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">B</span>    <span class="c1"># graphed</span>
+</span><span data-line="3"><span class="n">M</span> <span class="o">=</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">C</span><span class="p">;</span>   <span class="c1"># not graphed</span>
+</span><span data-line="4">
+</span><span data-line="5"><span class="k">def</span><span class="w"> </span><span class="nf">frame</span><span class="p">():</span>
+</span><span data-line="6">    <span class="k">return</span> <span class="p">[</span><span class="mh">0x224488</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">]</span>
+</span><span data-line="7">
+</span><span data-line="8"><span class="n">frame</span>
+</span></pre></div>
+</div>
+<p>The algebra is that of the first multivector among the subjects. If the subjects hold no
+multivector at all, as can happen for an animation, then name the algebra at the start of the
+argument line instead: <code class="code docutils literal notranslate"><span class="pre">%%graph</span> <span class="pre">alg</span> <span class="pre">-animate</span></code>.</p>
+<p>Rerunning a cell redraws the widget that cell made before with
+<a class="reference internal" href="api/generated/kingdon.graph.GraphWidget.html#kingdon.graph.GraphWidget.update" title="kingdon.graph.GraphWidget.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update()</span></code></a>, rather than making a new one, so a scene can be
+built more organically.</p>
+</section>
+<section id="meshes-and-point-clouds">
+<h3>Meshes and point clouds<a class="headerlink" href="#meshes-and-point-clouds" title="Link to this heading">#</a></h3>
+<p>Passing a few thousand multivectors one by one is neither pleasant to write nor fast to draw.
+Instead, pass a <em>single</em> multivector whose coefficients are arrays (see <a class="reference internal" href="arrays.html"><span class="doc">Array Syntax</span></a>): its
+<code class="code docutils literal notranslate"><span class="pre">shape</span></code> is spliced into the list of subjects, so one subject becomes many elements. The
+trailing axis decides what is drawn, exactly like a python list would:</p>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%"/>
+<col style="width: 80.0%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Shape</p></th>
+<th class="head"><p>Drawn as</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">()</span></code></p></td>
+<td><p>a single element, as usual.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">(N,)</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(N\)</span> separate elements, e.g. a point cloud.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">2)</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(N\)</span> line segments, e.g. the edges of a mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">3)</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(N\)</span> filled triangles, e.g. the faces of a mesh.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>So for a mesh given by a <code class="code docutils literal notranslate"><span class="pre">vertices</span></code> array of shape <span class="math notranslate nohighlight">\((N, 3)\)</span> and an integer
+<code class="code docutils literal notranslate"><span class="pre">faces</span></code> array of shape <span class="math notranslate nohighlight">\((M, 3)\)</span> indexing into it, the whole scene is two subjects:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><a class="sphinx-codeautolink-a" href="api/multivector.html#module-kingdon.multivector"><span class="nn">kingdon.multivector</span></a><span class="w"> </span><span class="kn">import</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.EVector.html#kingdon.multivector.EVector" title="kingdon.multivector.EVector"><span class="n">EVector</span></a><span class="p">,</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.UPoint.html#kingdon.multivector.UPoint" title="kingdon.multivector.UPoint"><span class="n">UPoint</span></a><span class="p">,</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.Point.html#kingdon.multivector.Point" title="kingdon.multivector.Point"><span class="n">Point</span></a><span class="p">,</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.Translation.html#kingdon.multivector.Translation" title="kingdon.multivector.Translation"><span class="n">Translation</span></a>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">alg</span></a> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">Algebra</span></a><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">extra_types</span><span class="o">=</span><span class="p">[</span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.EVector.html#kingdon.multivector.EVector" title="kingdon.multivector.EVector"><span class="n">EVector</span></a><span class="p">,</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.UPoint.html#kingdon.multivector.UPoint" title="kingdon.multivector.UPoint"><span class="n">UPoint</span></a><span class="p">,</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.Point.html#kingdon.multivector.Point" title="kingdon.multivector.Point"><span class="n">Point</span></a><span class="p">,</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.multivector.Translation.html#kingdon.multivector.Translation" title="kingdon.multivector.Translation"><span class="n">Translation</span></a><span class="p">])</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">upoint</span><span class="p">(</span><span class="n">vertices</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">dual</span><span class="p">()</span>      <span class="c1"># The point cloud.</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">facets</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">faces</span><span class="p">]</span>                      <span class="c1"># A point per corner per face.</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span><span class="n">facets</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="6"><span class="go">(Point[(M, 3)], Point[(N,)])</span>
+</span><span data-line="7"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.graph" title="kingdon.algebra.Algebra.graph"><span class="n">alg</span><span class="o">.</span><span class="n">graph</span></a><span class="p">(</span>
+</span><span data-line="8"><span class="gp">... </span>    <span class="mh">0xEE8888</span><span class="p">,</span> <span class="n">facets</span><span class="p">,</span>
+</span><span data-line="9"><span class="gp">... </span>    <span class="mh">0x000000</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span>
+</span><span data-line="10"><span class="gp">... </span>    <span class="n">pointRadius</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+</span><span data-line="11"><span class="gp">... </span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Two things are worth keeping in mind when building the points:</p>
+<ul class="simple">
+<li><p>Always build them as <code class="code docutils literal notranslate"><span class="pre">alg.upoint(...).dual()</span></code> (or <code class="code docutils literal notranslate"><span class="pre">(alg.blades.e0</span> <span class="pre">+</span> <span class="pre">alg.evector(...)).dual()</span></code>),
+and hand <code class="code docutils literal notranslate"><span class="pre">upoint</span></code> the transpose of the vertices, such that the <span class="math notranslate nohighlight">\(x, y, z\)</span> axis comes
+first and the <span class="math notranslate nohighlight">\(N\)</span> axis last. It is tempting to write <code class="code docutils literal notranslate"><span class="pre">alg.point(vertices.T)</span></code> instead,
+but the positional values of a type are its <em>free coefficients in layout order</em>, which for
+<a class="reference internal" href="api/generated/kingdon.multivector.Point.html#kingdon.multivector.Point" title="kingdon.multivector.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> is <span class="math notranslate nohighlight">\((\mathbf{e}_{012}, \mathbf{e}_{013}, \mathbf{e}_{023})\)</span>,
+i.e. <span class="math notranslate nohighlight">\((-z, y, -x)\)</span> and not <span class="math notranslate nohighlight">\((x, y, z)\)</span>. Going through the undual point is
+independent of the ordering and signs of the basis blades, and hence of the dimension.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code> only renders algebras in the lexicographical basis, so create the algebra as
+<code class="code docutils literal notranslate"><span class="pre">Algebra(3,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">extra_types=[...])</span></code> rather than <code class="code docutils literal notranslate"><span class="pre">Algebra.fromname('3DPGA')</span></code>;
+the latter reorders the basis and <a class="reference internal" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.graph" title="kingdon.algebra.Algebra.graph"><code class="xref py py-meth docutils literal notranslate"><span class="pre">graph()</span></code></a> will refuse it.</p></li>
+</ul>
+<p>Everything that makes shaped multivectors convenient applies to the subjects as well: boolean
+masks and fancy indexing select what to draw, e.g. <code class="code docutils literal notranslate"><span class="pre">v[(plane</span> <span class="pre">&amp;</span> <span class="pre">v).e</span> <span class="pre">&gt;</span> <span class="pre">0]</span></code> graphs only the
+points in front of a <code class="code docutils literal notranslate"><span class="pre">plane</span></code>, and operators act on the whole mesh at once, so
+<code class="code docutils literal notranslate"><span class="pre">facets[:,</span> <span class="pre">0]</span> <span class="pre">&amp;</span> <span class="pre">facets[:,</span> <span class="pre">1]</span> <span class="pre">&amp;</span> <span class="pre">facets[:,</span> <span class="pre">2]</span></code> gives a <code class="code docutils literal notranslate"><span class="pre">Vector[(M,)]</span></code> of face planes
+that can be graphed just as well. Since the mesh travels to <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code> as a single binary
+buffer, this is also much faster than graphing the elements individually.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only unshaped multivectors passed as direct positional arguments are draggable; a shaped
+subject is drawn but cannot be picked up.</p>
+</div>
+</section>
+</section>
+<section id="large-algebra-s">
+<h2>Large Algebra’s<a class="headerlink" href="#large-algebra-s" title="Link to this heading">#</a></h2>
+<p>In theory <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> supports algebra’s up to 36D, but your computer might go up in smoke
+if you push it that far. In order to make large’s algebras feasible, <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> no longer
+performs compilation on operators because this takes too long, and instead
+just computes naively.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can still use the <code class="code docutils literal notranslate"><span class="pre">@add_operator(symbolic=True)</span></code> decorator to compile your operators if desired,
+in order to speedup those operations you care about.</p>
+<p>What decides that trade-off is the number of blades of the input, not <span class="math notranslate nohighlight">\(d\)</span>: compilation time grows
+roughly with the square of the number of blades, whereas the speedup stays around an order of magnitude.
+The (indicative) numbers below are for <code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span></code> on elements of increasing density.</p>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 5.8%"/>
+<col style="width: 21.2%"/>
+<col style="width: 9.6%"/>
+<col style="width: 15.4%"/>
+<col style="width: 19.2%"/>
+<col style="width: 17.3%"/>
+<col style="width: 11.5%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(d\)</span></p></th>
+<th class="head"><p>Element</p></th>
+<th class="head"><p>Keys</p></th>
+<th class="head"><p>Compile (s)</p></th>
+<th class="head"><p>Compiled call (ms)</p></th>
+<th class="head"><p>Direct call (ms)</p></th>
+<th class="head"><p>Speedup</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>vector</p></td>
+<td><p>7</p></td>
+<td><p>0.003</p></td>
+<td><p>0.008</p></td>
+<td><p>0.038</p></td>
+<td><p>5x</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>vector</p></td>
+<td><p>8</p></td>
+<td><p>0.003</p></td>
+<td><p>0.010</p></td>
+<td><p>0.048</p></td>
+<td><p>5x</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>vector</p></td>
+<td><p>10</p></td>
+<td><p>0.005</p></td>
+<td><p>0.018</p></td>
+<td><p>0.132</p></td>
+<td><p>7x</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>vector</p></td>
+<td><p>12</p></td>
+<td><p>0.010</p></td>
+<td><p>0.010</p></td>
+<td><p>0.472</p></td>
+<td><p>48x</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>bivector</p></td>
+<td><p>21</p></td>
+<td><p>0.024</p></td>
+<td><p>0.014</p></td>
+<td><p>0.154</p></td>
+<td><p>11x</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>bivector</p></td>
+<td><p>28</p></td>
+<td><p>0.059</p></td>
+<td><p>0.037</p></td>
+<td><p>0.264</p></td>
+<td><p>7x</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>bivector</p></td>
+<td><p>45</p></td>
+<td><p>0.196</p></td>
+<td><p>0.040</p></td>
+<td><p>0.867</p></td>
+<td><p>22x</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>bivector</p></td>
+<td><p>66</p></td>
+<td><p>0.620</p></td>
+<td><p>0.074</p></td>
+<td><p>2.18</p></td>
+<td><p>29x</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>full mv</p></td>
+<td><p>128</p></td>
+<td><p>3.7</p></td>
+<td><p>0.22</p></td>
+<td><p>5.53</p></td>
+<td><p>25x</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>full mv</p></td>
+<td><p>256</p></td>
+<td><p>29.7</p></td>
+<td><p>1.05</p></td>
+<td><p>26.4</p></td>
+<td><p>25x</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>full mv</p></td>
+<td><p>512</p></td>
+<td><p>224.9</p></td>
+<td><p>5.24</p></td>
+<td><p>126.5</p></td>
+<td><p>24x</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>By default any algebra of <span class="math notranslate nohighlight">\(d &gt; 6\)</span> is considered large, but it can be forced manually with
+the <cite>large</cite> option to <a class="reference internal" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Algebra</span></code></a> depending on your needs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">alg</span></a> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">Algebra</span></a><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">large</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">alg</span></a> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">Algebra</span></a><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">large</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>A large algebra has no <a class="reference internal" href="#multivector-types"><span class="std std-ref">multivector types</span></a>: every multivector is a
+<a class="reference internal" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiVector</span></code></a>. The k-vector constructors such as
+<code class="code docutils literal notranslate"><span class="pre">alg.vector</span></code> and <code class="code docutils literal notranslate"><span class="pre">alg.pseudovector</span></code> are still there, they simply construct a
+<a class="reference internal" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiVector</span></code></a> of the requested grade.</p>
+<p>For examples of large algebra’s, see the OPNS section of the <a class="reference external" href="https://tbuli.github.io/teahouse">teahouse</a>,
+which has some demos in the mother algebra <code class="code docutils literal notranslate"><span class="pre">Algebra(4,</span> <span class="pre">4)</span></code>, 2D CSGA <code class="code docutils literal notranslate"><span class="pre">Algebra(5,</span> <span class="pre">3)</span></code> and
+3DCCGA <code class="code docutils literal notranslate"><span class="pre">Algebra(6,</span> <span class="pre">3)</span></code>.</p>
+</section>
+<section id="performance-tips">
+<h2>Performance Tips<a class="headerlink" href="#performance-tips" title="Link to this heading">#</a></h2>
+<p>Because <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> attempts to symbolically optimize expressions the first time they are called, the first
+call to any operation takes a bit more time, whereas subsequent calls have extremely good performance.
+Note however that even the first execution that includes the symbolic optimization typically
+takes on the order of milliseconds, so you probably won’t even notice it.</p>
+<p>Since <cite>kingdon</cite> v2.2.x the symbolic code generation features a port of <a class="reference external" href="https://github.com/enkimute/GAmphetamine.js">GAMphetamine.js</a>’s
+very powerful Common Subexpression Elimination (CSE) algorithm, which is able to reproduce the hand optimized optimum in several cases.
+(More will follow in the future when the latest changes of <cite>GAMphetamine.js</cite> are ported.)</p>
+<p>The table below lists multiplications and additions counted in the emitted Python for representative <strong>3DPGA</strong> expressions
+when CSE is enabled vs not. Count columns use <code class="code docutils literal notranslate"><span class="pre">muls/adds</span></code>.</p>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 63.2%"/>
+<col style="width: 18.4%"/>
+<col style="width: 18.4%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>CSE</p></th>
+<th class="head"><p>Naive</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">R</span> <span class="pre">&gt;&gt;</span> <span class="pre">p</span></code>, <span class="math notranslate nohighlight">\(R\)</span> even, <span class="math notranslate nohighlight">\(p\)</span> normalized point</p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">21/18</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">72/30</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">R</span> <span class="pre">&gt;&gt;</span> <span class="pre">d</span></code>, <span class="math notranslate nohighlight">\(R\)</span> even, <span class="math notranslate nohighlight">\(d\)</span> a direction</p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">18/12</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">54/20</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">R</span> <span class="pre">&gt;&gt;</span> <span class="pre">o</span></code>, <span class="math notranslate nohighlight">\(R\)</span> even, <span class="math notranslate nohighlight">\(o\)</span> the origin</p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">15/9</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">24/12</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">R</span> <span class="pre">&gt;&gt;</span> <span class="pre">(0.5*e032)</span></code>, <span class="math notranslate nohighlight">\(R\)</span> even, pure <span class="math notranslate nohighlight">\(\mathbf{e}_{032}\)</span> blade</p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">6/4</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">9/6</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">p1</span> <span class="pre">&amp;</span> <span class="pre">p2</span></code>, join of two normalized points (regressive product)</p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">6/6</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">6/10</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">p</span> <span class="pre">&amp;</span> <span class="pre">l</span></code>, normalized point <code class="code docutils literal notranslate"><span class="pre">p</span></code>, line <code class="code docutils literal notranslate"><span class="pre">l</span></code> (bivector)</p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">9/9</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">9/11</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">p1</span> <span class="pre">&amp;</span> <span class="pre">p2</span> <span class="pre">&amp;</span> <span class="pre">p3</span></code>, join of three normalized points</p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">9/12</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">30/22</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">(p</span> <span class="pre">|</span> <span class="pre">P)</span> <span class="pre">*</span> <span class="pre">P.inv()</span></code>, project normalized point <code class="code docutils literal notranslate"><span class="pre">p</span></code> on a general (non-normalized) plane <code class="code docutils literal notranslate"><span class="pre">P</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">18/12</span></code> (+3 divs)</p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">36/20</span></code> (+3 divs)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">p</span> <span class="pre">@</span> <span class="pre">P</span></code>, project normalized point <code class="code docutils literal notranslate"><span class="pre">p</span></code> on normalized plane <code class="code docutils literal notranslate"><span class="pre">P</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">6/6</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">21/15</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">p</span> <span class="pre">@</span> <span class="pre">l</span></code>, project normalized point <code class="code docutils literal notranslate"><span class="pre">p</span></code> on normalized line <code class="code docutils literal notranslate"><span class="pre">l</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">12/12</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">33/19</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">P</span> <span class="pre">&gt;&gt;</span> <span class="pre">p</span></code>, reflect normalized point <code class="code docutils literal notranslate"><span class="pre">p</span></code> in normalized plane <code class="code docutils literal notranslate"><span class="pre">P</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">9/7</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">33/13</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">l</span> <span class="pre">&gt;&gt;</span> <span class="pre">p</span></code>, reflect normalized point <code class="code docutils literal notranslate"><span class="pre">p</span></code> in normalized line <code class="code docutils literal notranslate"><span class="pre">l</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">15/12</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">48/20</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These counts are reached by <cite>kingdon</cite>’s built-in operators, provided you use the
+<a class="reference internal" href="#multivector-types"><span class="std std-ref">multivector types</span></a> that carry the normalization: a <code class="code docutils literal notranslate"><span class="pre">bireflection</span></code>
+rather than a generic even multivector, a <code class="code docutils literal notranslate"><span class="pre">point</span></code> rather than a generic trivector.
+The <span class="math notranslate nohighlight">\(\mathbf{e}_{032}\)</span> row is the exception, as it requires
+<a class="reference internal" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.compile" title="kingdon.algebra.Algebra.compile"><code class="xref py py-func docutils literal notranslate"><span class="pre">compile()</span></code></a> with the blade as a constant, since only then
+is its coefficient known at codegen time.</p>
+</div>
+<p>The symbolically optimized code that kingdon produces is already a good starting point for high performance code.
+However, there are still several things to be aware of to ensure good performance.</p>
+<section id="broadcasting">
+<h3>Broadcasting<a class="headerlink" href="#broadcasting" title="Link to this heading">#</a></h3>
+<p>Avoid arrays of multivectors, and use multivectors over e.g. <code class="code docutils literal notranslate"><span class="pre">numpy</span></code> arrays or <code class="code docutils literal notranslate"><span class="pre">PyTorch</span></code>
+tensors instead, as shown in <a class="reference internal" href="arrays.html"><span class="doc">Array Syntax</span></a>.
+This ensures the high level overhead of kingdon is paid only once, and we instead delegate
+the computation to the underlying datastructures.</p>
+</section>
+<section id="adding-operators">
+<h3>Adding Operators<a class="headerlink" href="#adding-operators" title="Link to this heading">#</a></h3>
+<p>To make it easy to optimize larger expressions, <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> offers the
+<a class="reference internal" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.add_operator" title="kingdon.algebra.Algebra.add_operator"><code class="xref py py-func docutils literal notranslate"><span class="pre">add_operator()</span></code></a> decorator, which adds the expression to the algebra
+as an operator of its own.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">alg</span></a> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">Algebra</span></a><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt;</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.add_operator" title="kingdon.algebra.Algebra.add_operator"><span class="nd">@alg</span><span class="o">.</span><span class="n">add_operator</span></a>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">myfunc</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span>     <span class="k">return</span> <span class="n">u</span> <span class="o">*</span> <span class="p">(</span><span class="n">u</span> <span class="o">+</span> <span class="n">v</span><span class="p">)</span>
+</span><span data-line="6"><span class="gp">&gt;&gt;&gt;</span>
+</span><span data-line="7"><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.random.html#numpy.random.random" title="numpy.random.random"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span></a><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</span><span data-line="8"><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.random.html#numpy.random.random" title="numpy.random.random"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span></a><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</span><span data-line="9"><span class="gp">&gt;&gt;&gt; </span><span class="n">myfunc</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Calling the decorated <code class="code docutils literal notranslate"><span class="pre">myfunc</span></code> has the benefit that all the numerical computation is done in one single call,
+instead of doing each binary operation individually. This has the benefit that all the (expensive) python boilerplate
+code is called only once.
+Moreover, one can use <code class="code docutils literal notranslate"><span class="pre">@alg.add_operator(symbolic=True)</span></code> to symbolically optimize the expression, similar to how
+<cite>kingdon</cite>’s default binary operators work. As we have seen above in the CSE section, this can result in significant
+performance improvements. Afterall, the fastest computation is one you do not have to do.</p>
+<p><a class="reference internal" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.add_operator" title="kingdon.algebra.Algebra.add_operator"><code class="xref py py-func docutils literal notranslate"><span class="pre">add_operator()</span></code></a> figures out the symbolic multivectors from the multivectors you call
+it with, and caches a compiled function per combination of input types. If you would rather pick those
+symbolic multivectors yourself, use <a class="reference internal" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.compile" title="kingdon.algebra.Algebra.compile"><code class="xref py py-func docutils literal notranslate"><span class="pre">compile()</span></code></a> directly. It takes the expression
+followed by the symbolic multivectors and hands you back a <a class="reference internal" href="api/generated/kingdon.codegen.CompiledExpression.html#kingdon.codegen.CompiledExpression" title="kingdon.codegen.CompiledExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">CompiledExpression</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">R</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">bireflection</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'R'</span><span class="p">,</span> <span class="n">symbolcls</span><span class="o">=</span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.codegen_symbolcls" title="kingdon.algebra.Algebra.codegen_symbolcls"><span class="n">alg</span><span class="o">.</span><span class="n">codegen_symbolcls</span></a><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">e1</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="n">e1</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.codegen.CompiledExpression.html#kingdon.codegen.CompiledExpression" title="kingdon.codegen.CompiledExpression"><span class="n">rotate_e1</span></a> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.compile" title="kingdon.algebra.Algebra.compile"><span class="n">alg</span><span class="o">.</span><span class="n">compile</span></a><span class="p">(</span><span class="n">myfunc</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">e1</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>This is worth the extra effort when you know something about the values that <code class="code docutils literal notranslate"><span class="pre">add_operator</span></code> cannot know,
+such as the fact that you only ever rotate unit vectors. See
+<a class="reference internal" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.compile" title="kingdon.algebra.Algebra.compile"><code class="xref py py-func docutils literal notranslate"><span class="pre">compile()</span></code></a> for a worked example.</p>
+</section>
+<section id="full-layout">
+<h3>Full layout<a class="headerlink" href="#full-layout" title="Link to this heading">#</a></h3>
+<p>The first time <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> is asked to perform an operation it hasn’t seen before, it performs code generation
+for that particular request. Because codegen is a relatively expensive step, it can be beneficial to reduce the number of
+times it is needed. An easy way to achieve this is to initiate the <a class="reference internal" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Algebra</span></code></a> with
+<cite>full_layout=True</cite>. This enforces that every multivector carries the full <a class="reference internal" href="types.html"><span class="doc">layout</span></a> of its type, so
+<code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> does not specialize codegen down to the individual basis blades, but rather only per type.
+This means there are far less combinations that have to be considered and generated.</p>
+</section>
+<section id="numba-jit">
+<h3>Numba JIT<a class="headerlink" href="#numba-jit" title="Link to this heading">#</a></h3>
+<p>We can enable numba just-in-time compilation by initiating an <a class="reference internal" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Algebra</span></code></a> with <cite>wrapper=numba.njit</cite>,
+which will apply numba’s njit decorator to all of kingdon’s generated functions.
+This comes with a significant cost the first time any operator is called, but subsequent calls to the same operator are
+significantly faster.
+However, it is worth mentioning that when dealing with <a class="reference internal" href="#numerical-multivectors"><span class="std std-ref">Numerical Multivectors</span></a> over e.g. numpy arrays,
+the benefit of using <cite>numba</cite> actually disappears rapidly as the numpy arrays become larger, since then most of the time
+is spend in numpy routines anyway.
+So you need to experiment carefully if numba is right for you.</p>
+</section>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="installation.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Installation</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="operators.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Operators</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2022, Martin Roelfs</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=796a81b5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="_static/shibuya.js?v=50760d75"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+      <script src="_static/kingdon.js?v=5907dcdc"></script></body>
+</html>

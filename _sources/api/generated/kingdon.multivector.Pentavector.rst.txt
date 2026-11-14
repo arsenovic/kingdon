@@ -1,0 +1,12 @@
+﻿Pentavector
+===========
+
+.. currentmodule:: kingdon.multivector
+
+.. autoclass:: Pentavector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   

@@ -1,0 +1,6 @@
+﻿ordering\_matrix
+================
+
+.. currentmodule:: kingdon.matrixreps
+
+.. autofunction:: ordering_matrix

@@ -1,0 +1,6 @@
+﻿unflatten
+=========
+
+.. currentmodule:: kingdon.codegen
+
+.. autofunction:: unflatten

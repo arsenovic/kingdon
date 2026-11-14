@@ -1,0 +1,6 @@
+﻿square
+======
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: square

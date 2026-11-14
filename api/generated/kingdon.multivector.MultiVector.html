@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="cyan" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>MultiVector - Kingdon</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="MultiVectorType" href="kingdon.multivector.MultiVectorType.html" /><link rel="prev" title="kingdon.multivector" href="../multivector.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=ad592e98" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-codeautolink.css?v=b2176991" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kingdon.css?v=be060e35" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="MultiVector"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      <img class="light-logo" src="../../_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <img class="dark-logo" src="../../_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <strong>Kingdon</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link"><a href="../../index.html">Home</a></li><li class="link"><a href="../../examples/index.html">Examples</a></li><li class="link"><a href="../index.html">API</a></li><li class="link">
+          <a href="https://tbuli.github.io/teahouse/">
+            <span>Teahouse</span><i class="i-lucide external-link"></i></a>
+        </li><li class="link">
+          <a href="https://github.com/tBuLi/kingdon">
+            <span>GitHub</span><i class="i-lucide external-link"></i></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../operators.html">Operators</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../arrays.html">Array Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../types.html">Type system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">History</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../workings.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector"><code class="docutils literal notranslate"><span class="pre">MultiVector</span></code></a><ul>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.acp"><code class="docutils literal notranslate"><span class="pre">acp()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.add"><code class="docutils literal notranslate"><span class="pre">add()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.algebra"><code class="docutils literal notranslate"><span class="pre">algebra</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.asfullmv"><code class="docutils literal notranslate"><span class="pre">asfullmv()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.asmatrix"><code class="docutils literal notranslate"><span class="pre">asmatrix()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.asmvtype"><code class="docutils literal notranslate"><span class="pre">asmvtype()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.conjugate"><code class="docutils literal notranslate"><span class="pre">conjugate()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.cp"><code class="docutils literal notranslate"><span class="pre">cp()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.div"><code class="docutils literal notranslate"><span class="pre">div()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.dual"><code class="docutils literal notranslate"><span class="pre">dual()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.exp"><code class="docutils literal notranslate"><span class="pre">exp()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.filter"><code class="docutils literal notranslate"><span class="pre">filter()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.free_symbols"><code class="docutils literal notranslate"><span class="pre">free_symbols</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.fromkeysvalues"><code class="docutils literal notranslate"><span class="pre">fromkeysvalues()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.frommatrix"><code class="docutils literal notranslate"><span class="pre">frommatrix()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.fromname"><code class="docutils literal notranslate"><span class="pre">fromname()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.gp"><code class="docutils literal notranslate"><span class="pre">gp()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.grade"><code class="docutils literal notranslate"><span class="pre">grade()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.grades"><code class="docutils literal notranslate"><span class="pre">grades</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.hodge"><code class="docutils literal notranslate"><span class="pre">hodge()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.inv"><code class="docutils literal notranslate"><span class="pre">inv()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.involute"><code class="docutils literal notranslate"><span class="pre">involute()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.ip"><code class="docutils literal notranslate"><span class="pre">ip()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.issymbolic"><code class="docutils literal notranslate"><span class="pre">issymbolic</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.items"><code class="docutils literal notranslate"><span class="pre">items()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.keys"><code class="docutils literal notranslate"><span class="pre">keys()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.layout"><code class="docutils literal notranslate"><span class="pre">layout()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.lc"><code class="docutils literal notranslate"><span class="pre">lc()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.map"><code class="docutils literal notranslate"><span class="pre">map()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.ndim"><code class="docutils literal notranslate"><span class="pre">ndim</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.neg"><code class="docutils literal notranslate"><span class="pre">neg()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.norm"><code class="docutils literal notranslate"><span class="pre">norm()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.normalized"><code class="docutils literal notranslate"><span class="pre">normalized()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.normsq"><code class="docutils literal notranslate"><span class="pre">normsq()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.op"><code class="docutils literal notranslate"><span class="pre">op()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.outercos"><code class="docutils literal notranslate"><span class="pre">outercos()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.outerexp"><code class="docutils literal notranslate"><span class="pre">outerexp()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.outersin"><code class="docutils literal notranslate"><span class="pre">outersin()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.outertan"><code class="docutils literal notranslate"><span class="pre">outertan()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.polarity"><code class="docutils literal notranslate"><span class="pre">polarity()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.proj"><code class="docutils literal notranslate"><span class="pre">proj()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.rc"><code class="docutils literal notranslate"><span class="pre">rc()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.reverse"><code class="docutils literal notranslate"><span class="pre">reverse()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.rp"><code class="docutils literal notranslate"><span class="pre">rp()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.sanitize_keys_grades"><code class="docutils literal notranslate"><span class="pre">sanitize_keys_grades()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.set"><code class="docutils literal notranslate"><span class="pre">set()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.shape"><code class="docutils literal notranslate"><span class="pre">shape</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.sp"><code class="docutils literal notranslate"><span class="pre">sp()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.sqrt"><code class="docutils literal notranslate"><span class="pre">sqrt()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.square"><code class="docutils literal notranslate"><span class="pre">square()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.sub"><code class="docutils literal notranslate"><span class="pre">sub()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.sw"><code class="docutils literal notranslate"><span class="pre">sw()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.type_layout"><code class="docutils literal notranslate"><span class="pre">type_layout</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.type_number"><code class="docutils literal notranslate"><span class="pre">type_number</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.undual"><code class="docutils literal notranslate"><span class="pre">undual()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.unhodge"><code class="docutils literal notranslate"><span class="pre">unhodge()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.unpolarity"><code class="docutils literal notranslate"><span class="pre">unpolarity()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.multivector.MultiVector.values"><code class="docutils literal notranslate"><span class="pre">values()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">Kingdon</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../multivector.html"><span itemprop="name">kingdon.multivector</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="3" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">MultiVector</strong>
+        <meta itemprop="position" content="4" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="multivector">
+<h1>MultiVector<a class="headerlink" href="#multivector" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">kingdon.multivector.</span></span><span class="sig-name descname"><span class="pre">MultiVector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algebra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'Algebra'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grades</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbolcls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/builtins/functions.html#object" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p class="rubric">Methods</p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.acp" title="kingdon.multivector.MultiVector.acp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">acp</span></code></a></p></td>
+<td><p>Calculate the anti-commutator product of <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">:=</span> <span class="pre">self</span></code> and <code class="code docutils literal notranslate"><span class="pre">y</span> <span class="pre">:=</span> <span class="pre">other</span></code>: <code class="code docutils literal notranslate"><span class="pre">x.cp(y)</span> <span class="pre">=</span> <span class="pre">0.5*(x*y+y*x)</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.add" title="kingdon.multivector.MultiVector.add"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add</span></code></a></p></td>
+<td><p>Sum: <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.asfullmv" title="kingdon.multivector.MultiVector.asfullmv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asfullmv</span></code></a></p></td>
+<td><p>Returns a full version of the same multivector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.asmatrix" title="kingdon.multivector.MultiVector.asmatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asmatrix</span></code></a></p></td>
+<td><p>Returns a matrix representation of this multivector.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.asmvtype" title="kingdon.multivector.MultiVector.asmvtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asmvtype</span></code></a></p></td>
+<td><p>Cast to a specific multivector type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.conjugate" title="kingdon.multivector.MultiVector.conjugate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">conjugate</span></code></a></p></td>
+<td><p>Clifford conjugation: involution and reversion combined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.cp" title="kingdon.multivector.MultiVector.cp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cp</span></code></a></p></td>
+<td><p>Calculate the commutator product of <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">:=</span> <span class="pre">self</span></code> and <code class="code docutils literal notranslate"><span class="pre">y</span> <span class="pre">:=</span> <span class="pre">other</span></code>: <code class="code docutils literal notranslate"><span class="pre">x.cp(y)</span> <span class="pre">=</span> <span class="pre">0.5*(x*y-y*x)</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.div" title="kingdon.multivector.MultiVector.div"><code class="xref py py-obj docutils literal notranslate"><span class="pre">div</span></code></a></p></td>
+<td><p>Division: <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">/</span> <span class="pre">y</span></code>, i.e. <code class="code docutils literal notranslate"><span class="pre">x</span></code> times the inverse of <code class="code docutils literal notranslate"><span class="pre">y</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.dual" title="kingdon.multivector.MultiVector.dual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dual</span></code></a></p></td>
+<td><p>Compute the dual of <cite>self</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.exp" title="kingdon.multivector.MultiVector.exp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exp</span></code></a></p></td>
+<td><p>Calculate the exponential of simple bivectors, meaning a bivector that squares to a scalar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.filter" title="kingdon.multivector.MultiVector.filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter</span></code></a></p></td>
+<td><p>Returns a new multivector containing only those elements for which <cite>func</cite> was true-ish.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.fromkeysvalues" title="kingdon.multivector.MultiVector.fromkeysvalues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromkeysvalues</span></code></a></p></td>
+<td><p>Initiate a multivector from a sequence of keys and a sequence of values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.frommatrix" title="kingdon.multivector.MultiVector.frommatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">frommatrix</span></code></a></p></td>
+<td><p>Initiate a multivector from a matrix.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.fromname" title="kingdon.multivector.MultiVector.fromname"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromname</span></code></a></p></td>
+<td><p>Initiate a symbolic multivector.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.gp" title="kingdon.multivector.MultiVector.gp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gp</span></code></a></p></td>
+<td><p>Geometric product: <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.grade" title="kingdon.multivector.MultiVector.grade"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grade</span></code></a></p></td>
+<td><p>Returns a new  <a class="reference internal" href="#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiVector</span></code></a> instance with only the selected <cite>grades</cite> from <cite>self</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.hodge" title="kingdon.multivector.MultiVector.hodge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hodge</span></code></a></p></td>
+<td><p>Hodge dual, see <a class="reference internal" href="#kingdon.multivector.MultiVector.dual" title="kingdon.multivector.MultiVector.dual"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dual()</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.inv" title="kingdon.multivector.MultiVector.inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inv</span></code></a></p></td>
+<td><p>Inverse of this multivector.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.involute" title="kingdon.multivector.MultiVector.involute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">involute</span></code></a></p></td>
+<td><p>Main grade involution.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.ip" title="kingdon.multivector.MultiVector.ip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ip</span></code></a></p></td>
+<td><p>Inner product: <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">|</span> <span class="pre">y</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.items" title="kingdon.multivector.MultiVector.items"><code class="xref py py-obj docutils literal notranslate"><span class="pre">items</span></code></a></p></td>
+<td><p>Pairs of <a class="reference internal" href="#kingdon.multivector.MultiVector.keys" title="kingdon.multivector.MultiVector.keys"><code class="xref py py-meth docutils literal notranslate"><span class="pre">keys()</span></code></a> and <a class="reference internal" href="#kingdon.multivector.MultiVector.values" title="kingdon.multivector.MultiVector.values"><code class="xref py py-meth docutils literal notranslate"><span class="pre">values()</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.keys" title="kingdon.multivector.MultiVector.keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keys</span></code></a></p></td>
+<td><p>Binary keys of the basis blades present in this multivector.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.layout" title="kingdon.multivector.MultiVector.layout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layout</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.lc" title="kingdon.multivector.MultiVector.lc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lc</span></code></a></p></td>
+<td><p>Left-contraction: <span class="math notranslate nohighlight">\(x \rfloor y\)</span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.map" title="kingdon.multivector.MultiVector.map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">map</span></code></a></p></td>
+<td><p>Returns a new multivector where <cite>func</cite> has been applied to all the values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.neg" title="kingdon.multivector.MultiVector.neg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">neg</span></code></a></p></td>
+<td><p>Negation: <code class="code docutils literal notranslate"><span class="pre">-x</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.norm" title="kingdon.multivector.MultiVector.norm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">norm</span></code></a></p></td>
+<td><p>Norm: <span class="math notranslate nohighlight">\(\sqrt{x \widetilde{x}}\)</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.normalized" title="kingdon.multivector.MultiVector.normalized"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalized</span></code></a></p></td>
+<td><p>Normalized version of this multivector.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.normsq" title="kingdon.multivector.MultiVector.normsq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normsq</span></code></a></p></td>
+<td><p>Squared norm: <span class="math notranslate nohighlight">\(x \widetilde{x}\)</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.op" title="kingdon.multivector.MultiVector.op"><code class="xref py py-obj docutils literal notranslate"><span class="pre">op</span></code></a></p></td>
+<td><p>Outer (exterior) product: <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">^</span> <span class="pre">y</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.outercos" title="kingdon.multivector.MultiVector.outercos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outercos</span></code></a></p></td>
+<td><p>Outer cosine, see <a class="reference internal" href="kingdon.operators.outercos.html#kingdon.operators.outercos" title="kingdon.operators.outercos"><code class="xref py py-func docutils literal notranslate"><span class="pre">outercos()</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.outerexp" title="kingdon.multivector.MultiVector.outerexp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outerexp</span></code></a></p></td>
+<td><p>Outer exponential, see <a class="reference internal" href="kingdon.operators.outerexp.html#kingdon.operators.outerexp" title="kingdon.operators.outerexp"><code class="xref py py-func docutils literal notranslate"><span class="pre">outerexp()</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.outersin" title="kingdon.multivector.MultiVector.outersin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outersin</span></code></a></p></td>
+<td><p>Outer sine, see <a class="reference internal" href="kingdon.operators.outersin.html#kingdon.operators.outersin" title="kingdon.operators.outersin"><code class="xref py py-func docutils literal notranslate"><span class="pre">outersin()</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.outertan" title="kingdon.multivector.MultiVector.outertan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outertan</span></code></a></p></td>
+<td><p>Outer tangent, see <a class="reference internal" href="kingdon.operators.outertan.html#kingdon.operators.outertan" title="kingdon.operators.outertan"><code class="xref py py-func docutils literal notranslate"><span class="pre">outertan()</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.polarity" title="kingdon.multivector.MultiVector.polarity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polarity</span></code></a></p></td>
+<td><p>Polarity dual, see <a class="reference internal" href="#kingdon.multivector.MultiVector.dual" title="kingdon.multivector.MultiVector.dual"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dual()</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.proj" title="kingdon.multivector.MultiVector.proj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proj</span></code></a></p></td>
+<td><p>Project <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">:=</span> <span class="pre">self</span></code> onto <code class="code docutils literal notranslate"><span class="pre">y</span> <span class="pre">:=</span> <span class="pre">other</span></code>: <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">@</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">(x</span> <span class="pre">|</span> <span class="pre">y)</span> <span class="pre">*</span> <span class="pre">~y</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.rc" title="kingdon.multivector.MultiVector.rc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rc</span></code></a></p></td>
+<td><p>Right-contraction: <span class="math notranslate nohighlight">\(x \lfloor y\)</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.reverse" title="kingdon.multivector.MultiVector.reverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reverse</span></code></a></p></td>
+<td><p>Reversion</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.rp" title="kingdon.multivector.MultiVector.rp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rp</span></code></a></p></td>
+<td><p>Regressive product: <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">&amp;</span> <span class="pre">y</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.sanitize_keys_grades" title="kingdon.multivector.MultiVector.sanitize_keys_grades"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sanitize_keys_grades</span></code></a></p></td>
+<td><p>Ensure that keys and grades are in agreement with the layout for <code class="docutils literal notranslate"><span class="pre">cls</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.set" title="kingdon.multivector.MultiVector.set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set</span></code></a></p></td>
+<td><p>Overwrite the values of this MV with the values of another MV.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.sp" title="kingdon.multivector.MultiVector.sp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sp</span></code></a></p></td>
+<td><p>Scalar product: <span class="math notranslate nohighlight">\(\langle x \cdot y \rangle\)</span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.sqrt" title="kingdon.multivector.MultiVector.sqrt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sqrt</span></code></a></p></td>
+<td><p>Square root.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.square" title="kingdon.multivector.MultiVector.square"><code class="xref py py-obj docutils literal notranslate"><span class="pre">square</span></code></a></p></td>
+<td><p>Return the square of the multivector.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.sub" title="kingdon.multivector.MultiVector.sub"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sub</span></code></a></p></td>
+<td><p>Difference: <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">-</span> <span class="pre">y</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.sw" title="kingdon.multivector.MultiVector.sw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sw</span></code></a></p></td>
+<td><p>Apply the normalized versor (k-reflection) <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">:=</span> <span class="pre">self</span></code> to the <span class="math notranslate nohighlight">\(\ell\)</span>-blade:code:<cite>y := other</cite> under conjugation: <span class="math notranslate nohighlight">\(x[y] = (-1)^{k \ell} x y x^{-1}\)</span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.undual" title="kingdon.multivector.MultiVector.undual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">undual</span></code></a></p></td>
+<td><p>Compute the undual of <cite>self</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.unhodge" title="kingdon.multivector.MultiVector.unhodge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unhodge</span></code></a></p></td>
+<td><p>Inverse of <a class="reference internal" href="#kingdon.multivector.MultiVector.hodge" title="kingdon.multivector.MultiVector.hodge"><code class="xref py py-meth docutils literal notranslate"><span class="pre">hodge()</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.unpolarity" title="kingdon.multivector.MultiVector.unpolarity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unpolarity</span></code></a></p></td>
+<td><p>Inverse of <a class="reference internal" href="#kingdon.multivector.MultiVector.polarity" title="kingdon.multivector.MultiVector.polarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">polarity()</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.multivector.MultiVector.values" title="kingdon.multivector.MultiVector.values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></a></p></td>
+<td><p>Coefficients of the basis blades, in the order of <a class="reference internal" href="#kingdon.multivector.MultiVector.keys" title="kingdon.multivector.MultiVector.keys"><code class="xref py py-meth docutils literal notranslate"><span class="pre">keys()</span></code></a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.acp">
+<span class="sig-name descname"><span class="pre">acp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.acp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.acp" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the anti-commutator product of <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">:=</span> <span class="pre">self</span></code> and <code class="code docutils literal notranslate"><span class="pre">y</span> <span class="pre">:=</span> <span class="pre">other</span></code>:
+<code class="code docutils literal notranslate"><span class="pre">x.cp(y)</span> <span class="pre">=</span> <span class="pre">0.5*(x*y+y*x)</span></code>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.add" title="Link to this definition">#</a></dt>
+<dd><p>Sum: <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code>.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.algebra">
+<span class="sig-name descname"><span class="pre">algebra</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="pre">Algebra</span></a></span><a class="headerlink" href="#kingdon.multivector.MultiVector.algebra" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.asfullmv">
+<span class="sig-name descname"><span class="pre">asfullmv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">canonical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.asfullmv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.asfullmv" title="Link to this definition">#</a></dt>
+<dd><p>Returns a full version of the same multivector.
+Preserves the type of the multivector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>canonical</strong> – If True (default) the values are in canonical order,
+even if the mutivector was already dense.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.asmatrix">
+<span class="sig-name descname"><span class="pre">asmatrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.asmatrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.asmatrix" title="Link to this definition">#</a></dt>
+<dd><p>Returns a matrix representation of this multivector.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.asmvtype">
+<span class="sig-name descname"><span class="pre">asmvtype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MVType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.asmvtype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.asmvtype" title="Link to this definition">#</a></dt>
+<dd><p>Cast to a specific multivector type. If no type is provided, use the algebra’s own.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.conjugate">
+<span class="sig-name descname"><span class="pre">conjugate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.conjugate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.conjugate" title="Link to this definition">#</a></dt>
+<dd><p>Clifford conjugation: involution and reversion combined.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.cp">
+<span class="sig-name descname"><span class="pre">cp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.cp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.cp" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the commutator product of <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">:=</span> <span class="pre">self</span></code> and <code class="code docutils literal notranslate"><span class="pre">y</span> <span class="pre">:=</span> <span class="pre">other</span></code>:
+<code class="code docutils literal notranslate"><span class="pre">x.cp(y)</span> <span class="pre">=</span> <span class="pre">0.5*(x*y-y*x)</span></code>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.div">
+<span class="sig-name descname"><span class="pre">div</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.div"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.div" title="Link to this definition">#</a></dt>
+<dd><p>Division: <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">/</span> <span class="pre">y</span></code>, i.e. <code class="code docutils literal notranslate"><span class="pre">x</span></code> times the inverse of <code class="code docutils literal notranslate"><span class="pre">y</span></code>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.dual">
+<span class="sig-name descname"><span class="pre">dual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.dual"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.dual" title="Link to this definition">#</a></dt>
+<dd><p>Compute the dual of <cite>self</cite>. There are three different kinds of duality in common usage.
+The first is polarity, which is simply multiplying by the inverse PSS from the right. This is the only game in
+town for non-degenerate metrics (Algebra.r = 0). However, for degenerate spaces this no longer works, and we
+have two popular options: Poincaré and Hodge duality.</p>
+<p>By default, <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> will use polarity in non-degenerate spaces, and Hodge duality for spaces with
+<cite>Algebra.r = 1</cite>. For spaces with <cite>r &gt; 2</cite>, little to no literature exists, and you are on your own.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>kind</strong> – if ‘auto’ (default), <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> will try to determine the best dual on the
+basis of the signature of the space. See explenation above.
+To ensure polarity, use <code class="code docutils literal notranslate"><span class="pre">kind='polarity'</span></code>, and to ensure Hodge duality,
+use <code class="code docutils literal notranslate"><span class="pre">kind='hodge'</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.exp">
+<span class="sig-name descname"><span class="pre">exp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cosh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sinhc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sqrt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="kingdon.multivector.Bireflection.html#kingdon.multivector.Bireflection" title="kingdon.multivector.Bireflection"><span class="pre">Bireflection</span></a></span></span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.exp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.exp" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the exponential of simple bivectors, meaning a bivector that squares to a scalar.
+Works for python float, int and complex dtypes, and for symbolic expressions using sympy.
+For more control, it is possible to explicitly provide a <cite>cosh</cite>, <cite>sinhc</cite>, and <cite>sqrt</cite> function.
+If you provide one, you must provide all.</p>
+<p>The argument to <cite>sqrt</cite> is the scalar <span class="math notranslate nohighlight">\(s = \langle x^2 \rangle_0\)</span>, while the input to the
+<cite>cosh</cite> and <cite>sinhc</cite> functions is the output of the sqrt function applied to <span class="math notranslate nohighlight">\(s\)</span>.</p>
+<p>For example, for a simple rotation <cite>kingdon</cite>’s implementation is equivalent to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">alg</span> <span class="o">=</span> <span class="n">Algebra</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span data-line="2"><span class="n">x</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">bivector</span><span class="p">(</span><span class="n">e12</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span data-line="3"><span class="n">x</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span>
+</span><span data-line="4">    <span class="n">cosh</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span>
+</span><span data-line="5">    <span class="n">sinhc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sinc</span><span class="p">,</span>
+</span><span data-line="6">    <span class="n">sqrt</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">s</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">,</span>
+</span><span data-line="7"><span class="p">)</span>
+</span></pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.filter">
+<span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="pre">MultiVector</span></a></span></span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.filter" title="Link to this definition">#</a></dt>
+<dd><p>Returns a new multivector containing only those elements for which <cite>func</cite> was true-ish.
+If no function was provided, use the simp_func of the Algebra.
+If <cite>func</cite> has one argument, it is called on each entry of self.values().
+If <cite>func</cite> has two arguments, the function is called with the key, value pairs as per
+self.items() instead.
+If <code class="code docutils literal notranslate"><span class="pre">map</span></code> is true, the func is also applied as a map function at the same time.</p>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.free_symbols">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">free_symbols</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span></span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.free_symbols"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.free_symbols" title="Link to this definition">#</a></dt>
+<dd><p>Union of the free symbols in the coefficients.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.fromkeysvalues">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">fromkeysvalues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algebra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="pre">Algebra</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple" title="(in Python v3.15)"><span class="pre">tuple</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.15)"><span class="pre">Sequence</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_asarray</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.fromkeysvalues"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.fromkeysvalues" title="Link to this definition">#</a></dt>
+<dd><p>Initiate a multivector from a sequence of keys and a sequence of values.
+All array construction ultimately funnels through this function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>algebra</strong> – <a class="reference internal" href="kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Algebra</span></code></a></p></li>
+<li><p><strong>keys</strong> – Keys corresponding to the basis blades in binary rep.</p></li>
+<li><p><strong>values</strong> – Values of the multivector.</p></li>
+<li><p><strong>values_asarray</strong> – asarray function to be applied to values. E.g. numpy.asarray or torch.asarray. Defaults to <code class="code docutils literal notranslate"><span class="pre">Algebra.values_asarray</span></code>.</p></li>
+<li><p><strong>raw</strong> – values_asarray application is skipped.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.frommatrix">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">frommatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algebra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.frommatrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.frommatrix" title="Link to this definition">#</a></dt>
+<dd><p>Initiate a multivector from a matrix. This matrix is assumed to be
+generated by <a class="reference internal" href="#kingdon.multivector.MultiVector.asmatrix" title="kingdon.multivector.MultiVector.asmatrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">asmatrix</span></code></a>, and
+thus we only read the first column of the input matrix.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.fromname">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">fromname</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algebra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grades</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbolcls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full_layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.fromname"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.fromname" title="Link to this definition">#</a></dt>
+<dd><p>Initiate a symbolic multivector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>full_layout</strong> – see <a class="reference internal" href="#kingdon.multivector.MultiVector.sanitize_keys_grades" title="kingdon.multivector.MultiVector.sanitize_keys_grades"><code class="xref py py-class docutils literal notranslate"><span class="pre">sanitize_keys_grades</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.gp">
+<span class="sig-name descname"><span class="pre">gp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.gp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.gp" title="Link to this definition">#</a></dt>
+<dd><p>Geometric product: <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.grade">
+<span class="sig-name descname"><span class="pre">grade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">grades</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.grade"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.grade" title="Link to this definition">#</a></dt>
+<dd><p>Returns a new  <a class="reference internal" href="#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiVector</span></code></a> instance with
+only the selected <cite>grades</cite> from <cite>self</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>grades</strong> – tuple or ints, grades to select.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.grades">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">grades</span></span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.grades"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.grades" title="Link to this definition">#</a></dt>
+<dd><p>Tuple of the grades present in <cite>self</cite>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.hodge">
+<span class="sig-name descname"><span class="pre">hodge</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.hodge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.hodge" title="Link to this definition">#</a></dt>
+<dd><p>Hodge dual, see <a class="reference internal" href="#kingdon.multivector.MultiVector.dual" title="kingdon.multivector.MultiVector.dual"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dual()</span></code></a>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.inv">
+<span class="sig-name descname"><span class="pre">inv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.inv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.inv" title="Link to this definition">#</a></dt>
+<dd><p>Inverse of this multivector.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.involute">
+<span class="sig-name descname"><span class="pre">involute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.involute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.involute" title="Link to this definition">#</a></dt>
+<dd><p>Main grade involution.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.ip">
+<span class="sig-name descname"><span class="pre">ip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.ip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.ip" title="Link to this definition">#</a></dt>
+<dd><p>Inner product: <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">|</span> <span class="pre">y</span></code>.</p>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.issymbolic">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">issymbolic</span></span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.issymbolic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.issymbolic" title="Link to this definition">#</a></dt>
+<dd><p>True if this mv contains Symbols, False otherwise.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.items" title="Link to this definition">#</a></dt>
+<dd><p>Pairs of <a class="reference internal" href="#kingdon.multivector.MultiVector.keys" title="kingdon.multivector.MultiVector.keys"><code class="xref py py-meth docutils literal notranslate"><span class="pre">keys()</span></code></a> and <a class="reference internal" href="#kingdon.multivector.MultiVector.values" title="kingdon.multivector.MultiVector.values"><code class="xref py py-meth docutils literal notranslate"><span class="pre">values()</span></code></a>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.keys">
+<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple" title="(in Python v3.15)"><span class="pre">tuple</span></a></span></span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.keys" title="Link to this definition">#</a></dt>
+<dd><p>Binary keys of the basis blades present in this multivector.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.layout">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">layout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algebra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.layout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.layout" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.lc">
+<span class="sig-name descname"><span class="pre">lc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.lc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.lc" title="Link to this definition">#</a></dt>
+<dd><p>Left-contraction: <span class="math notranslate nohighlight">\(x \rfloor y\)</span>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.map">
+<span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="pre">MultiVector</span></a></span></span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.map" title="Link to this definition">#</a></dt>
+<dd><p>Returns a new multivector where <cite>func</cite> has been applied to all the values.
+If <cite>func</cite> has one argument, it is called on each entry of self.values().
+If <cite>func</cite> has two arguments, the function is called with the key, value pairs as per
+self.items() instead.</p>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.ndim">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ndim</span></span><a class="headerlink" href="#kingdon.multivector.MultiVector.ndim" title="Link to this definition">#</a></dt>
+<dd><p>Number of array dimensions of this multivector.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.neg">
+<span class="sig-name descname"><span class="pre">neg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.neg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.neg" title="Link to this definition">#</a></dt>
+<dd><p>Negation: <code class="code docutils literal notranslate"><span class="pre">-x</span></code>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.norm">
+<span class="sig-name descname"><span class="pre">norm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.norm" title="Link to this definition">#</a></dt>
+<dd><p>Norm: <span class="math notranslate nohighlight">\(\sqrt{x \widetilde{x}}\)</span>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.normalized">
+<span class="sig-name descname"><span class="pre">normalized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.normalized"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.normalized" title="Link to this definition">#</a></dt>
+<dd><p>Normalized version of this multivector.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.normsq">
+<span class="sig-name descname"><span class="pre">normsq</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.normsq"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.normsq" title="Link to this definition">#</a></dt>
+<dd><p>Squared norm: <span class="math notranslate nohighlight">\(x \widetilde{x}\)</span>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.op">
+<span class="sig-name descname"><span class="pre">op</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.op"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.op" title="Link to this definition">#</a></dt>
+<dd><p>Outer (exterior) product: <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">^</span> <span class="pre">y</span></code>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.outercos">
+<span class="sig-name descname"><span class="pre">outercos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.outercos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.outercos" title="Link to this definition">#</a></dt>
+<dd><p>Outer cosine, see <a class="reference internal" href="kingdon.operators.outercos.html#kingdon.operators.outercos" title="kingdon.operators.outercos"><code class="xref py py-func docutils literal notranslate"><span class="pre">outercos()</span></code></a>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.outerexp">
+<span class="sig-name descname"><span class="pre">outerexp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.outerexp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.outerexp" title="Link to this definition">#</a></dt>
+<dd><p>Outer exponential, see <a class="reference internal" href="kingdon.operators.outerexp.html#kingdon.operators.outerexp" title="kingdon.operators.outerexp"><code class="xref py py-func docutils literal notranslate"><span class="pre">outerexp()</span></code></a>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.outersin">
+<span class="sig-name descname"><span class="pre">outersin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.outersin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.outersin" title="Link to this definition">#</a></dt>
+<dd><p>Outer sine, see <a class="reference internal" href="kingdon.operators.outersin.html#kingdon.operators.outersin" title="kingdon.operators.outersin"><code class="xref py py-func docutils literal notranslate"><span class="pre">outersin()</span></code></a>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.outertan">
+<span class="sig-name descname"><span class="pre">outertan</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.outertan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.outertan" title="Link to this definition">#</a></dt>
+<dd><p>Outer tangent, see <a class="reference internal" href="kingdon.operators.outertan.html#kingdon.operators.outertan" title="kingdon.operators.outertan"><code class="xref py py-func docutils literal notranslate"><span class="pre">outertan()</span></code></a>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.polarity">
+<span class="sig-name descname"><span class="pre">polarity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.polarity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.polarity" title="Link to this definition">#</a></dt>
+<dd><p>Polarity dual, see <a class="reference internal" href="#kingdon.multivector.MultiVector.dual" title="kingdon.multivector.MultiVector.dual"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dual()</span></code></a>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.proj">
+<span class="sig-name descname"><span class="pre">proj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.proj"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.proj" title="Link to this definition">#</a></dt>
+<dd><p>Project <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">:=</span> <span class="pre">self</span></code> onto <code class="code docutils literal notranslate"><span class="pre">y</span> <span class="pre">:=</span> <span class="pre">other</span></code>: <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">@</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">(x</span> <span class="pre">|</span> <span class="pre">y)</span> <span class="pre">*</span> <span class="pre">~y</span></code>.
+For correct behavior, <code class="code docutils literal notranslate"><span class="pre">x</span></code> and <code class="code docutils literal notranslate"><span class="pre">y</span></code> should be normalized (k-reflections).</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.rc">
+<span class="sig-name descname"><span class="pre">rc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.rc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.rc" title="Link to this definition">#</a></dt>
+<dd><p>Right-contraction: <span class="math notranslate nohighlight">\(x \lfloor y\)</span>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.reverse">
+<span class="sig-name descname"><span class="pre">reverse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.reverse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.reverse" title="Link to this definition">#</a></dt>
+<dd><p>Reversion</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.rp">
+<span class="sig-name descname"><span class="pre">rp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.rp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.rp" title="Link to this definition">#</a></dt>
+<dd><p>Regressive product: <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">&amp;</span> <span class="pre">y</span></code>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.sanitize_keys_grades">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">sanitize_keys_grades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algebra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grades</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full_layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple" title="(in Python v3.15)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple" title="(in Python v3.15)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.sanitize_keys_grades"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.sanitize_keys_grades" title="Link to this definition">#</a></dt>
+<dd><p>Ensure that keys and grades are in agreement with the layout for <code class="docutils literal notranslate"><span class="pre">cls</span></code>.
+If no keys or grades are provided, they are created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>full_layout</strong> – whether <cite>keys</cite> has to make up the full layout of <code class="docutils literal notranslate"><span class="pre">cls</span></code>.
+Defaults to <code class="code docutils literal notranslate"><span class="pre">algebra.full_layout</span></code>. Codegen passes <code class="code docutils literal notranslate"><span class="pre">False</span></code>, because the
+symbolic multivectors it works with have been stripped of their type by
+<a class="reference internal" href="#kingdon.multivector.MultiVector.asmvtype" title="kingdon.multivector.MultiVector.asmvtype"><code class="xref py py-class docutils literal notranslate"><span class="pre">asmvtype</span></code></a> and therefore carry the keys of
+the layout they came from, not those of the type they now have.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="pre">MultiVector</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.set" title="Link to this definition">#</a></dt>
+<dd><p>Overwrite the values of this MV with the values of another MV.</p>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.shape">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">shape</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple" title="(in Python v3.15)"><span class="pre">tuple</span></a></span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.shape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.shape" title="Link to this definition">#</a></dt>
+<dd><p>Return the shape of the .values() attribute of this multivector.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.sp">
+<span class="sig-name descname"><span class="pre">sp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.sp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.sp" title="Link to this definition">#</a></dt>
+<dd><p>Scalar product: <span class="math notranslate nohighlight">\(\langle x \cdot y \rangle\)</span>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.sqrt">
+<span class="sig-name descname"><span class="pre">sqrt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.sqrt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.sqrt" title="Link to this definition">#</a></dt>
+<dd><p>Square root.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.square">
+<span class="sig-name descname"><span class="pre">square</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.square"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.square" title="Link to this definition">#</a></dt>
+<dd><p>Return the square of the multivector.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.sub">
+<span class="sig-name descname"><span class="pre">sub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.sub"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.sub" title="Link to this definition">#</a></dt>
+<dd><p>Difference: <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">-</span> <span class="pre">y</span></code>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.sw">
+<span class="sig-name descname"><span class="pre">sw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.sw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.sw" title="Link to this definition">#</a></dt>
+<dd><p>Apply the normalized versor (k-reflection) <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">:=</span> <span class="pre">self</span></code> to the <span class="math notranslate nohighlight">\(\ell\)</span>-blade:code:<cite>y := other</cite> under conjugation:
+<span class="math notranslate nohighlight">\(x[y] = (-1)^{k \ell} x y x^{-1}\)</span>.
+If <code class="code docutils literal notranslate"><span class="pre">y</span></code> is a multivector instead of a blade, the formula is applied to each pure
+grade component of <code class="code docutils literal notranslate"><span class="pre">y</span></code> separately to ensure a consistent result.
+<strong>Important</strong>: note that <code class="code docutils literal notranslate"><span class="pre">x</span></code> is assumed to be normalized such that <span class="math notranslate nohighlight">\(x \widetilde{x} = 1\)</span>
+(i.e. <code class="code docutils literal notranslate"><span class="pre">x.normsq()</span> <span class="pre">==</span> <span class="pre">1</span></code>). Moreover, grade preservation is enforced by the code.
+Expect unexpected results if this operator is used with non-versors.</p>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.type_layout">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">type_layout</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/types.html#types.EllipsisType" title="(in Python v3.15)"><span class="pre">EllipsisType</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#kingdon.multivector.MultiVector.type_layout" title="Link to this definition">#</a></dt>
+<dd><p>Layout of <code class="code docutils literal notranslate"><span class="pre">type(self)</span></code>: a mapping from blade binary key (int) to either
+<code class="code docutils literal notranslate"><span class="pre">...</span></code> for a free component or to the numerical value of a structural constant.
+For example, a point in <code class="code docutils literal notranslate"><span class="pre">Algebra.fromname("2DPGA")</span></code> has layout
+<code class="code docutils literal notranslate"><span class="pre">{'e20':</span> <span class="pre">...,</span> <span class="pre">'e01':</span> <span class="pre">...,</span> <span class="pre">'e21':</span> <span class="pre">1.0}</span></code>.
+E.g. the <code class="code docutils literal notranslate"><span class="pre">1.0</span></code> a normalized point has on <span class="math notranslate nohighlight">\(\mathbf{e}_0^*\)</span>.
+Types without a layout return an empty dict.</p>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.type_number">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">type_number</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a></span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.type_number"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.type_number" title="Link to this definition">#</a></dt>
+<dd><p>Integer whose bits mark which basis blades are present, in canonical order.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.undual">
+<span class="sig-name descname"><span class="pre">undual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.undual"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.undual" title="Link to this definition">#</a></dt>
+<dd><p>Compute the undual of <cite>self</cite>. See <a class="reference internal" href="#kingdon.multivector.MultiVector.dual" title="kingdon.multivector.MultiVector.dual"><code class="xref py py-class docutils literal notranslate"><span class="pre">dual</span></code></a> for more information.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.unhodge">
+<span class="sig-name descname"><span class="pre">unhodge</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.unhodge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.unhodge" title="Link to this definition">#</a></dt>
+<dd><p>Inverse of <a class="reference internal" href="#kingdon.multivector.MultiVector.hodge" title="kingdon.multivector.MultiVector.hodge"><code class="xref py py-meth docutils literal notranslate"><span class="pre">hodge()</span></code></a>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.unpolarity">
+<span class="sig-name descname"><span class="pre">unpolarity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.unpolarity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.unpolarity" title="Link to this definition">#</a></dt>
+<dd><p>Inverse of <a class="reference internal" href="#kingdon.multivector.MultiVector.polarity" title="kingdon.multivector.MultiVector.polarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">polarity()</span></code></a>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.multivector.MultiVector.values">
+<span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="(in Python v3.15)"><span class="pre">list</span></a></span></span><a class="reference internal" href="../../_modules/kingdon/multivector.html#MultiVector.values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.multivector.MultiVector.values" title="Link to this definition">#</a></dt>
+<dd><p>Coefficients of the basis blades, in the order of <a class="reference internal" href="#kingdon.multivector.MultiVector.keys" title="kingdon.multivector.MultiVector.keys"><code class="xref py py-meth docutils literal notranslate"><span class="pre">keys()</span></code></a>.</p>
+</dd></dl>
+</dd></dl>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../multivector.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">kingdon.multivector</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="kingdon.multivector.MultiVectorType.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">MultiVectorType</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2022, Martin Roelfs</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=796a81b5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="../../_static/shibuya.js?v=50760d75"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+      <script src="../../_static/kingdon.js?v=5907dcdc"></script></body>
+</html>

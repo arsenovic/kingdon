@@ -1,0 +1,6 @@
+﻿conjugate
+=========
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: conjugate

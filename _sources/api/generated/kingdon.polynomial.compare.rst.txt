@@ -1,0 +1,6 @@
+﻿compare
+=======
+
+.. currentmodule:: kingdon.polynomial
+
+.. autofunction:: compare

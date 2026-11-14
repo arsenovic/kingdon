@@ -1,0 +1,6 @@
+﻿outercos
+========
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: outercos

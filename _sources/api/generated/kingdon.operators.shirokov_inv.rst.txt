@@ -1,0 +1,6 @@
+﻿shirokov\_inv
+=============
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: shirokov_inv

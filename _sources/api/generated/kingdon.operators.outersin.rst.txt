@@ -1,0 +1,6 @@
+﻿outersin
+========
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: outersin

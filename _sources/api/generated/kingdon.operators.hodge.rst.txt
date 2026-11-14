@@ -1,0 +1,6 @@
+﻿hodge
+=====
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: hodge

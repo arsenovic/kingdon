@@ -1,0 +1,12 @@
+﻿Bivector
+========
+
+.. currentmodule:: kingdon.multivector
+
+.. autoclass:: Bivector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="cyan" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>kingdon.graph - Kingdon</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=ad592e98" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-codeautolink.css?v=b2176991" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kingdon.css?v=be060e35" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="kingdon.graph"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      <img class="light-logo" src="../../_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <img class="dark-logo" src="../../_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <strong>Kingdon</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link"><a href="../../index.html">Home</a></li><li class="link"><a href="../../examples/index.html">Examples</a></li><li class="link"><a href="../../api/index.html">API</a></li><li class="link">
+          <a href="https://tbuli.github.io/teahouse/">
+            <span>Teahouse</span><i class="i-lucide external-link"></i></a>
+        </li><li class="link">
+          <a href="https://github.com/tBuLi/kingdon">
+            <span>GitHub</span><i class="i-lucide external-link"></i></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../operators.html">Operators</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../arrays.html">Array Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../types.html">Type system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">History</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../workings.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">Kingdon</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">kingdon.graph</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <h1>Source code for kingdon.graph</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="sd">""" Visualization of multivectors in jupyter notebooks, using :code:`ganja.js`. """</span>
+</span><span data-line="2"><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+</span><span data-line="3"><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
+</span><span data-line="4"><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+</span><span data-line="5"><span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeneratorType</span>
+</span><span data-line="6"><span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+</span><span data-line="7">
+</span><span data-line="8"><span class="kn">import</span><span class="w"> </span><span class="nn">anywidget</span>
+</span><span data-line="9"><span class="kn">import</span><span class="w"> </span><span class="nn">traitlets</span>
+</span><span data-line="10"><span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+</span><span data-line="11"><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span data-line="12"><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+</span><span data-line="13"><span class="kn">from</span><span class="w"> </span><span class="nn">sympy.printing.glsl</span><span class="w"> </span><span class="kn">import</span> <span class="n">GLSLPrinter</span>
+</span><span data-line="14">
+</span><span data-line="15"><span class="kn">from</span><span class="w"> </span><span class="nn">kingdon.multivector</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultiVector</span>
+</span><span data-line="16">
+</span><span data-line="17">
+</span><span data-line="18"><span class="n">TREE_TYPES</span> <span class="o">=</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span>
+</span><span data-line="19">
+</span><span data-line="20"><span class="n">DEFAULT_STYLE</span> <span class="o">=</span> <span class="p">{</span>
+</span><span data-line="21">    <span class="s1">'width'</span><span class="p">:</span> <span class="s1">'min( 100%, 1024px )'</span><span class="p">,</span>
+</span><span data-line="22">    <span class="s1">'height'</span><span class="p">:</span> <span class="s1">'auto'</span><span class="p">,</span>
+</span><span data-line="23">    <span class="s1">'aspectRatio'</span><span class="p">:</span> <span class="s1">'16 / 6'</span><span class="p">,</span>
+</span><span data-line="24">    <span class="s1">'background'</span><span class="p">:</span> <span class="s1">'white'</span><span class="p">,</span>
+</span><span data-line="25"><span class="p">}</span>
+</span><span data-line="26">
+</span><span data-line="27">
+<div class="viewcode-block" id="walker">
+<a class="viewcode-back" href="../../api/generated/kingdon.graph.walker.html#kingdon.graph.walker">[docs]</a>
+</span><span data-line="28"><span class="k">def</span><span class="w"> </span><span class="nf">walker</span><span class="p">(</span><span class="n">encoded_generator</span><span class="p">,</span> <span class="n">tree_types</span><span class="o">=</span><span class="n">TREE_TYPES</span><span class="p">):</span>
+</span><span data-line="29"><span class="w">    </span><span class="sd">""" Evaluate the nested generators made by :func:`encode` into nested lists. """</span>
+</span><span data-line="30">    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span data-line="31">    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">encoded_generator</span><span class="p">:</span>
+</span><span data-line="32">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">GeneratorType</span><span class="p">):</span>
+</span><span data-line="33">            <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">walker</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
+</span><span data-line="34">        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">tree_types</span><span class="p">):</span>
+</span><span data-line="35">            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">walker</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
+</span><span data-line="36">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="37">            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span><span data-line="38">    <span class="k">return</span> <span class="n">result</span></div>
+
+</span><span data-line="39">
+<div class="viewcode-block" id="encode_ndarray">
+<a class="viewcode-back" href="../../api/generated/kingdon.graph.encode_ndarray.html#kingdon.graph.encode_ndarray">[docs]</a>
+</span><span data-line="40"><span class="k">def</span><span class="w"> </span><span class="nf">encode_ndarray</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+</span><span data-line="41"><span class="w">    </span><span class="sd">""" Serialize an array. The result is a dict of::</span>
+</span><span data-line="42">
+</span><span data-line="43"><span class="sd">        dtype   numpy type string, always little-endian, e.g. '|u1', '|b1', '&lt;f8'</span>
+</span><span data-line="44"><span class="sd">        shape   tuple of dimensions; the blob is C-contiguous in this shape</span>
+</span><span data-line="45"><span class="sd">        buffer  the raw bytes. ipywidgets pulls these out of the synced state and</span>
+</span><span data-line="46"><span class="sd">                sends them as a binary buffer, so they arrive in js as a DataView.</span>
+</span><span data-line="47">
+</span><span data-line="48"><span class="sd">    `toArray` in graph.js reads this back into the matching js typed arrays, turning our</span>
+</span><span data-line="49"><span class="sd">    struct of arrays inside out, and must stay in sync with the dtypes emitted here.</span>
+</span><span data-line="50"><span class="sd">    """</span>
+</span><span data-line="51">    <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ascontiguousarray</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+</span><span data-line="52">    <span class="k">if</span> <span class="n">arr</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">byteorder</span> <span class="o">==</span> <span class="s1">'&gt;'</span><span class="p">:</span>
+</span><span data-line="53">        <span class="n">arr</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">newbyteorder</span><span class="p">(</span><span class="s1">'&lt;'</span><span class="p">))</span>
+</span><span data-line="54">
+</span><span data-line="55">    <span class="k">return</span> <span class="p">{</span>
+</span><span data-line="56">        <span class="s1">'dtype'</span><span class="p">:</span> <span class="n">arr</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">str</span><span class="p">,</span>
+</span><span data-line="57">        <span class="s1">'shape'</span><span class="p">:</span> <span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
+</span><span data-line="58">        <span class="s1">'buffer'</span><span class="p">:</span> <span class="n">arr</span><span class="o">.</span><span class="n">tobytes</span><span class="p">(),</span>
+</span><span data-line="59">    <span class="p">}</span></div>
+
+</span><span data-line="60">
+<div class="viewcode-block" id="encode">
+<a class="viewcode-back" href="../../api/generated/kingdon.graph.encode.html#kingdon.graph.encode">[docs]</a>
+</span><span data-line="61"><span class="k">def</span><span class="w"> </span><span class="nf">encode</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">tree_types</span><span class="o">=</span><span class="n">TREE_TYPES</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">graded</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+</span><span data-line="62"><span class="w">    </span><span class="sd">""" Encode `o`, which may be nested, into what :code:`ganja.js` understands. """</span>
+</span><span data-line="63">    <span class="k">if</span> <span class="n">root</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">tree_types</span><span class="p">):</span>
+</span><span data-line="64">        <span class="k">yield from</span> <span class="p">(</span><span class="n">encode</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">tree_types</span><span class="p">,</span> <span class="n">graded</span><span class="o">=</span><span class="n">graded</span><span class="p">)</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">o</span><span class="p">)</span>
+</span><span data-line="65">    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">tree_types</span><span class="p">):</span>
+</span><span data-line="66">        <span class="k">yield</span> <span class="n">o</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">encode</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">tree_types</span><span class="p">,</span> <span class="n">graded</span><span class="o">=</span><span class="n">graded</span><span class="p">)</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">o</span><span class="p">)</span>
+</span><span data-line="67">    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">MultiVector</span><span class="p">):</span>
+</span><span data-line="68">        <span class="c1"># A layout with more entries than mv has keys is one with structural constants, which ganja has to be told about.</span>
+</span><span data-line="69">        <span class="n">keys</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">_keys</span><span class="p">,</span> <span class="n">o</span><span class="o">.</span><span class="n">_values</span>
+</span><span data-line="70">        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="n">values</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">values</span><span class="p">):</span>
+</span><span data-line="71">            <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">broadcast_arrays</span><span class="p">(</span><span class="o">*</span><span class="n">values</span><span class="p">))</span>  <span class="c1"># send a list of numpy arrays via the ndarray protocol anyway</span>
+</span><span data-line="72">        <span class="n">values</span> <span class="o">=</span> <span class="n">encode_ndarray</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+</span><span data-line="73">        <span class="k">if</span> <span class="n">graded</span><span class="p">:</span>  <span class="c1"># In &gt;6D ganja switches to graded mode.</span>
+</span><span data-line="74">            <span class="k">yield</span> <span class="p">{</span><span class="s1">'mv'</span><span class="p">:</span> <span class="n">values</span><span class="p">,</span> <span class="s1">'keys'</span><span class="p">:</span> <span class="n">keys</span><span class="p">,</span> <span class="s1">'grades'</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">grades</span><span class="p">,</span> <span class="s1">'type'</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()}</span>
+</span><span data-line="75">        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">algebra</span><span class="p">):</span>
+</span><span data-line="76">            <span class="c1"># If not full mv, also pass the keys and let ganja figure it out.</span>
+</span><span data-line="77">            <span class="k">yield</span> <span class="p">{</span><span class="s1">'mv'</span><span class="p">:</span> <span class="n">values</span><span class="p">,</span> <span class="s1">'keys'</span><span class="p">:</span> <span class="n">keys</span><span class="p">,</span> <span class="s1">'type'</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()}</span>
+</span><span data-line="78">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="79">            <span class="k">yield</span> <span class="p">{</span><span class="s1">'mv'</span><span class="p">:</span> <span class="n">values</span><span class="p">}</span>
+</span><span data-line="80">    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Callable</span><span class="p">):</span>
+</span><span data-line="81">        <span class="k">yield</span> <span class="n">encode</span><span class="p">(</span><span class="n">o</span><span class="p">(),</span> <span class="n">tree_types</span><span class="p">,</span> <span class="n">graded</span><span class="o">=</span><span class="n">graded</span><span class="p">)</span>
+</span><span data-line="82">    <span class="k">else</span><span class="p">:</span>
+</span><span data-line="83">        <span class="k">yield</span> <span class="n">o</span></div>
+
+</span><span data-line="84">
+</span><span data-line="85">
+<div class="viewcode-block" id="GraphWidget">
+<a class="viewcode-back" href="../../api/generated/kingdon.graph.GraphWidget.html#kingdon.graph.GraphWidget">[docs]</a>
+</span><span data-line="86"><span class="k">class</span><span class="w"> </span><span class="nc">GraphWidget</span><span class="p">(</span><span class="n">anywidget</span><span class="o">.</span><span class="n">AnyWidget</span><span class="p">):</span>
+</span><span data-line="87"><span class="w">    </span><span class="sd">""" Widget that draws multivectors with :code:`ganja.js`. Made by :meth:`Algebra.graph &lt;kingdon.algebra.Algebra.graph&gt;`. """</span>
+</span><span data-line="88">    <span class="n">_esm</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">"graph.js"</span>
+</span><span data-line="89">
+</span><span data-line="90">    <span class="c1"># Required arguments.</span>
+</span><span data-line="91">    <span class="n">algebra</span> <span class="o">=</span> <span class="n">traitlets</span><span class="o">.</span><span class="n">Instance</span><span class="p">(</span><span class="s2">"kingdon.algebra.Algebra"</span><span class="p">)</span>
+</span><span data-line="92">    <span class="n">options</span> <span class="o">=</span> <span class="n">traitlets</span><span class="o">.</span><span class="n">Dict</span><span class="p">()</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="93">
+</span><span data-line="94">    <span class="c1"># Properties derived from the required arguments which have to be available to js.</span>
+</span><span data-line="95">    <span class="n">signature</span> <span class="o">=</span> <span class="n">traitlets</span><span class="o">.</span><span class="n">List</span><span class="p">([])</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Signature of the algebra</span>
+</span><span data-line="96">    <span class="n">basis</span> <span class="o">=</span> <span class="n">traitlets</span><span class="o">.</span><span class="n">List</span><span class="p">([])</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>      <span class="c1"># Basis of the algebra</span>
+</span><span data-line="97">    <span class="n">key2idx</span> <span class="o">=</span> <span class="n">traitlets</span><span class="o">.</span><span class="n">Dict</span><span class="p">({})</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>    <span class="c1"># Conversion from binary keys to indices</span>
+</span><span data-line="98">    <span class="n">graded</span> <span class="o">=</span> <span class="n">traitlets</span><span class="o">.</span><span class="n">Bool</span><span class="p">({})</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>     <span class="c1"># Run ganja.js in graded mode if an up function was provided</span>
+</span><span data-line="99">    <span class="n">types</span> <span class="o">=</span> <span class="n">traitlets</span><span class="o">.</span><span class="n">Dict</span><span class="p">({})</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>      <span class="c1"># Types on the algebra, to use on the js side</span>
+</span><span data-line="100">
+</span><span data-line="101">    <span class="c1"># Properties needed to paint the scene.</span>
+</span><span data-line="102">    <span class="n">raw_subjects</span> <span class="o">=</span> <span class="n">traitlets</span><span class="o">.</span><span class="n">List</span><span class="p">([])</span>                          <span class="c1"># A place to store the original input.</span>
+</span><span data-line="103">    <span class="n">pre_subjects</span> <span class="o">=</span> <span class="n">traitlets</span><span class="o">.</span><span class="n">List</span><span class="p">([])</span>                          <span class="c1"># Store the prepared subjects.</span>
+</span><span data-line="104">    <span class="n">draggable_points</span> <span class="o">=</span> <span class="n">traitlets</span><span class="o">.</span><span class="n">List</span><span class="p">([])</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>       <span class="c1"># points at the first level of nesting are interactive.</span>
+</span><span data-line="105">    <span class="n">draggable_points_idxs</span> <span class="o">=</span> <span class="n">traitlets</span><span class="o">.</span><span class="n">List</span><span class="p">([])</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># indices of the draggable points in the subjects ganja receives.</span>
+</span><span data-line="106">    <span class="n">subjects</span> <span class="o">=</span> <span class="n">traitlets</span><span class="o">.</span><span class="n">List</span><span class="p">([])</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>               <span class="c1"># Result of evaluating pre_subjects.</span>
+</span><span data-line="107">
+</span><span data-line="108">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span data-line="109">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span data-line="110">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">algebra</span><span class="o">.</span><span class="n">basis</span><span class="p">:</span>
+</span><span data-line="111">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'ganja only renders lexicographical basis. Try e.g. Algebra(3,0,1) instead of Algebra.fromname("3DPGA"). See https://github.com/tBuLi/kingdon/issues/141. You can still use PGA types as Algebra(3,0,1, extra_types=[Point, UPoint, EVector, Translation]).'</span><span class="p">)</span>
+</span><span data-line="112">        <span class="bp">self</span><span class="o">.</span><span class="n">on_msg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle_custom_msg</span><span class="p">)</span>
+</span><span data-line="113">
+</span><span data-line="114">    <span class="k">def</span><span class="w"> </span><span class="nf">_handle_custom_msg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">buffers</span><span class="p">):</span>
+</span><span data-line="115"><span class="w">        </span><span class="sd">"""If triggered, reevaluate the subjects. """</span>
+</span><span data-line="116">        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s2">"type"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"update_mvs"</span><span class="p">:</span>
+</span><span data-line="117">            <span class="c1"># TODO: only update those that are callable for better performance?</span>
+</span><span data-line="118">            <span class="c1"># traitlets does not fire change:subjects for equal values, so the frontend needs an explicit reply, also on errors or it runs out of request slots.</span>
+</span><span data-line="119">            <span class="k">try</span><span class="p">:</span>
+</span><span data-line="120">                <span class="bp">self</span><span class="o">.</span><span class="n">subjects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_subjects</span><span class="p">()</span>
+</span><span data-line="121">            <span class="k">finally</span><span class="p">:</span>
+</span><span data-line="122">                <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">({</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"mvs_updated"</span><span class="p">})</span>
+</span><span data-line="123">
+</span><span data-line="124">    <span class="k">def</span><span class="w"> </span><span class="nf">_get_pre_subjects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="125">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_subjects</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">((</span><span class="n">s</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_subjects</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">MultiVector</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">Callable</span><span class="p">):</span>
+</span><span data-line="126">            <span class="c1"># Assume this to be a function returning a list of suitable subjects.</span>
+</span><span data-line="127">            <span class="n">pre_subjects</span> <span class="o">=</span> <span class="n">s</span><span class="p">()</span>
+</span><span data-line="128">            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pre_subjects</span><span class="p">,</span> <span class="n">TREE_TYPES</span><span class="p">):</span>
+</span><span data-line="129">                <span class="n">pre_subjects</span> <span class="o">=</span> <span class="p">[</span><span class="n">pre_subjects</span><span class="p">]</span>
+</span><span data-line="130">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="131">            <span class="n">pre_subjects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_subjects</span>
+</span><span data-line="132">        <span class="k">return</span> <span class="n">pre_subjects</span>
+</span><span data-line="133">
+</span><span data-line="134">    <span class="nd">@traitlets</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="s1">'key2idx'</span><span class="p">)</span>
+</span><span data-line="135">    <span class="k">def</span><span class="w"> </span><span class="nf">get_key2idx</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="136">        <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">algebra</span><span class="o">.</span><span class="n">d</span>
+</span><span data-line="137">        <span class="n">allkeys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">algebra</span><span class="o">.</span><span class="n">canon2bin</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+</span><span data-line="138">        <span class="k">if</span> <span class="p">(</span><span class="s1">'up'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span> <span class="ow">and</span> <span class="n">d</span> <span class="o">&lt;=</span> <span class="mi">6</span><span class="p">:</span>
+</span><span data-line="139">            <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">allkeys</span><span class="p">)}</span>
+</span><span data-line="140">        <span class="c1"># From &gt;6D, ganja wants graded input. In this case we return indices by grade</span>
+</span><span data-line="141">        <span class="n">key2idx</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+</span><span data-line="142">        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="143">        <span class="n">tot</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="144">        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+</span><span data-line="145">            <span class="n">num</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">comb</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
+</span><span data-line="146">            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+</span><span data-line="147">                <span class="n">key2idx</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="n">allkeys</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">tot</span>
+</span><span data-line="148">                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span data-line="149">            <span class="n">tot</span> <span class="o">+=</span> <span class="n">num</span>
+</span><span data-line="150">        <span class="k">return</span> <span class="n">key2idx</span>
+</span><span data-line="151">
+</span><span data-line="152">    <span class="nd">@traitlets</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="s1">'signature'</span><span class="p">)</span>
+</span><span data-line="153">    <span class="k">def</span><span class="w"> </span><span class="nf">get_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="154">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">algebra</span><span class="o">.</span><span class="n">signature</span>
+</span><span data-line="155">
+</span><span data-line="156">    <span class="nd">@traitlets</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="s1">'basis'</span><span class="p">)</span>
+</span><span data-line="157">    <span class="k">def</span><span class="w"> </span><span class="nf">get_basis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="158">        <span class="k">return</span> <span class="p">[</span><span class="n">b</span> <span class="k">if</span> <span class="n">b</span> <span class="o">!=</span> <span class="s1">'e'</span> <span class="k">else</span> <span class="s1">'1'</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">algebra</span><span class="o">.</span><span class="n">canon2bin</span><span class="p">]</span>
+</span><span data-line="159">
+</span><span data-line="160">    <span class="nd">@traitlets</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="s1">'types'</span><span class="p">)</span>
+</span><span data-line="161">    <span class="k">def</span><span class="w"> </span><span class="nf">get_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="162"><span class="w">        </span><span class="sd">""" Construct the layouts for the js side. Free values in the layout are ignored."""</span>
+</span><span data-line="163">        <span class="n">alg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">algebra</span>
+</span><span data-line="164">        <span class="k">return</span> <span class="p">{</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">layout</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="o">!=</span> <span class="o">...</span><span class="p">}</span>
+</span><span data-line="165">                <span class="k">for</span> <span class="bp">cls</span><span class="p">,</span> <span class="n">layout</span> <span class="ow">in</span> <span class="n">alg</span><span class="o">.</span><span class="n">_type_layouts</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</span><span data-line="166">
+</span><span data-line="167">    <span class="nd">@traitlets</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="s1">'pre_subjects'</span><span class="p">)</span>
+</span><span data-line="168">    <span class="k">def</span><span class="w"> </span><span class="nf">get_pre_subjects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="169">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_pre_subjects</span><span class="p">()</span>
+</span><span data-line="170">
+</span><span data-line="171">    <span class="nd">@traitlets</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="s1">'subjects'</span><span class="p">)</span>
+</span><span data-line="172">    <span class="k">def</span><span class="w"> </span><span class="nf">get_subjects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="173">        <span class="c1"># Encode all the subjects</span>
+</span><span data-line="174">        <span class="k">return</span> <span class="n">walker</span><span class="p">(</span><span class="n">encode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_pre_subjects</span><span class="p">(),</span> <span class="n">root</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">graded</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">graded</span><span class="p">))</span>
+</span><span data-line="175">
+</span><span data-line="176">    <span class="nd">@traitlets</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="s1">'draggable_points'</span><span class="p">)</span>
+</span><span data-line="177">    <span class="k">def</span><span class="w"> </span><span class="nf">get_draggable_points</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="178">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'up'</span><span class="p">):</span>
+</span><span data-line="179">            <span class="k">return</span> <span class="p">[]</span>
+</span><span data-line="180">        <span class="c1"># Extract the draggable points.</span>
+</span><span data-line="181">        <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">algebra</span><span class="o">.</span><span class="n">d</span>
+</span><span data-line="182">        <span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_subjects</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">MultiVector</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">]</span>
+</span><span data-line="183">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">algebra</span><span class="o">.</span><span class="n">r</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="p">(</span><span class="n">d</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">4</span><span class="p">):</span>  <span class="c1"># PGA</span>
+</span><span data-line="184">            <span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">grades</span> <span class="o">==</span> <span class="p">(</span><span class="n">d</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">p</span><span class="o">.</span><span class="n">shape</span><span class="p">]</span>
+</span><span data-line="185">        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'conformal'</span><span class="p">):</span>
+</span><span data-line="186">            <span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">grades</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">p</span><span class="o">.</span><span class="n">shape</span><span class="p">]</span>
+</span><span data-line="187">        <span class="k">return</span> <span class="n">walker</span><span class="p">(</span><span class="n">encode</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">graded</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">graded</span><span class="p">))</span>
+</span><span data-line="188">
+</span><span data-line="189">    <span class="k">def</span><span class="w"> </span><span class="nf">_draggable_idxs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="190"><span class="w">        </span><span class="sd">"""</span>
+</span><span data-line="191"><span class="sd">        Yield ``(subject index, slot index)`` for every draggable point. The first indexes</span>
+</span><span data-line="192"><span class="sd">        :attr:`pre_subjects`, the second the list of subjects ganja ends up with. They drift</span>
+</span><span data-line="193"><span class="sd">        apart because js spreads a multivector of shape ``(N, ...)`` over ``N`` slots.</span>
+</span><span data-line="194"><span class="sd">        """</span>
+</span><span data-line="195">        <span class="c1"># Extract the draggable points.</span>
+</span><span data-line="196">        <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">algebra</span><span class="o">.</span><span class="n">d</span>
+</span><span data-line="197">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">algebra</span><span class="o">.</span><span class="n">r</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="p">(</span><span class="n">d</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">4</span><span class="p">):</span>  <span class="c1"># PGA</span>
+</span><span data-line="198">            <span class="n">filter_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">MultiVector</span><span class="p">)</span> <span class="ow">and</span> <span class="n">s</span><span class="o">.</span><span class="n">grades</span> <span class="o">==</span> <span class="p">(</span><span class="n">d</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="199">        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'conformal'</span><span class="p">):</span>
+</span><span data-line="200">            <span class="n">filter_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">MultiVector</span><span class="p">)</span> <span class="ow">and</span> <span class="n">s</span><span class="o">.</span><span class="n">grades</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="201">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="202">            <span class="n">filter_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">MultiVector</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="203">        <span class="n">slot</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="204">        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="n">pre_subject</span><span class="p">,</span> <span class="n">subject</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pre_subjects</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">subjects</span><span class="p">)):</span>
+</span><span data-line="205">            <span class="k">if</span> <span class="n">filter_func</span><span class="p">(</span><span class="n">pre_subject</span><span class="p">):</span>
+</span><span data-line="206">                <span class="k">yield</span> <span class="n">j</span><span class="p">,</span> <span class="n">slot</span>
+</span><span data-line="207">            <span class="c1"># Count the encoded subjects, in which callables are already evaluated. Their</span>
+</span><span data-line="208">            <span class="c1"># shape is (nkeys, *mv.shape), so js spreads them over shape[1] slots.</span>
+</span><span data-line="209">            <span class="n">values</span> <span class="o">=</span> <span class="n">subject</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'mv'</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+</span><span data-line="210">            <span class="n">slot</span> <span class="o">+=</span> <span class="n">values</span><span class="p">[</span><span class="s1">'shape'</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="s1">'shape'</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">1</span>
+</span><span data-line="211">
+</span><span data-line="212">    <span class="nd">@traitlets</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="s1">'draggable_points_idxs'</span><span class="p">)</span>
+</span><span data-line="213">    <span class="k">def</span><span class="w"> </span><span class="nf">get_draggable_points_idxs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="214">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'up'</span><span class="p">):</span>
+</span><span data-line="215">            <span class="k">return</span> <span class="p">[]</span>
+</span><span data-line="216">        <span class="k">return</span> <span class="p">[</span><span class="n">slot</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">slot</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_draggable_idxs</span><span class="p">()]</span>
+</span><span data-line="217">
+</span><span data-line="218">    <span class="nd">@traitlets</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="s1">'graded'</span><span class="p">)</span>
+</span><span data-line="219">    <span class="k">def</span><span class="w"> </span><span class="nf">get_graded</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="220">        <span class="k">return</span> <span class="s1">'up'</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+</span><span data-line="221">
+</span><span data-line="222">    <span class="nd">@traitlets</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="s1">'draggable_points'</span><span class="p">)</span>
+</span><span data-line="223">    <span class="k">def</span><span class="w"> </span><span class="nf">_observe_draggable_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">change</span><span class="p">):</span>
+</span><span data-line="224"><span class="w">        </span><span class="sd">""" If draggable_points is changed, replace the raw_subjects in place. """</span>
+</span><span data-line="225">        <span class="bp">self</span><span class="o">.</span><span class="n">inplacereplace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pre_subjects</span><span class="p">,</span> <span class="nb">zip</span><span class="p">((</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_draggable_idxs</span><span class="p">()),</span> <span class="n">change</span><span class="p">[</span><span class="s1">'new'</span><span class="p">]))</span>
+</span><span data-line="226">        <span class="bp">self</span><span class="o">.</span><span class="n">subjects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_subjects</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span><span data-line="227">
+</span><span data-line="228">    <span class="nd">@traitlets</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="s2">"options"</span><span class="p">)</span>
+</span><span data-line="229">    <span class="k">def</span><span class="w"> </span><span class="nf">_valid_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proposal</span><span class="p">):</span>
+</span><span data-line="230">        <span class="n">options</span> <span class="o">=</span> <span class="n">proposal</span><span class="p">[</span><span class="s1">'value'</span><span class="p">]</span>
+</span><span data-line="231">        <span class="k">if</span> <span class="n">camera</span> <span class="o">:=</span> <span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'camera'</span><span class="p">):</span>
+</span><span data-line="232">            <span class="n">options</span><span class="p">[</span><span class="s1">'camera'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">encode</span><span class="p">(</span><span class="n">camera</span><span class="p">,</span> <span class="n">graded</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">graded</span><span class="p">)))</span>
+</span><span data-line="233">        <span class="k">if</span> <span class="n">up</span> <span class="o">:=</span> <span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'up'</span><span class="p">):</span>
+</span><span data-line="234">            <span class="n">sig</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">up</span><span class="p">)</span>
+</span><span data-line="235">            <span class="n">up_glsl</span> <span class="o">=</span> <span class="n">up</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="n">param</span><span class="p">)</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">sig</span><span class="o">.</span><span class="n">parameters</span><span class="p">])</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">GLSLPrinter</span><span class="p">()</span><span class="o">.</span><span class="n">doprint</span><span class="p">)</span>
+</span><span data-line="236">            <span class="n">options</span><span class="p">[</span><span class="s1">'up'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">encode</span><span class="p">(</span><span class="n">up_glsl</span><span class="p">,</span> <span class="n">graded</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">graded</span><span class="p">)))[</span><span class="s1">'mv'</span><span class="p">]</span>
+</span><span data-line="237">        <span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">DEFAULT_STYLE</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'style'</span><span class="p">,</span> <span class="p">{})}</span>
+</span><span data-line="238">        <span class="k">if</span> <span class="s1">'width'</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+</span><span data-line="239">            <span class="n">style</span><span class="p">[</span><span class="s1">'width'</span><span class="p">]</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s1">'width'</span><span class="p">]</span>
+</span><span data-line="240">        <span class="k">if</span> <span class="s1">'height'</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+</span><span data-line="241">            <span class="n">style</span><span class="p">[</span><span class="s1">'height'</span><span class="p">]</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s1">'height'</span><span class="p">]</span>
+</span><span data-line="242">        <span class="n">style</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">'marginLeft'</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"calc( (100% - </span><span class="si">{</span><span class="n">style</span><span class="p">[</span><span class="s1">'width'</span><span class="p">]</span><span class="si">}</span><span class="s2">) / 2 )"</span><span class="p">)</span>
+</span><span data-line="243">        <span class="n">options</span><span class="p">[</span><span class="s1">'style'</span><span class="p">]</span> <span class="o">=</span> <span class="n">style</span>
+</span><span data-line="244">        <span class="k">return</span> <span class="n">options</span>
+</span><span data-line="245">
+<div class="viewcode-block" id="GraphWidget.inplacereplace">
+<a class="viewcode-back" href="../../api/generated/kingdon.graph.GraphWidget.html#kingdon.graph.GraphWidget.inplacereplace">[docs]</a>
+</span><span data-line="246">    <span class="k">def</span><span class="w"> </span><span class="nf">inplacereplace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">old_subjects</span><span class="p">,</span> <span class="n">new_subjects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]]):</span>
+</span><span data-line="247"><span class="w">        </span><span class="sd">"""</span>
+</span><span data-line="248"><span class="sd">        Given the old and the new subjects, replace the values inplace iff they have changed.</span>
+</span><span data-line="249"><span class="sd">        """</span>
+</span><span data-line="250">        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">new_subject</span> <span class="ow">in</span> <span class="n">new_subjects</span><span class="p">:</span>
+</span><span data-line="251">            <span class="n">old_subject</span> <span class="o">=</span> <span class="n">old_subjects</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+</span><span data-line="252">            <span class="n">old_vals</span> <span class="o">=</span> <span class="n">old_subject</span><span class="o">.</span><span class="n">_values</span>
+</span><span data-line="253">            <span class="n">new_vals</span> <span class="o">=</span> <span class="n">new_subject</span><span class="p">[</span><span class="s1">'mv'</span><span class="p">]</span>
+</span><span data-line="254">            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">old_vals</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">algebra</span><span class="p">):</span>
+</span><span data-line="255">                <span class="c1"># If full mv, we can be quick.</span>
+</span><span data-line="256">                <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">new_vals</span><span class="p">):</span>
+</span><span data-line="257">                    <span class="k">if</span> <span class="n">old_vals</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">val</span><span class="p">:</span>
+</span><span data-line="258">                        <span class="n">old_vals</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+</span><span data-line="259">            <span class="k">else</span><span class="p">:</span>
+</span><span data-line="260">                <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">old_subject</span><span class="o">.</span><span class="n">_keys</span><span class="p">):</span>
+</span><span data-line="261">                    <span class="n">val</span> <span class="o">=</span> <span class="n">new_vals</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">key2idx</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span>
+</span><span data-line="262">                    <span class="k">if</span> <span class="n">old_vals</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">val</span><span class="p">:</span>
+</span><span data-line="263">                        <span class="n">old_vals</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span></div>
+
+</span><span data-line="264">
+<div class="viewcode-block" id="GraphWidget.update">
+<a class="viewcode-back" href="../../api/generated/kingdon.graph.GraphWidget.html#kingdon.graph.GraphWidget.update">[docs]</a>
+</span><span data-line="265">    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">subjects</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+</span><span data-line="266"><span class="w">        </span><span class="sd">"""</span>
+</span><span data-line="267"><span class="sd">        Update the subjects and options. Same API as :meth:`~kingdon.algebra.Algebra.graph`.</span>
+</span><span data-line="268"><span class="sd">        if no `options` are provided, then the existing options are kept; if</span>
+</span><span data-line="269"><span class="sd">        options are provided, then the existing options are replaced.</span>
+</span><span data-line="270"><span class="sd">        """</span>
+</span><span data-line="271">        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">hold_sync</span><span class="p">():</span>  <span class="c1"># Only update after all changes are made.</span>
+</span><span data-line="272">            <span class="k">if</span> <span class="n">options</span><span class="p">:</span>
+</span><span data-line="273">                <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">options</span>
+</span><span data-line="274">            <span class="bp">self</span><span class="o">.</span><span class="n">raw_subjects</span> <span class="o">=</span> <span class="n">subjects</span>
+</span><span data-line="275">            <span class="bp">self</span><span class="o">.</span><span class="n">pre_subjects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_pre_subjects</span><span class="p">()</span>
+</span><span data-line="276">            <span class="bp">self</span><span class="o">.</span><span class="n">subjects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_subjects</span><span class="p">()</span>
+</span><span data-line="277">            <span class="c1"># Temporarily disable the observer so we can safely update the draggable points.</span>
+</span><span data-line="278">            <span class="c1"># To do this properly, we should use unobserve and observe to temporarily disable the observer, but that requires</span>
+</span><span data-line="279">            <span class="c1"># access to the ObserveHandler. which we don't seem to have. So modify the list inplace to bypass the observer.</span>
+</span><span data-line="280">            <span class="bp">self</span><span class="o">.</span><span class="n">draggable_points</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_draggable_points</span><span class="p">()</span>
+</span><span data-line="281">            <span class="bp">self</span><span class="o">.</span><span class="n">draggable_points_idxs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_draggable_points_idxs</span><span class="p">()</span></div>
+</div>
+
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2022, Martin Roelfs</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=796a81b5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="../../_static/shibuya.js?v=50760d75"></script>
+      <script src="../../_static/kingdon.js?v=5907dcdc"></script></body>
+</html>

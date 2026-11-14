@@ -1,0 +1,6 @@
+﻿lc
+==
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: lc

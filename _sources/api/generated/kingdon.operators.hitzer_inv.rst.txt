@@ -1,0 +1,6 @@
+﻿hitzer\_inv
+===========
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: hitzer_inv

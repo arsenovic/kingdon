@@ -1,0 +1,6 @@
+﻿expr\_as\_matrix
+================
+
+.. currentmodule:: kingdon.matrixreps
+
+.. autofunction:: expr_as_matrix

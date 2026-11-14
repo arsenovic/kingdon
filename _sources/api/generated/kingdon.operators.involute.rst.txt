@@ -1,0 +1,6 @@
+﻿involute
+========
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: involute

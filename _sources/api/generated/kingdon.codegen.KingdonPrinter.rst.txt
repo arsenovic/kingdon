@@ -1,0 +1,19 @@
+﻿KingdonPrinter
+==============
+
+.. currentmodule:: kingdon.codegen
+
+.. autoclass:: KingdonPrinter
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~KingdonPrinter.doprint
+   

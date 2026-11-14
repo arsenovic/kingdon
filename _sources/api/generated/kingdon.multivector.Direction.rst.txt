@@ -1,0 +1,19 @@
+﻿Direction
+=========
+
+.. currentmodule:: kingdon.multivector
+
+.. autoclass:: Direction
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~Direction.layout
+   

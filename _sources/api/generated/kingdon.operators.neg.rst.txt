@@ -1,0 +1,6 @@
+﻿neg
+===
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: neg

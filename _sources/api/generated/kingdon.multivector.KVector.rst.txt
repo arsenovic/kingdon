@@ -1,0 +1,19 @@
+﻿KVector
+=======
+
+.. currentmodule:: kingdon.multivector
+
+.. autoclass:: KVector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~KVector.layout
+   

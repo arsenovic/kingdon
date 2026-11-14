@@ -1,0 +1,19 @@
+﻿OperatorDict
+============
+
+.. currentmodule:: kingdon.operator_dict
+
+.. autoclass:: OperatorDict
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~OperatorDict.make_symbolic_mvs
+   

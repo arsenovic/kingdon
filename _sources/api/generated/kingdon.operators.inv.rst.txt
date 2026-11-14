@@ -1,0 +1,6 @@
+﻿inv
+===
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: inv

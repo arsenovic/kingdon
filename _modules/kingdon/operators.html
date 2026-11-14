@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="cyan" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>kingdon.operators - Kingdon</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=ad592e98" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-codeautolink.css?v=b2176991" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kingdon.css?v=be060e35" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="kingdon.operators"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      <img class="light-logo" src="../../_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <img class="dark-logo" src="../../_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <strong>Kingdon</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link"><a href="../../index.html">Home</a></li><li class="link"><a href="../../examples/index.html">Examples</a></li><li class="link"><a href="../../api/index.html">API</a></li><li class="link">
+          <a href="https://tbuli.github.io/teahouse/">
+            <span>Teahouse</span><i class="i-lucide external-link"></i></a>
+        </li><li class="link">
+          <a href="https://github.com/tBuLi/kingdon">
+            <span>GitHub</span><i class="i-lucide external-link"></i></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../operators.html">Operators</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../arrays.html">Array Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../types.html">Type system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">History</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../workings.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">Kingdon</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">kingdon.operators</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <h1>Source code for kingdon.operators</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="sd">"""</span>
+</span><span data-line="2"><span class="sd">Built-in geometric operators, such as the geometric product, wedge product, sandwich, inverse, etc.</span>
+</span><span data-line="3">
+</span><span data-line="4"><span class="sd">These functions are assumed to operate on multivectors, and return a multivector.</span>
+</span><span data-line="5"><span class="sd">"""</span>
+</span><span data-line="6"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+</span><span data-line="7"><span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span>
+</span><span data-line="8"><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">namedtuple</span>
+</span><span data-line="9"><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+</span><span data-line="10"><span class="kn">import</span><span class="w"> </span><span class="nn">operator</span>
+</span><span data-line="11"><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+</span><span data-line="12"><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">reduce</span>
+</span><span data-line="13"><span class="kn">from</span><span class="w"> </span><span class="nn">fractions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fraction</span> <span class="k">as</span> <span class="n">PyFraction</span>
+</span><span data-line="14">
+</span><span data-line="15"><span class="kn">from</span><span class="w"> </span><span class="nn">kingdon.powers</span><span class="w"> </span><span class="kn">import</span> <span class="n">power_supply</span>
+</span><span data-line="16"><span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+</span><span data-line="17">    <span class="kn">from</span><span class="w"> </span><span class="nn">kingdon.multivector</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultiVector</span>
+</span><span data-line="18">
+</span><span data-line="19">
+<div class="viewcode-block" id="is_zero">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.is_zero.html#kingdon.operators.is_zero">[docs]</a>
+</span><span data-line="20"><span class="k">def</span><span class="w"> </span><span class="nf">is_zero</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span data-line="21"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="22"><span class="sd">    True only for values which are *certainly* zero, i.e. scalar zeros and symbolic</span>
+</span><span data-line="23"><span class="sd">    expressions that cancelled exactly.</span>
+</span><span data-line="24">
+</span><span data-line="25"><span class="sd">    Array-valued coefficients (numpy, torch, ...) with more than one element are never</span>
+</span><span data-line="26"><span class="sd">    inspected: which keys a multivector has has to follow from the keys of the inputs, not</span>
+</span><span data-line="27"><span class="sd">    from the data.</span>
+</span><span data-line="28"><span class="sd">    """</span>
+</span><span data-line="29">    <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="s1">'ndim'</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>  <span class="c1"># ndim &gt; 0 means an array-like with a batch/vector axis.</span>
+</span><span data-line="30">        <span class="k">return</span> <span class="kc">False</span>
+</span><span data-line="31">    <span class="k">try</span><span class="p">:</span>
+</span><span data-line="32">        <span class="k">return</span> <span class="ow">not</span> <span class="n">v</span>
+</span><span data-line="33">    <span class="k">except</span> <span class="p">(</span><span class="ne">RuntimeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+</span><span data-line="34">        <span class="k">return</span> <span class="kc">False</span></div>
+
+</span><span data-line="35">
+</span><span data-line="36">
+<div class="viewcode-block" id="dict_to_multivector">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.dict_to_multivector.html#kingdon.operators.dict_to_multivector">[docs]</a>
+</span><span data-line="37"><span class="k">def</span><span class="w"> </span><span class="nf">dict_to_multivector</span><span class="p">(</span><span class="n">res</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">algebra</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="38"><span class="w">    </span><span class="sd">""" Make a multivector out of a :code:`{key: value}` dict, dropping the values that are certainly zero. """</span>
+</span><span data-line="39">    <span class="c1"># Drop zeros and put the remaining keys back in canon2bin order.</span>
+</span><span data-line="40">    <span class="n">nonzero</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">is_zero</span><span class="p">(</span><span class="n">v</span><span class="p">)}</span>
+</span><span data-line="41">    <span class="n">items</span> <span class="o">=</span> <span class="p">[(</span><span class="n">k</span><span class="p">,</span> <span class="n">nonzero</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">algebra</span><span class="o">.</span><span class="n">canon2bin</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">nonzero</span><span class="p">]</span>
+</span><span data-line="42">    <span class="n">keys</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">items</span><span class="p">)</span> <span class="k">if</span> <span class="n">items</span> <span class="k">else</span> <span class="p">((),</span> <span class="p">[])</span>
+</span><span data-line="43">    <span class="k">return</span> <span class="n">algebra</span><span class="o">.</span><span class="n">mvtype</span><span class="o">.</span><span class="n">fromkeysvalues</span><span class="p">(</span><span class="n">algebra</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">values</span><span class="p">),</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+</span><span data-line="44">
+</span><span data-line="45">
+<div class="viewcode-block" id="scalar">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.scalar.html#kingdon.operators.scalar">[docs]</a>
+</span><span data-line="46"><span class="k">def</span><span class="w"> </span><span class="nf">scalar</span><span class="p">(</span><span class="n">algebra</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="47"><span class="w">    </span><span class="sd">""" Scalar multivector of `algebra` with coefficient `value`. """</span>
+</span><span data-line="48">    <span class="k">return</span> <span class="n">algebra</span><span class="o">.</span><span class="n">mvtype</span><span class="o">.</span><span class="n">fromkeysvalues</span><span class="p">(</span><span class="n">algebra</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="p">[</span><span class="n">value</span><span class="p">],</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+</span><span data-line="49">
+</span><span data-line="50">
+<div class="viewcode-block" id="product">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.product.html#kingdon.operators.product">[docs]</a>
+</span><span data-line="51"><span class="k">def</span><span class="w"> </span><span class="nf">product</span><span class="p">(</span>
+</span><span data-line="52">    <span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span>
+</span><span data-line="53">    <span class="n">y</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span>
+</span><span data-line="54">    <span class="n">filter_func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span data-line="55">    <span class="n">sign_func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span data-line="56">    <span class="n">keyout_func</span><span class="o">=</span><span class="n">operator</span><span class="o">.</span><span class="n">xor</span>
+</span><span data-line="57"><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="58"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="59"><span class="sd">    Helper function for the codegen of all product-type functions.</span>
+</span><span data-line="60">
+</span><span data-line="61"><span class="sd">    :param x: Fully symbolic :class:`~kingdon.multivector.MultiVector`.</span>
+</span><span data-line="62"><span class="sd">    :param y: Fully symbolic :class:`~kingdon.multivector.MultiVector`.</span>
+</span><span data-line="63"><span class="sd">    :param filter_func: A condition which should be true in the preprocessing of terms.</span>
+</span><span data-line="64"><span class="sd">        Input is a TermTuple.</span>
+</span><span data-line="65"><span class="sd">    :param sign_func: function to compute sign between terms. E.g. algebra.signs[ei, ej]</span>
+</span><span data-line="66"><span class="sd">        for metric dependent products. Input: 2-tuple of blade indices, e.g. (ei, ej).</span>
+</span><span data-line="67"><span class="sd">    :param keyout_func:</span>
+</span><span data-line="68"><span class="sd">    """</span>
+</span><span data-line="69">    <span class="n">sign_func</span> <span class="o">=</span> <span class="n">sign_func</span> <span class="ow">or</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">pair</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span><span class="o">.</span><span class="n">signs</span><span class="p">[</span><span class="n">pair</span><span class="p">])</span>
+</span><span data-line="70">
+</span><span data-line="71">    <span class="n">res</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span data-line="72">    <span class="k">for</span> <span class="p">(</span><span class="n">kx</span><span class="p">,</span> <span class="n">vx</span><span class="p">),</span> <span class="p">(</span><span class="n">ky</span><span class="p">,</span> <span class="n">vy</span><span class="p">)</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+</span><span data-line="73">        <span class="k">if</span> <span class="p">(</span><span class="n">sign</span> <span class="o">:=</span> <span class="n">sign_func</span><span class="p">((</span><span class="n">kx</span><span class="p">,</span> <span class="n">ky</span><span class="p">))):</span>
+</span><span data-line="74">            <span class="n">key_out</span> <span class="o">=</span> <span class="n">keyout_func</span><span class="p">(</span><span class="n">kx</span><span class="p">,</span> <span class="n">ky</span><span class="p">)</span>
+</span><span data-line="75">            <span class="k">if</span> <span class="n">filter_func</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">filter_func</span><span class="p">(</span><span class="n">kx</span><span class="p">,</span> <span class="n">ky</span><span class="p">,</span> <span class="n">key_out</span><span class="p">):</span> <span class="k">continue</span>
+</span><span data-line="76">            <span class="n">termstr</span> <span class="o">=</span> <span class="n">vx</span> <span class="o">*</span> <span class="n">vy</span> <span class="k">if</span> <span class="n">sign</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">(</span><span class="o">-</span> <span class="n">vx</span> <span class="o">*</span> <span class="n">vy</span><span class="p">)</span>
+</span><span data-line="77">            <span class="n">res</span><span class="p">[</span><span class="n">key_out</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="n">key_out</span><span class="p">]</span> <span class="o">+</span> <span class="n">termstr</span> <span class="k">if</span> <span class="n">key_out</span> <span class="ow">in</span> <span class="n">res</span> <span class="k">else</span> <span class="n">termstr</span>
+</span><span data-line="78">    <span class="k">return</span> <span class="n">dict_to_multivector</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span><span class="p">)</span></div>
+
+</span><span data-line="79">
+</span><span data-line="80">
+<div class="viewcode-block" id="gp">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.gp.html#kingdon.operators.gp">[docs]</a>
+</span><span data-line="81"><span class="k">def</span><span class="w"> </span><span class="nf">gp</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="82"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="83"><span class="sd">    Generate the geometric product between :code:`x` and :code:`y`.</span>
+</span><span data-line="84">
+</span><span data-line="85"><span class="sd">    :param x: Fully symbolic :class:`~kingdon.multivector.MultiVector`.</span>
+</span><span data-line="86"><span class="sd">    :param y: Fully symbolic :class:`~kingdon.multivector.MultiVector`.</span>
+</span><span data-line="87"><span class="sd">    :return: tuple with integers indicating the basis blades present in the</span>
+</span><span data-line="88"><span class="sd">        product in binary convention, and a lambda function that perform the product.</span>
+</span><span data-line="89"><span class="sd">    """</span>
+</span><span data-line="90">    <span class="k">return</span> <span class="n">product</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div>
+
+</span><span data-line="91">
+</span><span data-line="92">
+<div class="viewcode-block" id="square">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.square.html#kingdon.operators.square">[docs]</a>
+</span><span data-line="93"><span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="94"><span class="w">    </span><span class="sd">"""Generate the geometric square of ``x`` using one symbolic operand."""</span>
+</span><span data-line="95">    <span class="k">return</span> <span class="n">gp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span></div>
+
+</span><span data-line="96">
+</span><span data-line="97">
+<div class="viewcode-block" id="sw">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.sw.html#kingdon.operators.sw">[docs]</a>
+</span><span data-line="98"><span class="k">def</span><span class="w"> </span><span class="nf">sw</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="99"><span class="w">    </span><span class="sa">r</span><span class="sd">"""</span>
+</span><span data-line="100"><span class="sd">    Generate the conjugation of :code:`y` by the versor (k-reflection) :code:`x`,</span>
+</span><span data-line="101"><span class="sd">    using the conjugation formula :math:`(-1)^{k \ell} x y x^{-1}`, where :math:`k` is the</span>
+</span><span data-line="102"><span class="sd">    grade of :code:`x` and :math:`\ell` is the grade of the blade :code:`y`. (Eq 7.18 in [GA4CS]_)</span>
+</span><span data-line="103"><span class="sd">    If :code:`y` is a multivector instead of a blade, the formula is applied to each pure</span>
+</span><span data-line="104"><span class="sd">    grade component of :code:`y` separately to ensure a consistent result.</span>
+</span><span data-line="105"><span class="sd">    **Important**: note that :code:`x` is assumed to be normalized such that :math:`x \widetilde{x} = 1`</span>
+</span><span data-line="106"><span class="sd">    (i.e. :code:`x.normsq() == 1`). Moreover, grade preservation is enforced by the code.</span>
+</span><span data-line="107"><span class="sd">    Expect unexpected results if this operator is used with non-versors.</span>
+</span><span data-line="108">
+</span><span data-line="109"><span class="sd">    .. [GA4CS] Dorst, Lasenby, and Fontijne. Geometric Algebra for Computer Science. Morgan Kaufmann, 2007.</span>
+</span><span data-line="110">
+</span><span data-line="111"><span class="sd">    :param x: The versor (k-reflection), i.e. a multivector satisfying :math:`x \widetilde{x} = 1`.</span>
+</span><span data-line="112"><span class="sd">    :param y: The multivector to be conjugated.</span>
+</span><span data-line="113"><span class="sd">    :return: tuple of keys in binary representation and a lambda function.</span>
+</span><span data-line="114"><span class="sd">    :raises TypeError: If :code:`x` is not a versor (k-reflection) and thus neither even nor odd.</span>
+</span><span data-line="115"><span class="sd">    """</span>
+</span><span data-line="116">    <span class="k">if</span> <span class="nb">len</span><span class="p">({</span><span class="n">g</span> <span class="o">%</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">grades</span><span class="p">})</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+</span><span data-line="117">        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"x must be a versor (k-reflection) and thus either even or odd."</span><span class="p">)</span>
+</span><span data-line="118">    <span class="n">xr</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span data-line="119">    <span class="n">condition</span> <span class="o">=</span> <span class="n">sub</span><span class="p">(</span><span class="n">scalar</span><span class="p">(</span><span class="n">xr</span><span class="o">.</span><span class="n">algebra</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">grade</span><span class="p">(</span><span class="n">gp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">xr</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># The scalar part of x * ~x is assumed to be 1.</span>
+</span><span data-line="120">    <span class="n">empty_mv</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">fromkeysvalues</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">algebra</span><span class="p">,</span> <span class="p">(),</span> <span class="p">[],</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Raw, since full_layout rejects an empty mv.</span>
+</span><span data-line="121">    <span class="k">if</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">grades</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span data-line="122">        <span class="k">return</span> <span class="nb">sum</span><span class="p">((</span><span class="n">grade</span><span class="p">((</span><span class="n">add</span><span class="p">(</span><span class="n">gp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">gp</span><span class="p">((</span><span class="n">yg_involute</span> <span class="o">:=</span> <span class="n">involute</span><span class="p">(</span><span class="n">grade</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">g</span><span class="p">))),</span> <span class="n">xr</span><span class="p">)),</span> <span class="n">gp</span><span class="p">(</span><span class="n">yg_involute</span><span class="p">,</span> <span class="n">condition</span><span class="p">))),</span> <span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">y</span><span class="o">.</span><span class="n">grades</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="n">empty_mv</span><span class="p">)</span>
+</span><span data-line="123">    <span class="k">return</span> <span class="nb">sum</span><span class="p">((</span><span class="n">grade</span><span class="p">((</span><span class="n">add</span><span class="p">(</span><span class="n">gp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">gp</span><span class="p">(</span><span class="n">grade</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">g</span><span class="p">),</span> <span class="n">xr</span><span class="p">)),</span> <span class="n">gp</span><span class="p">(</span><span class="n">grade</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">g</span><span class="p">),</span> <span class="n">condition</span><span class="p">))),</span> <span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">y</span><span class="o">.</span><span class="n">grades</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="n">empty_mv</span><span class="p">)</span></div>
+
+</span><span data-line="124">
+</span><span data-line="125">
+<div class="viewcode-block" id="cp">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.cp.html#kingdon.operators.cp">[docs]</a>
+</span><span data-line="126"><span class="k">def</span><span class="w"> </span><span class="nf">cp</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="127"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="128"><span class="sd">    Generate the commutator product of :code:`x` and :code:`y`: :code:`x.cp(y) = 0.5*(x*y-y*x)`.</span>
+</span><span data-line="129">
+</span><span data-line="130"><span class="sd">    :return: tuple of keys in binary representation and a lambda function.</span>
+</span><span data-line="131"><span class="sd">    """</span>
+</span><span data-line="132">    <span class="n">algebra</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span>
+</span><span data-line="133">    <span class="n">filter_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">kx</span><span class="p">,</span> <span class="n">ky</span><span class="p">,</span> <span class="n">k_out</span><span class="p">:</span> <span class="p">(</span><span class="n">algebra</span><span class="o">.</span><span class="n">signs</span><span class="p">[</span><span class="n">kx</span><span class="p">,</span> <span class="n">ky</span><span class="p">]</span> <span class="o">-</span> <span class="n">algebra</span><span class="o">.</span><span class="n">signs</span><span class="p">[</span><span class="n">ky</span><span class="p">,</span> <span class="n">kx</span><span class="p">])</span>
+</span><span data-line="134">    <span class="k">return</span> <span class="n">product</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">filter_func</span><span class="o">=</span><span class="n">filter_func</span><span class="p">)</span></div>
+
+</span><span data-line="135">
+</span><span data-line="136">
+<div class="viewcode-block" id="acp">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.acp.html#kingdon.operators.acp">[docs]</a>
+</span><span data-line="137"><span class="k">def</span><span class="w"> </span><span class="nf">acp</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="138"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="139"><span class="sd">    Generate the anti-commutator product of :code:`x` and :code:`y`: :code:`x.acp(y) = 0.5*(x*y+y*x)`.</span>
+</span><span data-line="140">
+</span><span data-line="141"><span class="sd">    :return: tuple of keys in binary representation and a lambda function.</span>
+</span><span data-line="142"><span class="sd">    """</span>
+</span><span data-line="143">    <span class="n">algebra</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span>
+</span><span data-line="144">    <span class="n">filter_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">kx</span><span class="p">,</span> <span class="n">ky</span><span class="p">,</span> <span class="n">k_out</span><span class="p">:</span> <span class="p">(</span><span class="n">algebra</span><span class="o">.</span><span class="n">signs</span><span class="p">[</span><span class="n">kx</span><span class="p">,</span> <span class="n">ky</span><span class="p">]</span> <span class="o">+</span> <span class="n">algebra</span><span class="o">.</span><span class="n">signs</span><span class="p">[</span><span class="n">ky</span><span class="p">,</span> <span class="n">kx</span><span class="p">])</span>
+</span><span data-line="145">    <span class="k">return</span> <span class="n">product</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">filter_func</span><span class="o">=</span><span class="n">filter_func</span><span class="p">)</span></div>
+
+</span><span data-line="146">
+</span><span data-line="147">
+<div class="viewcode-block" id="ip">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.ip.html#kingdon.operators.ip">[docs]</a>
+</span><span data-line="148"><span class="k">def</span><span class="w"> </span><span class="nf">ip</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">diff_func</span><span class="p">:</span> <span class="n">Callable</span><span class="o">=</span><span class="nb">abs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="149"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="150"><span class="sd">    Generate the inner product of :code:`x` and :code:`y`.</span>
+</span><span data-line="151">
+</span><span data-line="152"><span class="sd">    :param diff_func: How to treat the difference between the binary reps of the basis blades.</span>
+</span><span data-line="153"><span class="sd">        if :code:`abs`, compute the symmetric inner product. When :code:`lambda x: -x` this</span>
+</span><span data-line="154"><span class="sd">        function generates left-contraction, and when :code:`lambda x: x`, right-contraction.</span>
+</span><span data-line="155"><span class="sd">    :return: tuple of keys in binary representation and a lambda function.</span>
+</span><span data-line="156"><span class="sd">    """</span>
+</span><span data-line="157">    <span class="n">filter_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">kx</span><span class="p">,</span> <span class="n">ky</span><span class="p">,</span> <span class="n">k_out</span><span class="p">:</span> <span class="n">k_out</span> <span class="o">==</span> <span class="n">diff_func</span><span class="p">(</span><span class="n">kx</span> <span class="o">-</span> <span class="n">ky</span><span class="p">)</span>
+</span><span data-line="158">    <span class="k">return</span> <span class="n">product</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">filter_func</span><span class="o">=</span><span class="n">filter_func</span><span class="p">)</span></div>
+
+</span><span data-line="159">
+</span><span data-line="160">
+<div class="viewcode-block" id="lc">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.lc.html#kingdon.operators.lc">[docs]</a>
+</span><span data-line="161"><span class="k">def</span><span class="w"> </span><span class="nf">lc</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="162"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="163"><span class="sd">    Generate the left-contraction of :code:`x` and :code:`y`.</span>
+</span><span data-line="164">
+</span><span data-line="165"><span class="sd">    :return: tuple of keys in binary representation and a lambda function.</span>
+</span><span data-line="166"><span class="sd">    """</span>
+</span><span data-line="167">    <span class="k">return</span> <span class="n">ip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">diff_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">)</span></div>
+
+</span><span data-line="168">
+</span><span data-line="169">
+<div class="viewcode-block" id="rc">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.rc.html#kingdon.operators.rc">[docs]</a>
+</span><span data-line="170"><span class="k">def</span><span class="w"> </span><span class="nf">rc</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="171"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="172"><span class="sd">    Generate the right-contraction of :code:`x` and :code:`y`.</span>
+</span><span data-line="173">
+</span><span data-line="174"><span class="sd">    :return: tuple of keys in binary representation and a lambda function.</span>
+</span><span data-line="175"><span class="sd">    """</span>
+</span><span data-line="176">    <span class="k">return</span> <span class="n">ip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">diff_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">)</span></div>
+
+</span><span data-line="177">
+</span><span data-line="178">
+<div class="viewcode-block" id="sp">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.sp.html#kingdon.operators.sp">[docs]</a>
+</span><span data-line="179"><span class="k">def</span><span class="w"> </span><span class="nf">sp</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="180"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="181"><span class="sd">    Generate the scalar product of :code:`x` and :code:`y`.</span>
+</span><span data-line="182">
+</span><span data-line="183"><span class="sd">    :return: tuple of keys in binary representation and a lambda function.</span>
+</span><span data-line="184"><span class="sd">    """</span>
+</span><span data-line="185">    <span class="k">return</span> <span class="n">ip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">diff_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span></div>
+
+</span><span data-line="186">
+</span><span data-line="187">
+<div class="viewcode-block" id="proj">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.proj.html#kingdon.operators.proj">[docs]</a>
+</span><span data-line="188"><span class="k">def</span><span class="w"> </span><span class="nf">proj</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="189"><span class="w">    </span><span class="sa">r</span><span class="sd">"""</span>
+</span><span data-line="190"><span class="sd">    Generate the projection of :code:`x` onto :code:`y`: :math:`(x \cdot y) \widetilde{y}`,</span>
+</span><span data-line="191"><span class="sd">    where it is assumed that :code:`y` is a normalized versor (k-reflection) and hence :math:`y^{-1} = \widetilde{y}`.</span>
+</span><span data-line="192">
+</span><span data-line="193"><span class="sd">    :param x: The multivector to be projected.</span>
+</span><span data-line="194"><span class="sd">    :param y: The versor (k-reflection) onto which :code:`x` is projected.</span>
+</span><span data-line="195"><span class="sd">    :return: tuple of keys in binary representation and a lambda function.</span>
+</span><span data-line="196"><span class="sd">    :raises TypeError: If :code:`y` is not a versor (k-reflection).</span>
+</span><span data-line="197"><span class="sd">    """</span>
+</span><span data-line="198">    <span class="k">if</span> <span class="nb">len</span><span class="p">({</span><span class="n">g</span> <span class="o">%</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">y</span><span class="o">.</span><span class="n">grades</span><span class="p">})</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+</span><span data-line="199">        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"y must be a versor (k-reflection) and thus either even or odd."</span><span class="p">)</span>
+</span><span data-line="200">    <span class="n">condition</span> <span class="o">=</span> <span class="n">sub</span><span class="p">(</span><span class="n">scalar</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">algebra</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">grade</span><span class="p">(</span><span class="n">normsq</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># The scalar part of x * ~x is assumed to be 1.</span>
+</span><span data-line="201">    <span class="k">return</span> <span class="n">grade</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">gp</span><span class="p">(</span><span class="n">ip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">reverse</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> <span class="n">gp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">condition</span><span class="p">)),</span> <span class="n">x</span><span class="o">.</span><span class="n">grades</span><span class="p">)</span></div>
+
+</span><span data-line="202">
+</span><span data-line="203">
+<div class="viewcode-block" id="op">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.op.html#kingdon.operators.op">[docs]</a>
+</span><span data-line="204"><span class="k">def</span><span class="w"> </span><span class="nf">op</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="205"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="206"><span class="sd">    Generate the outer product of :code:`x` and :code:`y`: :code:`x.op(y) = x ^ y`.</span>
+</span><span data-line="207">
+</span><span data-line="208"><span class="sd">    :x: "MultiVector"</span>
+</span><span data-line="209"><span class="sd">    :y: "MultiVector"</span>
+</span><span data-line="210"><span class="sd">    :return: dictionary with integer keys indicating the corresponding basis blade in binary convention,</span>
+</span><span data-line="211"><span class="sd">        and values which are a 3-tuple of indices in `x`, indices in `y`, and a lambda function.</span>
+</span><span data-line="212"><span class="sd">    """</span>
+</span><span data-line="213">    <span class="n">filter_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">kx</span><span class="p">,</span> <span class="n">ky</span><span class="p">,</span> <span class="n">k_out</span><span class="p">:</span> <span class="n">k_out</span> <span class="o">==</span> <span class="n">kx</span> <span class="o">+</span> <span class="n">ky</span>
+</span><span data-line="214">    <span class="k">return</span> <span class="n">product</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">filter_func</span><span class="o">=</span><span class="n">filter_func</span><span class="p">)</span></div>
+
+</span><span data-line="215">
+</span><span data-line="216">
+<div class="viewcode-block" id="rp">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.rp.html#kingdon.operators.rp">[docs]</a>
+</span><span data-line="217"><span class="k">def</span><span class="w"> </span><span class="nf">rp</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="218"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="219"><span class="sd">    Generate the regressive product of :code:`x` and :code:`y`:,</span>
+</span><span data-line="220"><span class="sd">    :math:`x \\vee y`.</span>
+</span><span data-line="221">
+</span><span data-line="222"><span class="sd">    :param x:</span>
+</span><span data-line="223"><span class="sd">    :param y:</span>
+</span><span data-line="224"><span class="sd">    :return: tuple of keys in binary representation and a lambda function.</span>
+</span><span data-line="225"><span class="sd">    """</span>
+</span><span data-line="226">    <span class="n">algebra</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span>
+</span><span data-line="227">    <span class="n">key_pss</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">algebra</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+</span><span data-line="228">    <span class="n">keyout_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">kx</span><span class="p">,</span> <span class="n">ky</span><span class="p">:</span> <span class="n">key_pss</span> <span class="o">-</span> <span class="p">(</span><span class="n">kx</span> <span class="o">^</span> <span class="n">ky</span><span class="p">)</span>
+</span><span data-line="229">    <span class="n">filter_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">kx</span><span class="p">,</span> <span class="n">ky</span><span class="p">,</span> <span class="n">k_out</span><span class="p">:</span> <span class="n">key_pss</span> <span class="o">==</span> <span class="n">kx</span> <span class="o">+</span> <span class="n">ky</span> <span class="o">-</span> <span class="n">k_out</span>
+</span><span data-line="230">    <span class="c1"># Sign is composed of dualization of each blade, exterior product, and undual.</span>
+</span><span data-line="231">    <span class="n">sign_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">pair</span><span class="p">:</span> <span class="p">(</span>
+</span><span data-line="232">        <span class="n">algebra</span><span class="o">.</span><span class="n">signs</span><span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">key_pss</span> <span class="o">-</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">*</span>
+</span><span data-line="233">        <span class="n">algebra</span><span class="o">.</span><span class="n">signs</span><span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">key_pss</span> <span class="o">-</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">*</span>
+</span><span data-line="234">        <span class="n">algebra</span><span class="o">.</span><span class="n">signs</span><span class="p">[</span><span class="n">key_pss</span> <span class="o">-</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">key_pss</span> <span class="o">-</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">*</span>
+</span><span data-line="235">        <span class="n">algebra</span><span class="o">.</span><span class="n">signs</span><span class="p">[</span><span class="n">key_pss</span> <span class="o">-</span> <span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">^</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">^</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+</span><span data-line="236">    <span class="p">)</span>
+</span><span data-line="237">
+</span><span data-line="238">    <span class="k">return</span> <span class="n">product</span><span class="p">(</span>
+</span><span data-line="239">        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
+</span><span data-line="240">        <span class="n">filter_func</span><span class="o">=</span><span class="n">filter_func</span><span class="p">,</span>
+</span><span data-line="241">        <span class="n">keyout_func</span><span class="o">=</span><span class="n">keyout_func</span><span class="p">,</span>
+</span><span data-line="242">        <span class="n">sign_func</span><span class="o">=</span><span class="n">sign_func</span><span class="p">,</span>
+</span><span data-line="243">    <span class="p">)</span></div>
+
+</span><span data-line="244">
+<div class="viewcode-block" id="grade">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.grade.html#kingdon.operators.grade">[docs]</a>
+</span><span data-line="245"><span class="k">def</span><span class="w"> </span><span class="nf">grade</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="o">*</span><span class="n">grades</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="246"><span class="w">    </span><span class="sd">""" Select grade g part of x. """</span>
+</span><span data-line="247">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">grades</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">grades</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">tuple</span><span class="p">):</span>
+</span><span data-line="248">        <span class="n">grades</span> <span class="o">=</span> <span class="n">grades</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span data-line="249">    <span class="n">res</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">bit_count</span><span class="p">()</span> <span class="ow">in</span> <span class="n">grades</span><span class="p">}</span>
+</span><span data-line="250">    <span class="k">return</span> <span class="n">dict_to_multivector</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span><span class="p">)</span></div>
+
+</span><span data-line="251">
+</span><span data-line="252">
+</span><span data-line="253"><span class="n">Fraction</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">'Fraction'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'numer'</span><span class="p">,</span> <span class="s1">'denom'</span><span class="p">])</span>
+</span><span data-line="254"><span class="n">Fraction</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="s2">"""</span>
+</span><span data-line="255"><span class="s2">Tuple representing a fraction.</span>
+</span><span data-line="256"><span class="s2">"""</span>
+</span><span data-line="257">
+</span><span data-line="258">
+<div class="viewcode-block" id="inv">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.inv.html#kingdon.operators.inv">[docs]</a>
+</span><span data-line="259"><span class="k">def</span><span class="w"> </span><span class="nf">inv</span><span class="p">(</span><span class="n">y</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">symbolic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="260"><span class="w">    </span><span class="sa">r</span><span class="sd">"""</span>
+</span><span data-line="261"><span class="sd">    Inverse of :code:`y`.</span>
+</span><span data-line="262">
+</span><span data-line="263"><span class="sd">    When :math:`y \widetilde{y}` is a scalar this is :math:`\widetilde{y} / (y \widetilde{y})`,</span>
+</span><span data-line="264"><span class="sd">    otherwise :func:`hitzer_inv` is used below 6D and :func:`shirokov_inv` above.</span>
+</span><span data-line="265">
+</span><span data-line="266"><span class="sd">    :param symbolic: if True, return the numerator and denominator as a :class:`Fraction` instead.</span>
+</span><span data-line="267"><span class="sd">    """</span>
+</span><span data-line="268">    <span class="n">alg</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">algebra</span>
+</span><span data-line="269">    <span class="c1"># If y * ~y is a scalar, use the simple blade inverse ~y / (y * ~y).</span>
+</span><span data-line="270">    <span class="c1"># This matches GAmphetamine's check: if (gradeOf(a*~a) == 0) return gp(reverse(a), inv(sq))</span>
+</span><span data-line="271">    <span class="c1"># and avoids producing unsimplified rational polynomials like (y * s) / s^2.</span>
+</span><span data-line="272">    <span class="n">yr</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</span><span data-line="273">    <span class="n">ynorm</span> <span class="o">=</span> <span class="n">normsq</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</span><span data-line="274">    <span class="k">if</span> <span class="n">ynorm</span><span class="o">.</span><span class="n">grades</span> <span class="o">==</span> <span class="p">(</span><span class="mi">0</span><span class="p">,):</span>
+</span><span data-line="275">        <span class="n">num</span> <span class="o">=</span> <span class="n">yr</span>
+</span><span data-line="276">        <span class="n">denom</span> <span class="o">=</span> <span class="n">ynorm</span>
+</span><span data-line="277">    <span class="k">elif</span> <span class="n">alg</span><span class="o">.</span><span class="n">d</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">:</span>
+</span><span data-line="278">        <span class="n">num</span><span class="p">,</span> <span class="n">denom</span> <span class="o">=</span> <span class="n">hitzer_inv</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">symbolic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="279">    <span class="k">else</span><span class="p">:</span>
+</span><span data-line="280">        <span class="n">num</span><span class="p">,</span> <span class="n">denom</span> <span class="o">=</span> <span class="n">shirokov_inv</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">symbolic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="281">
+</span><span data-line="282">    <span class="k">if</span> <span class="n">symbolic</span><span class="p">:</span>
+</span><span data-line="283">        <span class="k">return</span> <span class="n">Fraction</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">denom</span><span class="p">)</span>
+</span><span data-line="284">
+</span><span data-line="285">    <span class="n">d</span> <span class="o">=</span> <span class="n">denom</span><span class="o">.</span><span class="n">e</span>
+</span><span data-line="286">    <span class="k">return</span> <span class="n">num</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span> <span class="o">/</span> <span class="n">d</span><span class="p">)</span></div>
+
+</span><span data-line="287">
+</span><span data-line="288">
+<div class="viewcode-block" id="hitzer_inv">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.hitzer_inv.html#kingdon.operators.hitzer_inv">[docs]</a>
+</span><span data-line="289"><span class="k">def</span><span class="w"> </span><span class="nf">hitzer_inv</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">symbolic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="290"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="291"><span class="sd">    Generate code for the inverse of :code:`x` using the Hitzer inverse,</span>
+</span><span data-line="292"><span class="sd">    which works up to 5D algebras.</span>
+</span><span data-line="293"><span class="sd">    """</span>
+</span><span data-line="294">    <span class="n">alg</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span>
+</span><span data-line="295">    <span class="n">d</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">d</span>
+</span><span data-line="296">    <span class="n">two</span> <span class="o">=</span> <span class="n">scalar</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span><span data-line="297">    <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span data-line="298">        <span class="n">num</span> <span class="o">=</span> <span class="n">scalar</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span data-line="299">    <span class="k">elif</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span data-line="300">        <span class="n">num</span> <span class="o">=</span> <span class="n">involute</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span data-line="301">    <span class="k">elif</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+</span><span data-line="302">        <span class="n">num</span> <span class="o">=</span> <span class="n">conjugate</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span data-line="303">    <span class="k">elif</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+</span><span data-line="304">        <span class="n">xconj</span> <span class="o">=</span> <span class="n">conjugate</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span data-line="305">        <span class="n">num</span> <span class="o">=</span> <span class="n">gp</span><span class="p">(</span><span class="n">xconj</span><span class="p">,</span> <span class="n">reverse</span><span class="p">(</span><span class="n">gp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">xconj</span><span class="p">)))</span>
+</span><span data-line="306">    <span class="k">elif</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+</span><span data-line="307">        <span class="n">xconj</span> <span class="o">=</span> <span class="n">conjugate</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span data-line="308">        <span class="n">x_xconj</span> <span class="o">=</span> <span class="n">gp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">xconj</span><span class="p">)</span>
+</span><span data-line="309">        <span class="n">num</span> <span class="o">=</span> <span class="n">gp</span><span class="p">(</span><span class="n">xconj</span><span class="p">,</span> <span class="n">sub</span><span class="p">(</span><span class="n">x_xconj</span><span class="p">,</span> <span class="n">gp</span><span class="p">(</span><span class="n">two</span><span class="p">,</span> <span class="n">grade</span><span class="p">(</span><span class="n">x_xconj</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))))</span>
+</span><span data-line="310">    <span class="k">elif</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+</span><span data-line="311">        <span class="n">xconj</span> <span class="o">=</span> <span class="n">conjugate</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span data-line="312">        <span class="n">x_xconj</span> <span class="o">=</span> <span class="n">gp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">xconj</span><span class="p">)</span>
+</span><span data-line="313">        <span class="n">combo</span> <span class="o">=</span> <span class="n">gp</span><span class="p">(</span><span class="n">xconj</span><span class="p">,</span> <span class="n">reverse</span><span class="p">(</span><span class="n">x_xconj</span><span class="p">))</span>
+</span><span data-line="314">        <span class="n">x_combo</span> <span class="o">=</span> <span class="n">gp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">combo</span><span class="p">)</span>
+</span><span data-line="315">        <span class="n">num</span> <span class="o">=</span> <span class="n">gp</span><span class="p">(</span><span class="n">combo</span><span class="p">,</span> <span class="n">sub</span><span class="p">(</span><span class="n">x_combo</span><span class="p">,</span> <span class="n">gp</span><span class="p">(</span><span class="n">two</span><span class="p">,</span> <span class="n">grade</span><span class="p">(</span><span class="n">x_combo</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))))</span>
+</span><span data-line="316">    <span class="k">else</span><span class="p">:</span>
+</span><span data-line="317">        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Closed form inverses are not known in </span><span class="si">{</span><span class="n">d</span><span class="si">=}</span><span class="s2"> dimensions."</span><span class="p">)</span>
+</span><span data-line="318">    <span class="n">denom</span> <span class="o">=</span> <span class="n">sp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
+</span><span data-line="319">
+</span><span data-line="320">    <span class="k">if</span> <span class="n">symbolic</span><span class="p">:</span>
+</span><span data-line="321">        <span class="k">return</span> <span class="n">Fraction</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">denom</span><span class="p">)</span>
+</span><span data-line="322">    <span class="n">denom</span> <span class="o">=</span> <span class="n">denom</span><span class="o">.</span><span class="n">e</span>
+</span><span data-line="323">    <span class="k">return</span> <span class="n">num</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span> <span class="o">/</span> <span class="n">denom</span><span class="p">)</span></div>
+
+</span><span data-line="324">
+</span><span data-line="325">
+<div class="viewcode-block" id="shirokov_inv">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.shirokov_inv.html#kingdon.operators.shirokov_inv">[docs]</a>
+</span><span data-line="326"><span class="k">def</span><span class="w"> </span><span class="nf">shirokov_inv</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">symbolic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="327"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="328"><span class="sd">    Generate code for the inverse of :code:`x` using the Shirokov inverse,</span>
+</span><span data-line="329"><span class="sd">    which is works in any algebra, but it can be expensive to compute.</span>
+</span><span data-line="330"><span class="sd">    """</span>
+</span><span data-line="331">    <span class="n">alg</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span>
+</span><span data-line="332">    <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">((</span><span class="n">alg</span><span class="o">.</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+</span><span data-line="333">    <span class="n">supply</span> <span class="o">=</span> <span class="n">power_supply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">operation</span><span class="o">=</span><span class="n">gp</span><span class="p">)</span>  <span class="c1"># Generate powers of x efficiently.</span>
+</span><span data-line="334">    <span class="n">powers</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span data-line="335">    <span class="n">cs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span data-line="336">    <span class="n">xs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span data-line="337">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+</span><span data-line="338">        <span class="n">powers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">supply</span><span class="p">))</span>
+</span><span data-line="339">        <span class="n">xi</span> <span class="o">=</span> <span class="n">powers</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+</span><span data-line="340">        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+</span><span data-line="341">            <span class="n">power_idx</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">2</span>
+</span><span data-line="342">            <span class="n">xi_diff</span> <span class="o">=</span> <span class="n">gp</span><span class="p">(</span><span class="n">powers</span><span class="p">[</span><span class="n">power_idx</span><span class="p">],</span> <span class="n">cs</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+</span><span data-line="343">            <span class="n">xi</span> <span class="o">=</span> <span class="n">sub</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">xi_diff</span><span class="p">)</span>
+</span><span data-line="344">        <span class="k">if</span> <span class="n">xi</span><span class="o">.</span><span class="n">grades</span> <span class="o">==</span> <span class="p">(</span><span class="mi">0</span><span class="p">,):</span>
+</span><span data-line="345">            <span class="k">break</span>
+</span><span data-line="346">        <span class="n">xs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xi</span><span class="p">)</span>
+</span><span data-line="347">        <span class="n">cs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span> <span class="k">if</span> <span class="p">(</span><span class="n">s</span> <span class="o">:=</span> <span class="n">xi</span><span class="o">.</span><span class="n">e</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span> <span class="o">*</span> <span class="n">s</span> <span class="o">/</span> <span class="n">i</span><span class="p">)</span>
+</span><span data-line="348">
+</span><span data-line="349">    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span data-line="350">        <span class="n">adj</span> <span class="o">=</span> <span class="n">scalar</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span data-line="351">    <span class="k">else</span><span class="p">:</span>
+</span><span data-line="352">        <span class="n">adj</span> <span class="o">=</span> <span class="n">sub</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">cs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</span><span data-line="353">
+</span><span data-line="354">    <span class="k">if</span> <span class="n">symbolic</span><span class="p">:</span>
+</span><span data-line="355">        <span class="k">return</span> <span class="n">Fraction</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">xi</span><span class="p">)</span>
+</span><span data-line="356">    <span class="n">xi</span> <span class="o">=</span> <span class="n">xi</span><span class="o">.</span><span class="n">e</span>
+</span><span data-line="357">    <span class="k">return</span> <span class="n">adj</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span> <span class="o">/</span> <span class="n">xi</span><span class="p">)</span></div>
+
+</span><span data-line="358">
+</span><span data-line="359">
+<div class="viewcode-block" id="div">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.div.html#kingdon.operators.div">[docs]</a>
+</span><span data-line="360"><span class="k">def</span><span class="w"> </span><span class="nf">div</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="361"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="362"><span class="sd">    Generate code for :math:`x y^{-1}`.</span>
+</span><span data-line="363"><span class="sd">    """</span>
+</span><span data-line="364">    <span class="n">num</span><span class="p">,</span> <span class="n">denom</span> <span class="o">=</span> <span class="n">inv</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">symbolic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="365">    <span class="k">if</span> <span class="ow">not</span> <span class="n">denom</span><span class="p">:</span>
+</span><span data-line="366">        <span class="k">raise</span> <span class="ne">ZeroDivisionError</span>
+</span><span data-line="367">    <span class="n">d</span> <span class="o">=</span> <span class="n">denom</span><span class="o">.</span><span class="n">e</span>
+</span><span data-line="368">    <span class="k">return</span> <span class="n">gp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span> <span class="o">/</span> <span class="n">d</span><span class="p">)</span></div>
+
+</span><span data-line="369">
+</span><span data-line="370">
+<div class="viewcode-block" id="normsq">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.normsq.html#kingdon.operators.normsq">[docs]</a>
+</span><span data-line="371"><span class="k">def</span><span class="w"> </span><span class="nf">normsq</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="372"><span class="w">    </span><span class="sa">r</span><span class="sd">""" Squared norm :math:`x \widetilde{x}`. """</span>
+</span><span data-line="373">    <span class="k">return</span> <span class="n">gp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">reverse</span><span class="p">(</span><span class="n">x</span><span class="p">))</span></div>
+
+</span><span data-line="374">
+</span><span data-line="375">
+<div class="viewcode-block" id="outerexp">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.outerexp.html#kingdon.operators.outerexp">[docs]</a>
+</span><span data-line="376"><span class="k">def</span><span class="w"> </span><span class="nf">outerexp</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">asterms</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="377"><span class="w">    </span><span class="sa">r</span><span class="sd">"""</span>
+</span><span data-line="378"><span class="sd">    Outer exponential: :math:`1 + x + \tfrac{1}{2!} x \wedge x + \ldots`, which ends once the next term is zero.</span>
+</span><span data-line="379">
+</span><span data-line="380"><span class="sd">    :param asterms: if True, return the list of terms instead of their sum.</span>
+</span><span data-line="381"><span class="sd">    """</span>
+</span><span data-line="382">    <span class="n">alg</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span>
+</span><span data-line="383">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">grades</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+</span><span data-line="384">        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">'Outer exponential might not converge for mixed-grade multivectors.'</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">)</span>
+</span><span data-line="385">    <span class="n">k</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">d</span>
+</span><span data-line="386">
+</span><span data-line="387">    <span class="n">Ws</span> <span class="o">=</span> <span class="p">[</span><span class="n">alg</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="n">e</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">x</span><span class="p">]</span>
+</span><span data-line="388">    <span class="n">j</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span data-line="389">    <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">:</span>
+</span><span data-line="390">        <span class="n">Wj</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">Ws</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">)</span>
+</span><span data-line="391">        <span class="c1"># Dividing like this avoids floating point numbers, which is excellent.</span>
+</span><span data-line="392">        <span class="n">jinv</span> <span class="o">=</span> <span class="n">PyFraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+</span><span data-line="393">        <span class="n">Wj</span><span class="o">.</span><span class="n">_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span><span class="o">*</span><span class="n">jinv</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">Wj</span><span class="o">.</span><span class="n">_values</span><span class="p">]</span>
+</span><span data-line="394">        <span class="k">if</span> <span class="n">Wj</span><span class="p">:</span>
+</span><span data-line="395">            <span class="n">Ws</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Wj</span><span class="p">)</span>
+</span><span data-line="396">            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span data-line="397">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="398">            <span class="k">break</span>
+</span><span data-line="399">
+</span><span data-line="400">    <span class="k">if</span> <span class="n">asterms</span><span class="p">:</span>
+</span><span data-line="401">        <span class="k">return</span> <span class="n">Ws</span>
+</span><span data-line="402">    <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">add</span><span class="p">,</span> <span class="n">Ws</span><span class="p">)</span></div>
+
+</span><span data-line="403">
+</span><span data-line="404">
+<div class="viewcode-block" id="outersin">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.outersin.html#kingdon.operators.outersin">[docs]</a>
+</span><span data-line="405"><span class="k">def</span><span class="w"> </span><span class="nf">outersin</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="406"><span class="w">    </span><span class="sd">""" Outer sine: the odd terms of :func:`outerexp`. """</span>
+</span><span data-line="407">    <span class="n">odd_Ws</span> <span class="o">=</span> <span class="n">outerexp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">asterms</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+</span><span data-line="408">    <span class="n">outersin</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">add</span><span class="p">,</span> <span class="n">odd_Ws</span><span class="p">)</span>
+</span><span data-line="409">    <span class="k">return</span> <span class="n">outersin</span></div>
+
+</span><span data-line="410">
+</span><span data-line="411">
+<div class="viewcode-block" id="outercos">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.outercos.html#kingdon.operators.outercos">[docs]</a>
+</span><span data-line="412"><span class="k">def</span><span class="w"> </span><span class="nf">outercos</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="413"><span class="w">    </span><span class="sd">""" Outer cosine: the even terms of :func:`outerexp`. """</span>
+</span><span data-line="414">    <span class="n">even_Ws</span> <span class="o">=</span> <span class="n">outerexp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">asterms</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+</span><span data-line="415">    <span class="n">outercos</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">add</span><span class="p">,</span> <span class="n">even_Ws</span><span class="p">)</span>
+</span><span data-line="416">    <span class="k">return</span> <span class="n">outercos</span></div>
+
+</span><span data-line="417">
+</span><span data-line="418">
+<div class="viewcode-block" id="outertan">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.outertan.html#kingdon.operators.outertan">[docs]</a>
+</span><span data-line="419"><span class="k">def</span><span class="w"> </span><span class="nf">outertan</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="420"><span class="w">    </span><span class="sd">""" Outer tangent: :func:`outersin` divided by :func:`outercos`. """</span>
+</span><span data-line="421">    <span class="n">Ws</span> <span class="o">=</span> <span class="n">outerexp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">asterms</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="422">    <span class="n">even_Ws</span><span class="p">,</span> <span class="n">odd_Ws</span> <span class="o">=</span> <span class="n">Ws</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">],</span> <span class="n">Ws</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+</span><span data-line="423">    <span class="n">outercos</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">add</span><span class="p">,</span> <span class="n">even_Ws</span><span class="p">)</span>
+</span><span data-line="424">    <span class="n">outersin</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">add</span><span class="p">,</span> <span class="n">odd_Ws</span><span class="p">)</span>
+</span><span data-line="425">    <span class="n">outertan</span> <span class="o">=</span> <span class="n">div</span><span class="p">(</span><span class="n">outersin</span><span class="p">,</span> <span class="n">outercos</span><span class="p">)</span>
+</span><span data-line="426">    <span class="k">return</span> <span class="n">outertan</span></div>
+
+</span><span data-line="427">
+</span><span data-line="428">
+<div class="viewcode-block" id="add">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.add.html#kingdon.operators.add">[docs]</a>
+</span><span data-line="429"><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="430"><span class="w">    </span><span class="sd">""" Sum :math:`x + y`. """</span>
+</span><span data-line="431">    <span class="n">vals</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+</span><span data-line="432">    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">y</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span data-line="433">        <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">vals</span><span class="p">:</span>
+</span><span data-line="434">            <span class="n">vals</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span>
+</span><span data-line="435">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="436">            <span class="n">vals</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+</span><span data-line="437">    <span class="k">return</span> <span class="n">dict_to_multivector</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span><span class="p">)</span></div>
+
+</span><span data-line="438">
+</span><span data-line="439">
+<div class="viewcode-block" id="sub">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.sub.html#kingdon.operators.sub">[docs]</a>
+</span><span data-line="440"><span class="k">def</span><span class="w"> </span><span class="nf">sub</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="441"><span class="w">    </span><span class="sd">""" Difference :math:`x - y`. """</span>
+</span><span data-line="442">    <span class="n">vals</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+</span><span data-line="443">    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">y</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span data-line="444">        <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">vals</span><span class="p">:</span>
+</span><span data-line="445">            <span class="n">vals</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">v</span>
+</span><span data-line="446">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="447">            <span class="n">vals</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">v</span>
+</span><span data-line="448">    <span class="k">return</span> <span class="n">dict_to_multivector</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span><span class="p">)</span></div>
+
+</span><span data-line="449">
+</span><span data-line="450">
+<div class="viewcode-block" id="neg">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.neg.html#kingdon.operators.neg">[docs]</a>
+</span><span data-line="451"><span class="k">def</span><span class="w"> </span><span class="nf">neg</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="452"><span class="w">    </span><span class="sd">""" Negation :math:`-x`. """</span>
+</span><span data-line="453">    <span class="k">return</span> <span class="n">dict_to_multivector</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="o">-</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">()},</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span><span class="p">)</span></div>
+
+</span><span data-line="454">
+</span><span data-line="455">
+<div class="viewcode-block" id="involutions">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.involutions.html#kingdon.operators.involutions">[docs]</a>
+</span><span data-line="456"><span class="k">def</span><span class="w"> </span><span class="nf">involutions</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">invert_grades</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="457"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="458"><span class="sd">    Codegen for the involutions of Clifford algebras:</span>
+</span><span data-line="459"><span class="sd">    reverse, grade involute, and Clifford involution.</span>
+</span><span data-line="460">
+</span><span data-line="461"><span class="sd">    :param invert_grades: The grades that flip sign under this involution mod 4, e.g. (2, 3) for reversion.</span>
+</span><span data-line="462"><span class="sd">    """</span>
+</span><span data-line="463">    <span class="n">res</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="o">-</span><span class="n">v</span> <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">bit_count</span><span class="p">()</span> <span class="o">%</span> <span class="mi">4</span> <span class="ow">in</span> <span class="n">invert_grades</span> <span class="k">else</span> <span class="n">v</span>
+</span><span data-line="464">           <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</span><span data-line="465">    <span class="k">return</span> <span class="n">dict_to_multivector</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span><span class="p">)</span></div>
+
+</span><span data-line="466">
+</span><span data-line="467">
+<div class="viewcode-block" id="reverse">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.reverse.html#kingdon.operators.reverse">[docs]</a>
+</span><span data-line="468"><span class="k">def</span><span class="w"> </span><span class="nf">reverse</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="469"><span class="w">    </span><span class="sa">r</span><span class="sd">""" Reversion :math:`\widetilde{x}`. """</span>
+</span><span data-line="470">    <span class="k">return</span> <span class="n">involutions</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">invert_grades</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span></div>
+
+</span><span data-line="471">
+</span><span data-line="472">
+<div class="viewcode-block" id="involute">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.involute.html#kingdon.operators.involute">[docs]</a>
+</span><span data-line="473"><span class="k">def</span><span class="w"> </span><span class="nf">involute</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="474"><span class="w">    </span><span class="sd">""" Main grade involution. """</span>
+</span><span data-line="475">    <span class="k">return</span> <span class="n">involutions</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">invert_grades</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span></div>
+
+</span><span data-line="476">
+</span><span data-line="477">
+<div class="viewcode-block" id="conjugate">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.conjugate.html#kingdon.operators.conjugate">[docs]</a>
+</span><span data-line="478"><span class="k">def</span><span class="w"> </span><span class="nf">conjugate</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="479"><span class="w">    </span><span class="sd">""" Clifford conjugation: involution and reversion combined. """</span>
+</span><span data-line="480">    <span class="k">return</span> <span class="n">involutions</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">invert_grades</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span></div>
+
+</span><span data-line="481">
+</span><span data-line="482">
+<div class="viewcode-block" id="sqrt">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.sqrt.html#kingdon.operators.sqrt">[docs]</a>
+</span><span data-line="483"><span class="k">def</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="484"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="485"><span class="sd">    Take the square root using the study number approach as described in</span>
+</span><span data-line="486"><span class="sd">    https://doi.org/10.1002/mma.8639</span>
+</span><span data-line="487"><span class="sd">    """</span>
+</span><span data-line="488">    <span class="n">alg</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span>
+</span><span data-line="489">    <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">grades</span> <span class="o">==</span> <span class="p">(</span><span class="mi">0</span><span class="p">,):</span>
+</span><span data-line="490">        <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+</span><span data-line="491">    <span class="n">a</span><span class="p">,</span> <span class="n">bI</span> <span class="o">=</span> <span class="n">grade</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">sub</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">grade</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</span><span data-line="492">    <span class="n">has_solution</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">grades</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="mi">0</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">grades</span>
+</span><span data-line="493">    <span class="k">if</span> <span class="ow">not</span> <span class="n">has_solution</span><span class="p">:</span>
+</span><span data-line="494">        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">"Cannot verify that we really are taking the sqrt of a Study number."</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">)</span>
+</span><span data-line="495">
+</span><span data-line="496">    <span class="n">bI_sq</span> <span class="o">=</span> <span class="n">gp</span><span class="p">(</span><span class="n">bI</span><span class="p">,</span> <span class="n">bI</span><span class="p">)</span>
+</span><span data-line="497">    <span class="k">if</span> <span class="ow">not</span> <span class="n">bI_sq</span><span class="p">:</span>
+</span><span data-line="498">        <span class="n">cp</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">e</span><span class="o">**</span><span class="mf">0.5</span>
+</span><span data-line="499">    <span class="k">else</span><span class="p">:</span>
+</span><span data-line="500">        <span class="n">normS</span> <span class="o">=</span> <span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="n">gp</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">),</span> <span class="n">bI_sq</span><span class="p">))</span><span class="o">.</span><span class="n">e</span>
+</span><span data-line="501">        <span class="n">cp</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">e</span> <span class="o">+</span> <span class="n">normS</span><span class="o">**</span><span class="mf">0.5</span><span class="p">))</span><span class="o">**</span><span class="mf">0.5</span>
+</span><span data-line="502">    <span class="n">cp</span> <span class="o">=</span> <span class="n">scalar</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">cp</span><span class="p">)</span>
+</span><span data-line="503">    <span class="k">return</span> <span class="n">add</span><span class="p">(</span><span class="n">div</span><span class="p">(</span><span class="n">gp</span><span class="p">(</span><span class="n">scalar</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">bI</span><span class="p">),</span> <span class="n">cp</span><span class="p">),</span> <span class="n">cp</span><span class="p">)</span></div>
+
+</span><span data-line="504">
+</span><span data-line="505">
+<div class="viewcode-block" id="polarity">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.polarity.html#kingdon.operators.polarity">[docs]</a>
+</span><span data-line="506"><span class="k">def</span><span class="w"> </span><span class="nf">polarity</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">undual</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="507"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="508"><span class="sd">    Polarity dual: :code:`x` multiplied by the inverse pseudoscalar from the right.</span>
+</span><span data-line="509">
+</span><span data-line="510"><span class="sd">    :param undual: if True, compute the inverse operation, see :func:`unpolarity`.</span>
+</span><span data-line="511"><span class="sd">    """</span>
+</span><span data-line="512">    <span class="c1"># The pseudoscalar, kept raw for the same reason as the constants in :func:`scalar`.</span>
+</span><span data-line="513">    <span class="n">pss</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span><span class="o">.</span><span class="n">mvtype</span><span class="o">.</span><span class="n">fromkeysvalues</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">algebra</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">algebra</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,),</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="514">    <span class="k">if</span> <span class="n">undual</span><span class="p">:</span>
+</span><span data-line="515">        <span class="k">return</span> <span class="n">gp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pss</span><span class="p">)</span>
+</span><span data-line="516">    <span class="n">key_pss</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">algebra</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+</span><span data-line="517">    <span class="n">sign</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span><span class="o">.</span><span class="n">signs</span><span class="p">[</span><span class="n">key_pss</span><span class="p">,</span> <span class="n">key_pss</span><span class="p">]</span>
+</span><span data-line="518">    <span class="k">if</span> <span class="n">sign</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+</span><span data-line="519">        <span class="k">return</span> <span class="o">-</span> <span class="n">gp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pss</span><span class="p">)</span>
+</span><span data-line="520">    <span class="k">return</span> <span class="n">gp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pss</span><span class="p">)</span></div>
+
+</span><span data-line="521">
+</span><span data-line="522">
+<div class="viewcode-block" id="unpolarity">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.unpolarity.html#kingdon.operators.unpolarity">[docs]</a>
+</span><span data-line="523"><span class="k">def</span><span class="w"> </span><span class="nf">unpolarity</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="524"><span class="w">    </span><span class="sd">""" Inverse of :func:`polarity`. """</span>
+</span><span data-line="525">    <span class="k">return</span> <span class="n">polarity</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">undual</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+</span><span data-line="526">
+</span><span data-line="527">
+<div class="viewcode-block" id="hodge">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.hodge.html#kingdon.operators.hodge">[docs]</a>
+</span><span data-line="528"><span class="k">def</span><span class="w"> </span><span class="nf">hodge</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">,</span> <span class="n">undual</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="529"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="530"><span class="sd">    Hodge dual: map each basis blade of :code:`x` to its complement.</span>
+</span><span data-line="531">
+</span><span data-line="532"><span class="sd">    :param undual: if True, compute the inverse operation, see :func:`unhodge`.</span>
+</span><span data-line="533"><span class="sd">    """</span>
+</span><span data-line="534">    <span class="k">if</span> <span class="n">undual</span><span class="p">:</span>
+</span><span data-line="535">        <span class="n">res</span> <span class="o">=</span> <span class="p">{(</span><span class="n">key_dual</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">algebra</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">eI</span><span class="p">):</span> <span class="o">-</span><span class="n">v</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span><span class="o">.</span><span class="n">signs</span><span class="p">[</span><span class="n">key_dual</span><span class="p">,</span> <span class="n">eI</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">v</span>
+</span><span data-line="536">               <span class="k">for</span> <span class="n">eI</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</span><span data-line="537">    <span class="k">else</span><span class="p">:</span>
+</span><span data-line="538">        <span class="n">res</span> <span class="o">=</span> <span class="p">{(</span><span class="n">key_dual</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">algebra</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">eI</span><span class="p">):</span> <span class="o">-</span><span class="n">v</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span><span class="o">.</span><span class="n">signs</span><span class="p">[</span><span class="n">eI</span><span class="p">,</span> <span class="n">key_dual</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">v</span>
+</span><span data-line="539">               <span class="k">for</span> <span class="n">eI</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</span><span data-line="540">    <span class="k">return</span> <span class="n">dict_to_multivector</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">algebra</span><span class="p">)</span></div>
+
+</span><span data-line="541">
+</span><span data-line="542">
+<div class="viewcode-block" id="unhodge">
+<a class="viewcode-back" href="../../api/generated/kingdon.operators.unhodge.html#kingdon.operators.unhodge">[docs]</a>
+</span><span data-line="543"><span class="k">def</span><span class="w"> </span><span class="nf">unhodge</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="s2">"MultiVector"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"MultiVector"</span><span class="p">:</span>
+</span><span data-line="544"><span class="w">    </span><span class="sd">""" Inverse of :func:`hodge`. """</span>
+</span><span data-line="545">    <span class="k">return</span> <span class="n">hodge</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">undual</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2022, Martin Roelfs</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=796a81b5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="../../_static/shibuya.js?v=50760d75"></script>
+      <script src="../../_static/kingdon.js?v=5907dcdc"></script></body>
+</html>

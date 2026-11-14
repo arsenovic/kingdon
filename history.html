@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="cyan" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>History - Kingdon</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Developer Guide" href="workings.html" /><link rel="prev" title="TapeRecorder" href="api/generated/kingdon.taperecorder.TapeRecorder.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=ad592e98" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-codeautolink.css?v=b2176991" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="_static/kingdon.css?v=be060e35" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="History"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="index.html">
+      <img class="light-logo" src="_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <img class="dark-logo" src="_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <strong>Kingdon</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link"><a href="index.html">Home</a></li><li class="link"><a href="examples/index.html">Examples</a></li><li class="link"><a href="api/index.html">API</a></li><li class="link">
+          <a href="https://tbuli.github.io/teahouse/">
+            <span>Teahouse</span><i class="i-lucide external-link"></i></a>
+        </li><li class="link">
+          <a href="https://github.com/tBuLi/kingdon">
+            <span>GitHub</span><i class="i-lucide external-link"></i></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Array Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Type system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">History</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workings.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#id1">0.1.0 (2023-08-12)</a></li>
+<li><a class="reference internal" href="#id2">0.2.0 (2024-01-09)</a></li>
+<li><a class="reference internal" href="#id3">0.3.0 (2024-03-11)</a></li>
+<li><a class="reference internal" href="#id4">0.3.2 (2024-03-18)</a></li>
+<li><a class="reference internal" href="#id5">1.0.0 (2024-04-17)</a></li>
+<li><a class="reference internal" href="#id6">1.0.5 (2024-06-26)</a></li>
+<li><a class="reference internal" href="#id7">1.0.6 (2024-07-10)</a></li>
+<li><a class="reference internal" href="#id8">1.1.0 (2024-08-10)</a></li>
+<li><a class="reference internal" href="#id9">1.1.2 (2024-11-15)</a></li>
+<li><a class="reference internal" href="#id10">1.2.0 (2024-12-16)</a></li>
+<li><a class="reference internal" href="#id11">1.3.0 (2025-03-10)</a></li>
+<li><a class="reference internal" href="#id12">1.3.1 (2025-06-06)</a></li>
+<li><a class="reference internal" href="#id13">1.4.0 (2025-07-11)</a></li>
+<li><a class="reference internal" href="#id14">2.0.0 (2026-03-03)</a></li>
+<li><a class="reference internal" href="#id15">2.1.0 (2026-03-12)</a></li>
+<li><a class="reference internal" href="#id16">2.1.1 (2026-04-14)</a></li>
+<li><a class="reference internal" href="#id17">3.0.0 (2026-09-04)</a></li>
+<li><a class="reference internal" href="#id18">3.1.0 (2026-11-01)</a></li>
+<li><a class="reference internal" href="#id19">3.1.1 (2026-11-04)</a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">Kingdon</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">History</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="history">
+<h1>History<a class="headerlink" href="#history" title="Link to this heading">#</a></h1>
+<section id="id1">
+<h2>0.1.0 (2023-08-12)<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>First release on PyPI.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>0.2.0 (2024-01-09)<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Multivectors now have <cite>map</cite> and <cite>filter</cite> methods to apply element-wise operations to the coefficients.</p></li>
+<li><p>Make matrix representations of expressions using <cite>expr_as_matrix</cite>.</p></li>
+<li><p>Bugfixes.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>0.3.0 (2024-03-11)<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Much faster codegen by the introduction of a GAmphetamine.js inspired RationalPolynomial class, which now replaces
+SymPy for codegen. Particularly for inverses this is orders of magnitude faster.</p></li>
+<li><p>Performed a numbotomy: numba is no longer a dependency since it actually didn’t add much in most cases.
+Instead the user can now provide the Algebra with any wrapper function, which is applied to the generated functions.
+This can be numba.njit, but also any other decorator.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>0.3.2 (2024-03-18)<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed a high priority bug in the graph function.</p></li>
+<li><p>Fixed a bug that stopped multivectors from being callable.</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>1.0.0 (2024-04-17)<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Kingdon now has proper support for ganja.js animations and the graphs are interactive!</p></li>
+<li><p>Indexing a multivector will no longer access coefficients.
+The whole promise of GA is coordinate independence, so why would you need to access coefficients?
+Instead, slicing a multivector will pass on that information to the underlying datastructures
+(e.g. numpy array or pytorch tensor), and will return a new multivector.
+Moreover, you can use the new slicing syntax to set values as well.
+If you really still need access to the coefficients, there is always the getattr syntax or the .values() method.</p></li>
+</ul>
+</section>
+<section id="id6">
+<h2>1.0.5 (2024-06-26)<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Blades by grade syntax: alg.blades.grade(2).</p></li>
+<li><p>Fixed “define” error in ganja.js integration, kingdon now works with reveal.js voila template.</p></li>
+</ul>
+</section>
+<section id="id7">
+<h2>1.0.6 (2024-07-10)<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>Bugfixes to ganja.js integration:
+* Make sure camera is an object before checking for ‘mv’ key.
+* Improved draggable points for PGA.</p>
+</section>
+<section id="id8">
+<h2>1.1.0 (2024-08-10)<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Map and filter now support two argument functions. If such a funtion is provided,
+map/filter is applied on key, value pairs.</p></li>
+<li><p>Added exponential function for simple objects.</p></li>
+<li><p>Raising a mv to 0.5 is now correctly interpreted as a square root.
+This enables e.g. automatic differentiation.</p></li>
+</ul>
+</section>
+<section id="id9">
+<h2>1.1.2 (2024-11-15)<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Improved printing, especially for multivector with array or multivector coefficients.</p></li>
+<li><p><cite>pretty_blade</cite> options added to algebra, to allow users to choose the printing of basis blades.</p></li>
+<li><p>getattr bugfix</p></li>
+</ul>
+</section>
+<section id="id10">
+<h2>1.2.0 (2024-12-16)<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Binary operators are now broadcasted across lists and tuples, e.g. <cite>R &gt;&gt; [point1, point2]</cite>.</p></li>
+<li><p>Projection (&#64;) and conjugation (&gt;&gt;) are now symbolically optimized by default.</p></li>
+<li><p>Matrix reps made with <cite>expr_as_matrix</cite> now have better support for numerical (and multidimensional) multivectors.</p></li>
+</ul>
+</section>
+<section id="id11">
+<h2>1.3.0 (2025-03-10)<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Added custom basis support! You can now choose your own basis, to reduce the number of sign swaps. E.g. <cite>e31</cite> instead of <cite>e13</cite> for the j quaternion.</p></li>
+<li><p>Added <cite>Algebra.fromname</cite> alternative constructor, to initiate popular algebras with optimized bases, identical to <cite>GAmphetamine.js</cite>.</p></li>
+<li><p>Codegen has been made 2-15 times faster for basic operators.</p></li>
+<li><p>Updated the documentation.</p></li>
+</ul>
+</section>
+<section id="id12">
+<h2>1.3.1 (2025-06-06)<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<p>Bugfix release:
+* matrix reps are now correct in all signatures (including custom signatures).
+* Fixed setattr discrepancy when trying to set a basis blade with setattr.
+* Support copying multivectors</p>
+</section>
+<section id="id13">
+<h2>1.4.0 (2025-07-11)<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p>Massive large algebra improvement!
+* In theory up to 36 dimensions are supported*
+* Above d &gt; 6 kingdon switches to large algebra mode and attempts to make optimizations
+* Exotic algebras like 2DCSGA (R5,3), Mother Algebra (R4,4) and 3DCCGA (R6,3) are no longer out of reach, see teahouse!
+* Bugfix: multivectors now take priority over numpy arrays in binary operators even when the numpy array is on the left.</p>
+</section>
+<section id="id14">
+<h2>2.0.0 (2026-03-03)<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Length of a multivector is now defined such that multivectors are sequences if their coefficients are arrays.
+This allows users to iterate over e.g. point clouds naturally.</p></li>
+<li><p>Improved documentation for array syntax.</p></li>
+<li><p>Large algebra performance improvements.</p></li>
+</ul>
+</section>
+<section id="id15">
+<h2>2.1.0 (2026-03-12)<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The conjugation operator <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> now implements the twisted Clifford-Lipschitz action, meaning that it correctly implements sign flips on the basis of grade. Moreover, it now assumes that <span class="math notranslate nohighlight">\(R\tilde{R}=1\)</span>, which allows us to carry out performance improvements in the future. See #123. This also means that if this not what you desire, you should implement your own sandwich operator.</p></li>
+<li><p>The projection <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> now assumes that the second argument is a versor (k-reflection).</p></li>
+<li><p>Graphs can now be updated on the fly with the <code class="docutils literal notranslate"><span class="pre">GraphWidget.update</span></code> method.</p></li>
+<li><p>The options provided to <code class="docutils literal notranslate"><span class="pre">GraphWidget</span></code> now also include a <code class="docutils literal notranslate"><span class="pre">style</span></code> argument, which allows you to set arbitrary arguments on <code class="docutils literal notranslate"><span class="pre">canvas.style</span></code> and so the graphs can now be customized to a much larger degree.</p></li>
+</ul>
+</section>
+<section id="id16">
+<h2>2.1.1 (2026-04-14)<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<p>Bugfix: width and height should be direct options to Algebra.graph</p>
+</section>
+<section id="id17">
+<h2>3.0.0 (2026-09-04)<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Kingdon now has a type system, inspired by <code class="docutils literal notranslate"><span class="pre">GAmphetamine.js</span></code>. Multivector types such as <code class="docutils literal notranslate"><span class="pre">point</span></code>, <code class="docutils literal notranslate"><span class="pre">direction</span></code>, <code class="docutils literal notranslate"><span class="pre">translation</span></code> and <code class="docutils literal notranslate"><span class="pre">bireflection</span></code> are defined by a <code class="docutils literal notranslate"><span class="pre">layout</span></code>: either a dict of basis blades, or a classmethod holding a GA expression, from which kingdon derives which coefficients are free and which are structural constants. Constants are no longer stored or computed with, so the generated code is shorter: the counts in the CSE table of the docs are now reached by the built-in operators. Register your own types with the <code class="docutils literal notranslate"><span class="pre">extra_types</span></code> (or <code class="docutils literal notranslate"><span class="pre">types</span></code>) argument to <code class="docutils literal notranslate"><span class="pre">Algebra</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Algebra</span></code> option <code class="docutils literal notranslate"><span class="pre">graded</span></code> has been renamed to <code class="docutils literal notranslate"><span class="pre">full_layout</span></code>, since it now enforces that every multivector carries the full layout of its type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Algebra.register</span></code> has been deprecated in favor of <code class="docutils literal notranslate"><span class="pre">Algebra.add_operator</span></code>, which is what it really does: it adds a new operator to the algebra. The old name still works but raises a <code class="docutils literal notranslate"><span class="pre">FutureWarning</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultiVector</span></code> is no longer callable. To evaluate an expression for numerical values, build the multivector numerically or compile the expression with <code class="docutils literal notranslate"><span class="pre">Algebra.add_operator</span></code>/<code class="docutils literal notranslate"><span class="pre">Algebra.compile</span></code>.</p></li>
+<li><p>Einops is now supported on Multivectors, allowing users to write einops expressions on multivector coefficients and seamlessly mix them with kingdon operations. See #46.</p></li>
+<li><p>GAmphetamine.js inspired Common Subexpression Elimination (CSE) has been implemented, resulting in code that is as fast as hand optimized code for known test cases.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Algebra.add_operator</span></code> decorator now uses the new CSE by default, so compiled functions are now even faster without any changes to user code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Algebra.compile</span></code> is no longer a decorator: it now takes the expression followed by the symbolic multivectors to compile it for, and returns a <code class="docutils literal notranslate"><span class="pre">CompiledExpression</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Algebra.graph</span></code> now accepts multivectors whose coefficients are arrays, so meshes and point clouds are a single subject instead of thousands. The shape of the multivector decides what is drawn: <code class="docutils literal notranslate"><span class="pre">(N,)</span></code> gives <code class="docutils literal notranslate"><span class="pre">N</span></code> separate elements, <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">2)</span></code> line segments and <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">3)</span></code> filled triangles. The coefficients are sent to <code class="docutils literal notranslate"><span class="pre">ganja.js</span></code> as a single binary buffer, which is much faster than graphing the elements one by one. See the “Meshes and point clouds” section of the docs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RationalPolynomial</span></code> now has a <code class="docutils literal notranslate"><span class="pre">diff</span></code> method similar to that of SymPy.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">set</span></code> method of Multivectors can be used within compiled functions to update coefficients in-place instead of returning a multivector.</p></li>
+<li><p>Large algebras (<code class="docutils literal notranslate"><span class="pre">large=True</span></code>) have no multivector types: every multivector is a plain <code class="docutils literal notranslate"><span class="pre">MultiVector</span></code>. The k-vector constructors such as <code class="docutils literal notranslate"><span class="pre">alg.vector</span></code> and <code class="docutils literal notranslate"><span class="pre">alg.pseudovector</span></code> are still but they simply construct a <code class="docutils literal notranslate"><span class="pre">MultiVector</span></code> of that grade. <code class="docutils literal notranslate"><span class="pre">Algebra.add_operator</span></code> requires <code class="docutils literal notranslate"><span class="pre">symbolic=True</span></code> in a large algebra.</p></li>
+</ul>
+</section>
+<section id="id18">
+<h2>3.1.0 (2026-11-01)<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+<p><strong>Features</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">abs(mv)</span></code> now works on multivectors and returns <code class="docutils literal notranslate"><span class="pre">abs(mv.norm().e)</span></code>, so masks like <code class="docutils literal notranslate"><span class="pre">points[abs(lines)</span> <span class="pre">&lt;</span> <span class="pre">1]</span></code> work. Closes #42 (thanks &#64;HarshRajSinghania).</p></li>
+<li><p>New <code class="docutils literal notranslate"><span class="pre">%%graph</span></code> cell magic for Jupyter: <code class="docutils literal notranslate"><span class="pre">Algebra.graph</span></code> arguments one subject per line, options as flags, e.g. <code class="docutils literal notranslate"><span class="pre">%%graph</span> <span class="pre">-lineWidth</span> <span class="pre">3</span> <span class="pre">-grid</span></code>. It is registered automatically when kingdon is imported in IPython, or with <code class="docutils literal notranslate"><span class="pre">%load_ext</span> <span class="pre">kingdon</span></code>. Closes #138.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">kingdon</span></code> is faster: the graph dependencies (<code class="docutils literal notranslate"><span class="pre">anywidget</span></code>, <code class="docutils literal notranslate"><span class="pre">IPython</span></code>) are only imported when a graph is made.</p></li>
+<li><p>Integer powers <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">**</span> <span class="pre">n</span></code> now use exponentiation by squaring.</p></li>
+<li><p>Python 3.10 and 3.14 are now supported.</p></li>
+</ul>
+<p><strong>Bugfixes</strong></p>
+<ul class="simple">
+<li><p>Integer powers of multivectors with interval-valued or otherwise non-scalar coefficients were wrong, because squares duplicated their symbolic operand. Fixes #152 (thanks &#64;Samuel-Hills).</p></li>
+<li><p>Basis blades outside the algebra are ignored again when constructing a multivector, instead of raising an error. Fixes #144 (thanks &#64;Concode0).</p></li>
+<li><p>The sandwich product <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> crashed in <code class="docutils literal notranslate"><span class="pre">full_layout</span></code> mode. Fixes #156.</p></li>
+<li><p>Numba could not compile functions whose result, or one of whose inputs, is an empty multivector, e.g. <code class="docutils literal notranslate"><span class="pre">e0</span> <span class="pre">*</span> <span class="pre">e0</span></code> in PGA. Fixes #137.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Algebra.add_operator</span></code> crashed in <code class="docutils literal notranslate"><span class="pre">full_layout</span></code> mode.</p></li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">large</span></code> mode, array-valued multivectors failed, and <code class="docutils literal notranslate"><span class="pre">torch.compile</span></code> took extremely long.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">proj</span></code> had no docstring.</p></li>
+<li><p>The automatic <code class="docutils literal notranslate"><span class="pre">dual</span></code> and <code class="docutils literal notranslate"><span class="pre">undual</span></code> modes raise <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> instead of a bare <code class="docutils literal notranslate"><span class="pre">Exception</span></code> when the algebra has no suitable dual.</p></li>
+</ul>
+<p><strong>Development</strong></p>
+<ul class="simple">
+<li><p>Packaging moved from <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> to <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>, and development to uv (thanks &#64;arsenovic). Releases are published with PyPI trusted publishing.</p></li>
+<li><p>The code is now linted with ruff.</p></li>
+</ul>
+</section>
+<section id="id19">
+<h2>3.1.1 (2026-11-04)<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Added backpressure from python to javascript in the <code class="docutils literal notranslate"><span class="pre">GraphWidget</span></code>, such that scenes that cannot keep up with the frame rate do not end up flooding the kernel, but rather cause the frame rate to drop.</p></li>
+</ul>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="api/generated/kingdon.taperecorder.TapeRecorder.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">TapeRecorder</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="workings.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Developer Guide</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2022, Martin Roelfs</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=796a81b5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="_static/shibuya.js?v=50760d75"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+      <script src="_static/kingdon.js?v=5907dcdc"></script></body>
+</html>

@@ -1,0 +1,29 @@
+﻿KingdonBackend
+==============
+
+.. currentmodule:: kingdon.einops_backend
+
+.. autoclass:: KingdonBackend
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~KingdonBackend.add_axis
+      ~KingdonBackend.concat
+      ~KingdonBackend.einsum
+      ~KingdonBackend.is_appropriate_type
+      ~KingdonBackend.is_float_type
+      ~KingdonBackend.reduce
+      ~KingdonBackend.reshape
+      ~KingdonBackend.shape
+      ~KingdonBackend.tile
+      ~KingdonBackend.to_numpy
+      ~KingdonBackend.transpose
+   

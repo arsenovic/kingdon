@@ -1,0 +1,6 @@
+﻿add
+===
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: add

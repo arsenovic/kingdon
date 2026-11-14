@@ -1,0 +1,12 @@
+﻿Fraction
+========
+
+.. currentmodule:: kingdon.operators
+
+.. autoclass:: Fraction
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   

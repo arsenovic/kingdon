@@ -1,0 +1,6 @@
+﻿AlgebraError
+============
+
+.. currentmodule:: kingdon.operator_dict
+
+.. autoexception:: AlgebraError

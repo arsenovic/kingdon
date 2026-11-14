@@ -1,0 +1,6 @@
+﻿div
+===
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: div

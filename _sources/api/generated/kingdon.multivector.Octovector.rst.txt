@@ -1,0 +1,12 @@
+﻿Octovector
+==========
+
+.. currentmodule:: kingdon.multivector
+
+.. autoclass:: Octovector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   

@@ -1,0 +1,6 @@
+﻿do\_compile\_symbolic
+=====================
+
+.. currentmodule:: kingdon.codegen
+
+.. autofunction:: do_compile_symbolic

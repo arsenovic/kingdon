@@ -1,0 +1,6 @@
+﻿scalar
+======
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: scalar

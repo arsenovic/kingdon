@@ -1,0 +1,6 @@
+﻿sp
+==
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: sp

@@ -1,0 +1,6 @@
+﻿proj
+====
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: proj

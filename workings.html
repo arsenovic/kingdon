@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="cyan" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Developer Guide - Kingdon</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Contributing" href="contributing.html" /><link rel="prev" title="History" href="history.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=ad592e98" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-codeautolink.css?v=b2176991" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="_static/kingdon.css?v=be060e35" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="Developer Guide"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="index.html">
+      <img class="light-logo" src="_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <img class="dark-logo" src="_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <strong>Kingdon</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link"><a href="index.html">Home</a></li><li class="link"><a href="examples/index.html">Examples</a></li><li class="link"><a href="api/index.html">API</a></li><li class="link">
+          <a href="https://tbuli.github.io/teahouse/">
+            <span>Teahouse</span><i class="i-lucide external-link"></i></a>
+        </li><li class="link">
+          <a href="https://github.com/tBuLi/kingdon">
+            <span>GitHub</span><i class="i-lucide external-link"></i></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Array Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Type system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#type-system-internals">Type system internals</a><ul>
+<li><a class="reference internal" href="#binding-layouts">Binding layouts</a></li>
+<li><a class="reference internal" href="#resolving-types">Resolving types</a></li>
+<li><a class="reference internal" href="#blade-orientation">Blade orientation</a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">Kingdon</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Developer Guide</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="developer-guide">
+<h1>Developer Guide<a class="headerlink" href="#developer-guide" title="Link to this heading">#</a></h1>
+<p>This chapter will explain how <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> works internally to make it easier to start contributing to kingdon.
+(Under construction.)</p>
+<section id="type-system-internals">
+<h2>Type system internals<a class="headerlink" href="#type-system-internals" title="Link to this heading">#</a></h2>
+<p>For how to <em>use</em> the type system, see <a class="reference internal" href="types.html"><span class="doc">Type system</span></a>. What follows is how it works.</p>
+<section id="binding-layouts">
+<h3>Binding layouts<a class="headerlink" href="#binding-layouts" title="Link to this heading">#</a></h3>
+<p>The single representation of a type is its <em>layout</em>: a dict from blade key (the binary rep of a basis
+blade) to either <code class="code docutils literal notranslate"><span class="pre">...</span></code> for a free component, or a number for a structural constant. Every
+registered type is bound to a layout once, when the algebra is created, by
+<code class="code docutils literal notranslate"><span class="pre">Algebra._bind_layout</span></code>, and the result is cached on
+<code class="code docutils literal notranslate"><span class="pre">Algebra._type_layouts</span></code>.</p>
+<p>A type that defines <code class="code docutils literal notranslate"><span class="pre">layout</span></code> as a dict needs no more than a translation from canonical blade names
+to (binary) keys. A type that defines <code class="code docutils literal notranslate"><span class="pre">layout</span></code> as a classmethod gets it evaluated: the expression is run
+with symbolic coefficients and the result is read off blade by blade. A coefficient that came out
+numerical is a structural constant of the type, anything still symbolic is a free component. This is
+also why such layouts must be written with <a class="reference internal" href="api/operators.html#module-kingdon.operators" title="kingdon.operators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kingdon.operators</span></code></a> directly: they run during
+<code class="code docutils literal notranslate"><span class="pre">Algebra.__post_init__</span></code>, before the operators have been registered on
+<a class="reference internal" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiVector</span></code></a>.</p>
+<p>Instances expose their bound layout as <a class="reference internal" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector.type_layout" title="kingdon.multivector.MultiVector.type_layout"><code class="xref py py-attr docutils literal notranslate"><span class="pre">type_layout</span></code></a>, and only
+the free components are actually stored:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">pga</span> <span class="o">=</span> <span class="n">Algebra</span><span class="o">.</span><span class="n">fromname</span><span class="p">(</span><span class="s1">'3DPGA'</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">pga</span><span class="o">.</span><span class="n">point</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'p'</span><span class="p">)</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">type_layout</span>
+</span><span data-line="4"><span class="go">{14: Ellipsis, 13: Ellipsis, 11: Ellipsis, 7: 1.0}</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</span><span data-line="6"><span class="go">(14, 13, 11)</span>
+</span></pre></div>
+</div>
+<p><span class="math notranslate nohighlight">\(\mathbf{e}_{123}\)</span> (key <code class="code docutils literal notranslate"><span class="pre">7</span></code>) is in the layout but not in <code class="code docutils literal notranslate"><span class="pre">keys()</span></code>:
+codegen substitutes it as a constant when compiling functions involving points,
+but it never becomes an argument or a value in memory.</p>
+</section>
+<section id="resolving-types">
+<h3>Resolving types<a class="headerlink" href="#resolving-types" title="Link to this heading">#</a></h3>
+<p>Codegen produces the layout of a result, and <a class="reference internal" href="api/generated/kingdon.codegen.resolve_layout.html#kingdon.codegen.resolve_layout" title="kingdon.codegen.resolve_layout"><code class="xref py py-func docutils literal notranslate"><span class="pre">resolve_layout()</span></code></a> decides which
+type that is by comparing it against every entry of <code class="code docutils literal notranslate"><span class="pre">_type_layouts</span></code>. A registered type matches
+when
+- its fixed values agree with the result
+- it does not fix anything the result leaves free
+- it knows about every fixed blade the result carries.
+Of the matching types the most specific wins:
+first minimising free slots that coincide with fixed values of the result, then free slots outside
+the result altogether, with ties broken by registration order. So in 3DPGA a <code class="code docutils literal notranslate"><span class="pre">Point</span></code> beats
+<code class="code docutils literal notranslate"><span class="pre">Trivector</span></code> for a trivector with a <code class="code docutils literal notranslate"><span class="pre">1</span></code> on <span class="math notranslate nohighlight">\(\mathbf{e}_{123}\)</span>, and
+<a class="reference internal" href="api/generated/kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiVector</span></code></a> is the fall-back when nothing matches.</p>
+<p>Since matching is purely structural, an operation is typed by what it produces:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">alg</span> <span class="o">=</span> <span class="n">Algebra</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/functions.html#type"><span class="nb">type</span></a><span class="p">(</span><span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'u'</span><span class="p">)</span> <span class="o">*</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'v'</span><span class="p">))</span>
+</span><span data-line="3"><span class="go">&lt;class 'kingdon.multivector.Bireflection'&gt;</span>
+</span></pre></div>
+</div>
+</section>
+<section id="blade-orientation">
+<h3>Blade orientation<a class="headerlink" href="#blade-orientation" title="Link to this heading">#</a></h3>
+<p>A layout may order its blades freely, but the indivdual blades in the layout have to correspond
+to (an even permutation of) a basis blade of the algebra.
+Orientation is a property of the <em>basis</em>, set with the <code class="code docutils literal notranslate"><span class="pre">basis</span></code> argument of
+<a class="reference internal" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Algebra</span></code></a>, not of an individual type.</p>
+</section>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="history.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">History</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="contributing.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Contributing</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2022, Martin Roelfs</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=796a81b5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="_static/shibuya.js?v=50760d75"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+      <script src="_static/kingdon.js?v=5907dcdc"></script></body>
+</html>

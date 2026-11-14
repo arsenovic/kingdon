@@ -1,0 +1,19 @@
+﻿Translation
+===========
+
+.. currentmodule:: kingdon.multivector
+
+.. autoclass:: Translation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~Translation.layout
+   

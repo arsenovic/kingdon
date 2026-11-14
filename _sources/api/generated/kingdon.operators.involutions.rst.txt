@@ -1,0 +1,6 @@
+﻿involutions
+===========
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: involutions

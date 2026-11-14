@@ -1,0 +1,6 @@
+﻿rc
+==
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: rc

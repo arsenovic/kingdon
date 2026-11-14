@@ -1,0 +1,6 @@
+﻿lambdify
+========
+
+.. currentmodule:: kingdon.codegen
+
+.. autofunction:: lambdify

@@ -1,0 +1,6 @@
+﻿resolve\_layout
+===============
+
+.. currentmodule:: kingdon.codegen
+
+.. autofunction:: resolve_layout

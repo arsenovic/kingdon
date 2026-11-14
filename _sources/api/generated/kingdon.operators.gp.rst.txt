@@ -1,0 +1,6 @@
+﻿gp
+==
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: gp

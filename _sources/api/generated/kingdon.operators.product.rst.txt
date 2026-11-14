@@ -1,0 +1,6 @@
+﻿product
+=======
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: product

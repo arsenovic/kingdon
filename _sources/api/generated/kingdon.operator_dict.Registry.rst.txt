@@ -1,0 +1,19 @@
+﻿Registry
+========
+
+.. currentmodule:: kingdon.operator_dict
+
+.. autoclass:: Registry
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~Registry.make_symbolic_mvs
+   

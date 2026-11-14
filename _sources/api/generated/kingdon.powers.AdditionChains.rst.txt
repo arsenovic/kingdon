@@ -1,0 +1,12 @@
+﻿AdditionChains
+==============
+
+.. currentmodule:: kingdon.powers
+
+.. autoclass:: AdditionChains
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   

@@ -1,0 +1,6 @@
+﻿resolve\_and\_expand
+====================
+
+.. currentmodule:: kingdon.operator_dict
+
+.. autofunction:: resolve_and_expand

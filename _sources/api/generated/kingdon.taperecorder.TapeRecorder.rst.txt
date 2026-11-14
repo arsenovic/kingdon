@@ -1,0 +1,57 @@
+﻿TapeRecorder
+============
+
+.. currentmodule:: kingdon.taperecorder
+
+.. autoclass:: TapeRecorder
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~TapeRecorder.acp
+      ~TapeRecorder.add
+      ~TapeRecorder.binary_operator
+      ~TapeRecorder.conjugate
+      ~TapeRecorder.cp
+      ~TapeRecorder.div
+      ~TapeRecorder.dual
+      ~TapeRecorder.fromname
+      ~TapeRecorder.gp
+      ~TapeRecorder.grade
+      ~TapeRecorder.hodge
+      ~TapeRecorder.inv
+      ~TapeRecorder.involute
+      ~TapeRecorder.ip
+      ~TapeRecorder.keys
+      ~TapeRecorder.lc
+      ~TapeRecorder.neg
+      ~TapeRecorder.norm
+      ~TapeRecorder.normalized
+      ~TapeRecorder.normsq
+      ~TapeRecorder.op
+      ~TapeRecorder.outercos
+      ~TapeRecorder.outerexp
+      ~TapeRecorder.outersin
+      ~TapeRecorder.outertan
+      ~TapeRecorder.polarity
+      ~TapeRecorder.proj
+      ~TapeRecorder.rc
+      ~TapeRecorder.reverse
+      ~TapeRecorder.rp
+      ~TapeRecorder.sp
+      ~TapeRecorder.sqrt
+      ~TapeRecorder.square
+      ~TapeRecorder.sub
+      ~TapeRecorder.sw
+      ~TapeRecorder.unary_operator
+      ~TapeRecorder.undual
+      ~TapeRecorder.unhodge
+      ~TapeRecorder.unpolarity
+   

@@ -1,0 +1,6 @@
+﻿ip
+==
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: ip

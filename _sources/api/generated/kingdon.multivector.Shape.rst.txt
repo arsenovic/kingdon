@@ -1,0 +1,12 @@
+﻿Shape
+=====
+
+.. currentmodule:: kingdon.multivector
+
+.. autoclass:: Shape
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   

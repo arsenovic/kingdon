@@ -1,0 +1,6 @@
+﻿sw
+==
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: sw

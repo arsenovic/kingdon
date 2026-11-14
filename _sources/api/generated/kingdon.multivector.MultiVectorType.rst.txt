@@ -1,0 +1,12 @@
+﻿MultiVectorType
+===============
+
+.. currentmodule:: kingdon.multivector
+
+.. autoclass:: MultiVectorType
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   

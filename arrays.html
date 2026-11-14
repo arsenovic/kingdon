@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="cyan" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Array Syntax - Kingdon</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Type system" href="types.html" /><link rel="prev" title="Operators" href="operators.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=ad592e98" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-codeautolink.css?v=b2176991" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="_static/kingdon.css?v=be060e35" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="Array Syntax"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="index.html">
+      <img class="light-logo" src="_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <img class="dark-logo" src="_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <strong>Kingdon</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link"><a href="index.html">Home</a></li><li class="link"><a href="examples/index.html">Examples</a></li><li class="link"><a href="api/index.html">API</a></li><li class="link">
+          <a href="https://tbuli.github.io/teahouse/">
+            <span>Teahouse</span><i class="i-lucide external-link"></i></a>
+        </li><li class="link">
+          <a href="https://github.com/tBuLi/kingdon">
+            <span>GitHub</span><i class="i-lucide external-link"></i></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">User guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Array Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Type system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workings.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#tl-dr">TL;DR</a></li>
+<li><a class="reference internal" href="#the-shape-of-multivectors">The Shape of MultiVectors</a></li>
+<li><a class="reference internal" href="#masking-indexing">Masking &amp; Indexing</a><ul>
+<li><a class="reference internal" href="#mesh">Mesh</a></li>
+<li><a class="reference internal" href="#how-to-stay-in-hyper-space">How to stay in hyper-space</a></li>
+<li><a class="reference internal" href="#inhomogeneous-output">Inhomogeneous output</a></li>
+<li><a class="reference internal" href="#avoid-for-loops">Avoid for loops</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#einops">Einops</a><ul>
+<li><a class="reference internal" href="#rearrange">Rearrange</a></li>
+<li><a class="reference internal" href="#reduce">Reduce</a></li>
+<li><a class="reference internal" href="#repeat">Repeat</a></li>
+<li><a class="reference internal" href="#pack-unpack">Pack &amp; Unpack</a></li>
+<li><a class="reference internal" href="#einsum">Einsum</a></li>
+<li><a class="reference internal" href="#parse-shape-asnumpy">Parse_shape &amp; asnumpy</a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">Kingdon</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Array Syntax</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="array-syntax">
+<h1>Array Syntax<a class="headerlink" href="#array-syntax" title="Link to this heading">#</a></h1>
+<p>(<a class="reference external" href="https://tbuli.github.io/teahouse/lab/index.html?path=2DPGA%2Fex_2dpga_boids.ipynb">interactive example</a>)</p>
+<p>Kingdon was designed to be agnostic to coefficient types, and therefore it is compatible with
+popular array types such as <code class="code docutils literal notranslate"><span class="pre">numpy</span></code> or <code class="code docutils literal notranslate"><span class="pre">torch</span></code>.
+In order to facilitate working with multivectors over arrays, <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> fully
+supports array indexing and masking, which results in compact yet performant code.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These design choices were made in part because working with a multivector of arrays is <em>much</em> faster
+than working with an array of multivectors.</p>
+</div>
+<section id="tl-dr">
+<h2>TL;DR<a class="headerlink" href="#tl-dr" title="Link to this heading">#</a></h2>
+<p>To get started with <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> on arrays types straight away, we highlight the most important steps here.</p>
+<ol class="arabic simple">
+<li><p>Create your algebra with a <code class="code docutils literal notranslate"><span class="pre">values_asarray</span></code> function that always casts multivectors back to arrays.</p></li>
+</ol>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">NumPy</span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">alg</span> <span class="o">=</span> <span class="n">Algebra</span><span class="o">.</span><span class="n">fromname</span><span class="p">(</span><span class="s2">"3DPGA"</span><span class="p">,</span> <span class="n">values_asarray</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">PyTorch</span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">asarray</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="k">if</span> <span class="n">values</span> <span class="ow">and</span> <a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/functions.html#all"><span class="nb">all</span></a><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/functions.html#isinstance"><span class="nb">isinstance</span></a><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">values</span><span class="p">)</span> <span class="k">else</span> <span class="n">values</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">alg</span> <span class="o">=</span> <span class="n">Algebra</span><span class="o">.</span><span class="n">fromname</span><span class="p">(</span><span class="s2">"3DPGA"</span><span class="p">,</span> <span class="n">values_asarray</span><span class="o">=</span><span class="n">asarray</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<p><code class="code docutils literal notranslate"><span class="pre">np.asarray</span></code> expects all coefficients of a multivector to have the same shape, which is the common
+case and also the fastest option; it raises a <code class="code docutils literal notranslate"><span class="pre">ValueError</span></code> if they do not.
+See <a class="reference internal" href="#inhomogeneous-output"><span class="std std-ref">Inhomogeneous output</span></a> for when and how to deal with such coefficients.
+The <code class="code docutils literal notranslate"><span class="pre">torch</span></code> version needs a guard because <code class="code docutils literal notranslate"><span class="pre">torch</span></code> has no object dtype: basis blades carry
+plain python numbers, which <code class="code docutils literal notranslate"><span class="pre">torch.stack</span></code> does not accept.
+Those are passed through as a list instead, which is what kingdon does by default anyway.</p>
+<ol class="arabic simple" start="2">
+<li><p>(Optional) Provide a wrapper function upon algebra creation that is always applied to the code generated by
+kingdon, after kingdon has already done its symbolic optimization and cse, to make it even faster.</p></li>
+</ol>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">torch.compile</span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">alg</span> <span class="o">=</span> <span class="n">Algebra</span><span class="o">.</span><span class="n">fromname</span><span class="p">(</span><span class="s2">"3DPGA"</span><span class="p">,</span> <span class="n">wrapper</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">compile</span><span class="p">,</span> <span class="n">values_asarray</span><span class="o">=</span><span class="n">asarray</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Write vectorized code whenever possible. <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> multivectors are not themselves array types, but they enable the same programming paradigm.</p></li>
+</ol>
+<p>For example, suppose we want to project <span class="math notranslate nohighlight">\(N\)</span> points on <span class="math notranslate nohighlight">\(M\)</span> lines using the projection operator <code class="code docutils literal notranslate"><span class="pre">@</span></code>.
+You can add a new dimension to your multivector (and thus the underlying array) using the syntax <code class="code docutils literal notranslate"><span class="pre">points[:,</span> <span class="pre">None]</span></code>.
+You can use this to keep your algorithm focused on the geometry, while simultaniously being compatible with the array paradigm:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">N</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">points</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">point</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">lines</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">bivector</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">M</span><span class="p">))</span><span class="o">.</span><span class="n">normalized</span><span class="p">()</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">projected_points</span> <span class="o">=</span> <span class="n">points</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">@</span> <span class="n">lines</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span><span class="n">projected_points</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="6"><span class="go">Point[(5, 3)]</span>
+</span></pre></div>
+</div>
+<p>The projection of point 1 on line 2 is now available as <code class="code docutils literal notranslate"><span class="pre">p12</span> <span class="pre">=</span> <span class="pre">projected_points[1,</span> <span class="pre">2]</span></code>.</p>
+<p>Or as another example; suppose we have the point cloud <code class="code docutils literal notranslate"><span class="pre">points</span></code> above, and we want to find all
+points within a given radius from a particular point <code class="code docutils literal notranslate"><span class="pre">O</span></code>.
+This can be done using the standard masking syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">O</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">point</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>         <span class="c1"># Point to consider; in this case the origin</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">(</span><span class="n">points</span> <span class="o">&amp;</span> <span class="n">O</span><span class="p">)</span>                 <span class="c1"># Join all p in point with O in one high level statement</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="4"><span class="go">Bivector[(5,)]</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">norm</span><span class="p">()</span>                     <span class="c1"># Length of the line segments [p, O] for p in points</span>
+</span><span data-line="6"><span class="gp">&gt;&gt;&gt; </span><span class="n">target_points</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/functions.html#abs"><span class="nb">abs</span></a><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># all points within the unit sphere</span>
+</span></pre></div>
+</div>
+<p>You see that our algorithm expresses the geometry of the problem very compactly; the broadcasting is all
+done automatically by the array types we are working over.</p>
+<p>The indexing syntax of the python array API is also supported. As an example,
+consider we have a mesh, defined by an <code class="code docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">3)</span></code> float array <code class="code docutils literal notranslate"><span class="pre">vertices</span></code> with N vertex coordinates,
+and an <code class="code docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code> integer array <code class="code docutils literal notranslate"><span class="pre">faces</span></code> where the integers in the range <span class="math notranslate nohighlight">\([0, N)\)</span> are the indices of
+which three vertices make a given face in the mesh.
+Then if we make a point <code class="code docutils literal notranslate"><span class="pre">v</span></code> of shape <code class="code docutils literal notranslate"><span class="pre">(N,)</span></code> from <code class="code docutils literal notranslate"><span class="pre">vertices</span></code>,
+the <code class="code docutils literal notranslate"><span class="pre">faces</span></code> array can be applied as <code class="code docutils literal notranslate"><span class="pre">v[faces]</span></code> to form the <code class="code docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code> array of faces,
+on which we can do operations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span> <span class="o">=</span> <span class="n">load_obj</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>  <span class="c1"># Load some obj mesh file to get N vertices and M faces</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="n">pga3d</span><span class="o">.</span><span class="n">blades</span><span class="o">.</span><span class="n">e0</span> <span class="o">+</span> <span class="n">pga3d</span><span class="o">.</span><span class="n">evector</span><span class="p">(</span><span class="n">vertices</span><span class="o">.</span><span class="n">T</span><span class="p">))</span><span class="o">.</span><span class="n">dual</span><span class="p">()</span>  <span class="c1"># algebraic construction of PGA points.</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="4"><span class="go">Point[(N,)]</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span><span class="n">facets</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">faces</span><span class="p">]</span>
+</span><span data-line="6"><span class="gp">&gt;&gt;&gt; </span><span class="n">facets</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="7"><span class="go">Point[(M, 3)]</span>
+</span><span data-line="8"><span class="gp">&gt;&gt;&gt; </span><span class="n">planes</span> <span class="o">=</span> <span class="n">facets</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">facets</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">facets</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</span><span data-line="9"><span class="gp">&gt;&gt;&gt; </span><span class="n">planes</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="10"><span class="go">Vector[(M,)]</span>
+</span><span data-line="11"><span class="gp">&gt;&gt;&gt; </span><span class="n">areas</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">planes</span><span class="o">.</span><span class="n">norm</span><span class="p">()</span>  <span class="c1"># The areas of the triangles is half that of the planes</span>
+</span><span data-line="12"><span class="gp">&gt;&gt;&gt; </span><span class="n">area</span> <span class="o">=</span> <span class="n">areas</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">)</span>
+</span><span data-line="13"><span class="gp">&gt;&gt;&gt; </span><span class="n">volume</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">planes</span><span class="o">.</span><span class="n">e0</span><span class="p">)</span> <span class="o">/</span> <span class="mi">6</span>
+</span></pre></div>
+</div>
+<p>Lastly, <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> is also compatible with <code class="code docutils literal notranslate"><span class="pre">einops</span></code>.
+In the einops patterns you only make reference to the non-blade dimensions of the multivector,
+in accordance with what you would expect on the basis of the shape of the multivector.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">rearrange</span><a class="headerlink" href="#id5" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">einops</span><span class="w"> </span><span class="kn">import</span> <span class="n">rearrange</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><a class="sphinx-codeautolink-a" href="api/index.html#module-kingdon"><span class="nn">kingdon</span></a><span class="w"> </span><span class="kn">import</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">Algebra</span></a>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><a class="sphinx-codeautolink-a" href="api/einops_backend.html#module-kingdon.einops_backend"><span class="nn">kingdon.einops_backend</span></a>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/index.html#module-numpy"><span class="nn">numpy</span></a><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt;</span>
+</span><span data-line="6"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">alg</span></a> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">Algebra</span></a><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span data-line="7"><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.rand.html#numpy.random.rand" title="numpy.random.rand"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</span><span data-line="8"><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="9"><span class="go">Vector[(3, 4)]</span>
+</span><span data-line="10"><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rearrange</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">'a b -&gt; b a'</span><span class="p">)</span>
+</span><span data-line="11"><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="12"><span class="go">Vector[(4, 3)]</span>
+</span></pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">reduce</span><a class="headerlink" href="#id6" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">einops</span><span class="w"> </span><span class="kn">import</span> <span class="n">reduce</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt;</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">'a b -&gt; a'</span><span class="p">,</span> <span class="s1">'mean'</span><span class="p">)</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="5"><span class="go">Vector[(3,)]</span>
+</span></pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">pack &amp; unpack</span><a class="headerlink" href="#id7" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">einops</span><span class="w"> </span><span class="kn">import</span> <span class="n">pack</span><span class="p">,</span> <span class="n">unpack</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt;</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/generated/numpy.zeros.html#numpy.zeros" title="numpy.zeros"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]))</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/generated/numpy.zeros.html#numpy.zeros" title="numpy.zeros"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">]))</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span><span class="n">packed</span><span class="p">,</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">pack</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="s1">'j * k'</span><span class="p">)</span>
+</span><span data-line="6"><span class="gp">&gt;&gt;&gt; </span><span class="n">packed</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="7"><span class="go">Vector[(3, 8, 5)]</span>
+</span><span data-line="8"><span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span><span class="p">,</span> <span class="n">b2</span> <span class="o">=</span> <span class="n">unpack</span><span class="p">(</span><span class="n">packed</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="s1">'j * k'</span><span class="p">)</span>
+</span><span data-line="9"><span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span> <span class="ow">and</span> <span class="n">b2</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">b</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="10"><span class="go">True</span>
+</span></pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">einsum</span><a class="headerlink" href="#id8" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">einops</span><span class="w"> </span><span class="kn">import</span> <span class="n">einsum</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt;</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.randn.html#numpy.random.randn" title="numpy.random.randn"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">einsum</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="s1">'i i -&gt;'</span><span class="p">)</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="6"><span class="go">Vector[()]</span>
+</span><span data-line="7"><span class="gp">&gt;&gt;&gt; </span><span class="n">weight</span> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.randn.html#numpy.random.randn" title="numpy.random.randn"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span></a><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</span><span data-line="8"><span class="gp">&gt;&gt;&gt; </span><span class="n">matmul</span> <span class="o">=</span> <span class="n">einsum</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="s1">'i j, j k -&gt; i k'</span><span class="p">)</span>
+</span><span data-line="9"><span class="gp">&gt;&gt;&gt; </span><span class="n">matmul</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="10"><span class="go">Vector[(10, 20)]</span>
+</span></pre></div>
+</div>
+</div>
+<p>That is it! If you are interested in more details, the rest of this page explains all of this and more in full detail.</p>
+</section>
+<section id="the-shape-of-multivectors">
+<h2>The Shape of MultiVectors<a class="headerlink" href="#the-shape-of-multivectors" title="Link to this heading">#</a></h2>
+<p>Ordinarily multivectors are zero dimensional, and have no length.
+For example, in <span class="math notranslate nohighlight">\(\mathbb{R}_3\)</span> we have</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><a class="sphinx-codeautolink-a" href="api/index.html#module-kingdon"><span class="nn">kingdon</span></a><span class="w"> </span><span class="kn">import</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">Algebra</span></a>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/index.html#module-numpy"><span class="nn">numpy</span></a><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt;</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">alg</span></a> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">Algebra</span></a><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span><span class="n">xvals</span> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.rand.html#numpy.random.rand" title="numpy.random.rand"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span></a><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># e1, e2, e3 coefficients</span>
+</span><span data-line="6"><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="n">xvals</span><span class="p">)</span>
+</span><span data-line="7"><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="8"><span class="go">Vector[()]</span>
+</span></pre></div>
+</div>
+<p>Now if we look at <code class="code docutils literal notranslate"><span class="pre">x.shape</span></code>, we see that the tuple is empty, even though <code class="code docutils literal notranslate"><span class="pre">xvals.shape</span></code> is <code class="code docutils literal notranslate"><span class="pre">(3,)</span></code>.
+This reflects that <code class="code docutils literal notranslate"><span class="pre">x</span></code> is a single vector, and therefore not iterable. You might have expected
+iteration over a multivector to iterate over its coefficients, but in <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> multivectors are
+treated as geometric numbers, similar to how complex numbers are treated in complex analysis.
+If we attempt to retrieve the length of <code class="code docutils literal notranslate"><span class="pre">x</span></code> a <code class="code docutils literal notranslate"><span class="pre">TypeError</span></code> is raised, consistent with the fact
+that 0-dimensional multivectors are not iterable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/functions.html#len"><span class="nb">len</span></a><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span data-line="2"><span class="go">TypeError: len() of unsized 0-dimensional multivector</span>
+</span></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you need to iterate over the coefficients anyway use <code class="code docutils literal notranslate"><span class="pre">x.map</span></code> to map a function on all the
+coefficients of the multivector.
+For individual access, use attributes access instead, e.g. <code class="code docutils literal notranslate"><span class="pre">x.e1</span></code> returns the
+<span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span> coefficient.</p>
+</div>
+<p>Now lets make a collection of <span class="math notranslate nohighlight">\(N\)</span> vectors, and see what changes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">N</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">xvals</span> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.rand.html#numpy.random.rand" title="numpy.random.rand"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span></a><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="n">xvals</span><span class="p">)</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+</span><span data-line="5"><span class="go">[0.37454012 0.95071431 0.73199394 0.59865848 0.15601864] 𝐞₁ + [0.15599452 0.05808361 0.86617615 0.60111501 0.70807258] 𝐞₂ + [0.02058449 0.96990985 0.83244264 0.21233911 0.18182497] 𝐞₃</span>
+</span><span data-line="6"><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="7"><span class="go">Vector[(5,)]</span>
+</span><span data-line="8"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/functions.html#len"><span class="nb">len</span></a><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span data-line="9"><span class="go">5</span>
+</span></pre></div>
+</div>
+<p>Hence, we see that the length of the multivector is <code class="code docutils literal notranslate"><span class="pre">5</span></code>, and therefore we can iterate over the
+multivector to get the individual vectors in <code class="code docutils literal notranslate"><span class="pre">x</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">vector</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span>    <a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/functions.html#print"><span class="nb">print</span></a><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
+</span><span data-line="3"><span class="go">0.375 𝐞₁ + 0.156 𝐞₂ + 0.0206 𝐞₃</span>
+</span><span data-line="4"><span class="go">0.951 𝐞₁ + 0.0581 𝐞₂ + 0.97 𝐞₃</span>
+</span><span data-line="5"><span class="go">0.732 𝐞₁ + 0.866 𝐞₂ + 0.832 𝐞₃</span>
+</span><span data-line="6"><span class="go">0.599 𝐞₁ + 0.601 𝐞₂ + 0.212 𝐞₃</span>
+</span><span data-line="7"><span class="go">0.156 𝐞₁ + 0.708 𝐞₂ + 0.182 𝐞₃</span>
+</span></pre></div>
+</div>
+<p>A huge benefit of multidimensional multivectors is that the resulting code is very compact.
+For example, to compute the norm of (all vectors in) <code class="code docutils literal notranslate"><span class="pre">x</span></code>, we simply do</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">norm</span><span class="p">()</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+</span><span data-line="3"><span class="go">[0.40624908 1.35939565 1.4067825  0.87453939 0.74750847]</span>
+</span></pre></div>
+</div>
+</section>
+<section id="masking-indexing">
+<h2>Masking &amp; Indexing<a class="headerlink" href="#masking-indexing" title="Link to this heading">#</a></h2>
+<p>Now suppose we were only interested in those vectors with <span class="math notranslate nohighlight">\(d &gt; 1\)</span>,
+we can use numpy’s masking syntax to do</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">large_x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/functions.html#abs"><span class="nb">abs</span></a><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">large_x</span>
+</span><span data-line="3"><span class="go">[0.95071431 0.73199394] 𝐞₁ + [0.05808361 0.86617615] 𝐞₂ + [0.96990985 0.83244264] 𝐞₃</span>
+</span></pre></div>
+</div>
+<p>First, <code class="code docutils literal notranslate"><span class="pre">abs(x)</span></code> takes the non-negative scalar magnitude of each vector in <code class="code docutils literal notranslate"><span class="pre">x</span></code>.
+Then, <code class="code docutils literal notranslate"><span class="pre">abs(x)</span> <span class="pre">&gt;</span> <span class="pre">1</span></code> creates the boolean array <code class="code docutils literal notranslate"><span class="pre">[False</span>  <span class="pre">True</span>  <span class="pre">True</span> <span class="pre">False</span> <span class="pre">False]</span></code>, indicating
+which elements satisfy the condition. Lastly, <code class="code docutils literal notranslate"><span class="pre">x[abs(x)</span> <span class="pre">&gt;</span> <span class="pre">1]</span></code> passes this condition on to the
+multivector coefficients, which are all arrays of shape <code class="code docutils literal notranslate"><span class="pre">(5,)</span></code>.
+Importantly, <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> passes the thing between the square brackets (<code class="code docutils literal notranslate"><span class="pre">x[...]</span></code>) on to the
+coefficients <em>unseen</em>, thus enabling not only numpy style indexing and masking, but also
+any other magic your coefficients might do with <code class="code docutils literal notranslate"><span class="pre">__getitem__</span></code> overloading.</p>
+<section id="mesh">
+<h3>Mesh<a class="headerlink" href="#mesh" title="Link to this heading">#</a></h3>
+<p>As an example of this powerful syntax, consider a mesh defined by two arrays:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">vertices</span></code>: a float array of shape <code class="code docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">3)</span></code> that defines the <span class="math notranslate nohighlight">\((x, y, z)\)</span>
+coordinates of <span class="math notranslate nohighlight">\(N\)</span> vertices.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">faces</span></code>: an integer array of shape <code class="code docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code> that defines the topology of the faces
+of the mesh. The integers are indices into the <code class="code docutils literal notranslate"><span class="pre">vertices</span></code> array, and hence in the range <span class="math notranslate nohighlight">\([0, N)\)</span>.</p></li>
+</ul>
+<p>In order to convert the vertices to multivectors (in 3DPGA), we need to transpose <code class="code docutils literal notranslate"><span class="pre">vertices</span></code> such that the
+<code class="code docutils literal notranslate"><span class="pre">x,y,z</span></code>-coordinates can be matched up with the <span class="math notranslate nohighlight">\(\mathbf{e}_i^*\)</span> directions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">pga3d</span> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra.fromname" title="kingdon.algebra.Algebra.fromname"><span class="n">Algebra</span><span class="o">.</span><span class="n">fromname</span></a><span class="p">(</span><span class="s2">"3DPGA"</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="n">pga3d</span><span class="o">.</span><span class="n">blades</span><span class="o">.</span><span class="n">e0</span> <span class="o">+</span> <span class="n">pga3d</span><span class="o">.</span><span class="n">evector</span><span class="p">(</span><span class="n">vertices</span><span class="o">.</span><span class="n">T</span><span class="p">))</span><span class="o">.</span><span class="n">dual</span><span class="p">()</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="4"><span class="go">Point[(N,)]</span>
+</span></pre></div>
+</div>
+<p>Suppose we now want to alternativelly have a datastructure of shape <span class="math notranslate nohighlight">\((M, 3)\)</span>,
+which explicitelly contains the coordinates of the vertices for every face, similar to how
+<a class="reference external" href="https://en.wikipedia.org/wiki/STL_(file_format)#ASCII">STL files</a> are structured.
+This is now as simple as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">facets</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">faces</span><span class="p">]</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">facets</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="3"><span class="go">Point[(M, 3)]</span>
+</span></pre></div>
+</div>
+<p>In order to compute the area and (signed) volume of the mesh we can use numpy’s indexing
+syntax to first create all planes,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">planes</span> <span class="o">=</span> <span class="n">facets</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">facets</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">facets</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">planes</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="3"><span class="go">Vector[(M,)]</span>
+</span></pre></div>
+</div>
+<p>from which we can then compute the area:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">areas</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">planes</span><span class="o">.</span><span class="n">norm</span><span class="p">()</span>  <span class="c1"># The area of a triangle is half that of its plane.</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">area</span> <span class="o">=</span> <span class="n">areas</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/generated/numpy.sum.html#numpy.sum" title="numpy.sum"><span class="n">np</span><span class="o">.</span><span class="n">sum</span></a><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>and the volume:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">volume</span> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/generated/numpy.sum.html#numpy.sum" title="numpy.sum"><span class="n">np</span><span class="o">.</span><span class="n">sum</span></a><span class="p">(</span><span class="n">planes</span><span class="o">.</span><span class="n">e0</span><span class="p">)</span> <span class="o">/</span> <span class="mi">6</span>
+</span></pre></div>
+</div>
+<p>Yes, we just computed the signed volume directly from the coefficient of <span class="math notranslate nohighlight">\(\mathbf{e}_0\)</span>!
+This coefficient is (six times) the signed volume of the tetrahedron the triangle makes with the
+origin, and by adding this up for all planes we find the signed volume of the mesh.</p>
+<p>Both factors are instances of the same rule: the <span class="math notranslate nohighlight">\(k\)</span>-magnitude of a <span class="math notranslate nohighlight">\(k\)</span>-simplex follows
+from its boundary complex up to a factor <span class="math notranslate nohighlight">\(1/k!\)</span>, so the triangle areas carry <span class="math notranslate nohighlight">\(1/2!\)</span> and
+the volume <span class="math notranslate nohighlight">\(1/3!\)</span>. See <a class="reference external" href="https://bivector.net/CLEANUP.html">CLEANUP</a> for the general statement.
+The overall sign of the volume follows the orientation of your faces, so reversing the winding of
+<code class="code docutils literal notranslate"><span class="pre">faces</span></code> flips it. For more info, see <a class="reference external" href="https://arxiv.org/abs/2511.08058">this paper</a>.</p>
+</section>
+<section id="how-to-stay-in-hyper-space">
+<h3>How to stay in hyper-space<a class="headerlink" href="#how-to-stay-in-hyper-space" title="Link to this heading">#</a></h3>
+<p>Kingdon’s GA operations have a subtle consequence for the type of the <cite>values()</cite> atribute which you may want to avoid.
+Reconsider the example of the computation of all the planes of the mesh:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/functions.html#type"><span class="nb">type</span></a><span class="p">(</span><span class="n">facets</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+</span><span data-line="2"><span class="go">&lt;class 'numpy.ndarray'&gt;</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">planes</span> <span class="o">=</span> <span class="n">facets</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">facets</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">facets</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/functions.html#type"><span class="nb">type</span></a><span class="p">(</span><span class="n">planes</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+</span><span data-line="5"><span class="go">&lt;class 'list'&gt;</span>
+</span><span data-line="6"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/functions.html#type"><span class="nb">type</span></a><span class="p">(</span><span class="n">planes</span><span class="o">.</span><span class="n">values</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+</span><span data-line="7"><span class="go">&lt;class 'numpy.ndarray'&gt;</span>
+</span></pre></div>
+</div>
+<p>So even though we started with numpy arrays, after a binary operation we will have a list of numpy arrays instead.
+There are two ways to avoid this:
+1. Provide a <code class="code docutils literal notranslate"><span class="pre">values_asarray</span></code> function that ensures that ensures the values after computation are always cast back to a numpy array:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">alg</span></a> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">Algebra</span></a><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">values_asarray</span><span class="o">=</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/generated/numpy.asarray.html#numpy.asarray" title="numpy.asarray"><span class="n">np</span><span class="o">.</span><span class="n">asarray</span></a><span class="p">)</span>
+</span></pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Preallocate the result array and tell kingdon to use it:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">pvals</span> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/generated/numpy.empty.html#numpy.empty" title="numpy.empty"><span class="n">np</span><span class="o">.</span><span class="n">empty</span></a><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">planes</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="n">pvals</span><span class="p">)</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">planes</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/functions.html#type"><span class="nb">type</span></a><span class="p">(</span><span class="n">planes</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+</span><span data-line="5"><span class="go">&lt;class 'numpy.ndarray'&gt;</span>
+</span></pre></div>
+</div>
+</section>
+<section id="inhomogeneous-output">
+<h3>Inhomogeneous output<a class="headerlink" href="#inhomogeneous-output" title="Link to this heading">#</a></h3>
+<p><code class="code docutils literal notranslate"><span class="pre">np.asarray</span></code> requires all coefficients of the result to have the same shape.
+That is the case for the vast majority of computations, and it is also the fastest option, since the
+coefficients can be copied into the output array as they are.
+If you deliberately mix shapes however, for example by adding a scalar multivector to a multivector of
+arrays, <code class="code docutils literal notranslate"><span class="pre">np.asarray</span></code> raises a <code class="code docutils literal notranslate"><span class="pre">ValueError</span></code> and you have to broadcast the coefficients
+against each other yourself:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">asarray</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/generated/numpy.asarray.html#numpy.asarray" title="numpy.asarray"><span class="n">np</span><span class="o">.</span><span class="n">asarray</span></a><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/generated/numpy.broadcast_arrays.html#numpy.broadcast_arrays" title="numpy.broadcast_arrays"><span class="n">np</span><span class="o">.</span><span class="n">broadcast_arrays</span></a><span class="p">(</span><span class="o">*</span><span class="n">values</span><span class="p">))</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">alg</span></a> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">Algebra</span></a><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">values_asarray</span><span class="o">=</span><span class="n">asarray</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Do not reach for this by default. <code class="code docutils literal notranslate"><span class="pre">np.broadcast_arrays</span></code> adds a fixed overhead to <em>every</em> operation,
+which is why it is not what we recommend in the TL;DR: for a multivector with eight scalar coefficients,
+always broadcasting costs about 8.9 μs per call against 0.8 μs for plain <code class="code docutils literal notranslate"><span class="pre">np.asarray</span></code>
+(CPython 3.12, numpy 2.3).
+Should you want both, the fast path when the shapes agree and broadcasting when they do not, then let the
+exception decide instead of inspecting the shapes up front:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">asarray</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span>    <span class="k">try</span><span class="p">:</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span>        <span class="k">return</span> <a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/generated/numpy.asarray.html#numpy.asarray" title="numpy.asarray"><span class="n">np</span><span class="o">.</span><span class="n">asarray</span></a><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span>    <span class="k">except</span> <a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/exceptions.html#ValueError"><span class="ne">ValueError</span></a><span class="p">:</span>  <span class="c1"># Coefficients of different shapes.</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span>        <span class="k">return</span> <a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/generated/numpy.asarray.html#numpy.asarray" title="numpy.asarray"><span class="n">np</span><span class="o">.</span><span class="n">asarray</span></a><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/generated/numpy.broadcast_arrays.html#numpy.broadcast_arrays" title="numpy.broadcast_arrays"><span class="n">np</span><span class="o">.</span><span class="n">broadcast_arrays</span></a><span class="p">(</span><span class="o">*</span><span class="n">values</span><span class="p">))</span>
+</span></pre></div>
+</div>
+<p>An untaken <code class="code docutils literal notranslate"><span class="pre">try</span></code> is free in CPython 3.11 and up, so this costs nothing over plain
+<code class="code docutils literal notranslate"><span class="pre">np.asarray</span></code> when the shapes agree (0.9 μs), and about 8% extra when they do not.
+Calling <code class="code docutils literal notranslate"><span class="pre">np.shape</span></code> on every coefficient up front to decide the same thing is far more
+expensive at 13.9 μs, because you then pay for the check on every single operation.</p>
+</section>
+<section id="avoid-for-loops">
+<h3>Avoid for loops<a class="headerlink" href="#avoid-for-loops" title="Link to this heading">#</a></h3>
+<p>A well known disadvantage of Python are its slow for-loops. If possible, it is preferable to use only vectorized methods.
+In order to avoid for loops we sometimes have to add a new axis, such that we can take advantage of numpys broadcasting
+rules.
+For example, suppose we want to project <span class="math notranslate nohighlight">\(N\)</span> points on <span class="math notranslate nohighlight">\(M\)</span> lines using the projection operator <code class="code docutils literal notranslate"><span class="pre">@</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">N</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">points</span> <span class="o">=</span> <span class="n">pga</span><span class="o">.</span><span class="n">point</span><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.rand.html#numpy.random.rand" title="numpy.random.rand"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span></a><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">lines</span> <span class="o">=</span> <span class="n">pga</span><span class="o">.</span><span class="n">bivector</span><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.rand.html#numpy.random.rand" title="numpy.random.rand"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span></a><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">M</span><span class="p">))</span><span class="o">.</span><span class="n">normalized</span><span class="p">()</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">projected_points</span> <span class="o">=</span> <span class="n">points</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">@</span> <span class="n">lines</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span><span class="n">projected_points</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="6"><span class="go">Point[(3, 5)]</span>
+</span></pre></div>
+</div>
+<p>The result is identical to <code class="code docutils literal notranslate"><span class="pre">stack([p</span> <span class="pre">@</span> <span class="pre">lines</span> <span class="pre">for</span> <span class="pre">p</span> <span class="pre">in</span> <span class="pre">points])</span></code>, but leveraging array magic is
+obviously much faster.</p>
+<p>This example shows the power of the <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> syntax: it combines the power of GA with the power of the
+python array API.</p>
+</section>
+</section>
+<section id="einops">
+<h2>Einops<a class="headerlink" href="#einops" title="Link to this heading">#</a></h2>
+<p><code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> is compatible with <a class="reference external" href="https://einops.rocks/">einops</a>, enabling powerful tensor
+manipulations directly on multivectors, whose coefficients are in turn tensors/arrays of one
+of the supported backends
+(<a class="reference external" href="https://numpy.org/">numpy</a>,
+<a class="reference external" href="https://pytorch.org/">PyTorch</a>,
+<a class="reference external" href="https://jax.readthedocs.io/">JAX</a>,
+<a class="reference external" href="https://cupy.dev/">CuPy</a>,
+<a class="reference external" href="https://github.com/ml-explore/mlx">MLX</a>,
+<a class="reference external" href="https://github.com/tinygrad/tinygrad">tinygrad</a>,
+<a class="reference external" href="https://www.paddlepaddle.org.cn/en">Paddle</a>,
+<a class="reference external" href="https://flax.readthedocs.io/">Flax</a>).
+To use it, simply import the backend before any einops calls:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><a class="sphinx-codeautolink-a" href="api/einops_backend.html#module-kingdon.einops_backend"><span class="nn">kingdon.einops_backend</span></a>
+</span></pre></div>
+</div>
+<p>This registers the kingdon backend with einops that enables the application of einops operations on multivectors.
+As we have seen in this section, the first dimension of the multivector is always the coefficients,
+and is therefore not available for  manipulation by the einops operations, as this would not be geometrically meaningful.
+So in your <code class="code docutils literal notranslate"><span class="pre">einops</span></code> operations, be sure to ignore the first dimension; it is not yours to play with.</p>
+<section id="rearrange">
+<h3>Rearrange<a class="headerlink" href="#rearrange" title="Link to this heading">#</a></h3>
+<p><code class="code docutils literal notranslate"><span class="pre">rearrange</span></code> reshapes and reorders the batch dimensions of a multivector:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">einops</span><span class="w"> </span><span class="kn">import</span> <span class="n">rearrange</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><a class="sphinx-codeautolink-a" href="api/index.html#module-kingdon"><span class="nn">kingdon</span></a><span class="w"> </span><span class="kn">import</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">Algebra</span></a>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><a class="sphinx-codeautolink-a" href="api/einops_backend.html#module-kingdon.einops_backend"><span class="nn">kingdon.einops_backend</span></a>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/index.html#module-numpy"><span class="nn">numpy</span></a><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt;</span>
+</span><span data-line="6"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">alg</span></a> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="api/generated/kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="n">Algebra</span></a><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span data-line="7"><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.rand.html#numpy.random.rand" title="numpy.random.rand"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</span><span data-line="8"><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="9"><span class="go">Vector[(3, 4)]</span>
+</span><span data-line="10"><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rearrange</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">'a b -&gt; b a'</span><span class="p">)</span>
+</span><span data-line="11"><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="12"><span class="go">Vector[(4, 3)]</span>
+</span></pre></div>
+</div>
+<p>Notice how the einops pattern <code class="code docutils literal notranslate"><span class="pre">'a</span> <span class="pre">b</span> <span class="pre">-&gt;</span> <span class="pre">b</span> <span class="pre">a'</span></code> only makes reference to the non-blade
+dimensions of the multivector, but not the (first) blade dimensions.
+This is by design, and ensures that the result remains a vector.</p>
+</section>
+<section id="reduce">
+<h3>Reduce<a class="headerlink" href="#reduce" title="Link to this heading">#</a></h3>
+<p><code class="code docutils literal notranslate"><span class="pre">reduce</span></code> applies a reduction (e.g. mean, sum, max) along specified batch dimensions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">einops</span><span class="w"> </span><span class="kn">import</span> <span class="n">reduce</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt;</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">'a b -&gt; a'</span><span class="p">,</span> <span class="s1">'mean'</span><span class="p">)</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="5"><span class="go">Vector[(3,)]</span>
+</span></pre></div>
+</div>
+<p>Again, notice how the einops pattern <code class="code docutils literal notranslate"><span class="pre">'a</span> <span class="pre">b</span> <span class="pre">-&gt;</span> <span class="pre">a'</span></code> only makes reference to the non-blade
+dimensions of the multivector.</p>
+</section>
+<section id="repeat">
+<h3>Repeat<a class="headerlink" href="#repeat" title="Link to this heading">#</a></h3>
+<p><code class="code docutils literal notranslate"><span class="pre">repeat</span></code> is the inverse of <code class="code docutils literal notranslate"><span class="pre">reduce</span></code>: it repeats a multivector along new or
+existing batch dimensions. Every coefficient is repeated identically, so the result is
+still a multivector of the same type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">einops</span><span class="w"> </span><span class="kn">import</span> <span class="n">repeat</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt;</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">repeat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">'a b -&gt; a b c'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="5"><span class="go">Vector[(3, 4, 5)]</span>
+</span><span data-line="6"><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">repeat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">'a b -&gt; (rep a) b'</span><span class="p">,</span> <span class="n">rep</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</span><span data-line="7"><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="8"><span class="go">Vector[(6, 4)]</span>
+</span></pre></div>
+</div>
+</section>
+<section id="pack-unpack">
+<h3>Pack &amp; Unpack<a class="headerlink" href="#pack-unpack" title="Link to this heading">#</a></h3>
+<p><code class="code docutils literal notranslate"><span class="pre">pack</span></code> concatenates multivectors with compatible shapes along a wildcard axis,
+and <code class="code docutils literal notranslate"><span class="pre">unpack</span></code> reverses the operation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">einops</span><span class="w"> </span><span class="kn">import</span> <span class="n">pack</span><span class="p">,</span> <span class="n">unpack</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt;</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/generated/numpy.ones.html#numpy.ones" title="numpy.ones"><span class="n">np</span><span class="o">.</span><span class="n">ones</span></a><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]))</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/generated/numpy.ones.html#numpy.ones" title="numpy.ones"><span class="n">np</span><span class="o">.</span><span class="n">ones</span></a><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">]))</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span><span class="n">packed</span><span class="p">,</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">pack</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="s1">'j * k'</span><span class="p">)</span>
+</span><span data-line="6"><span class="gp">&gt;&gt;&gt; </span><span class="n">packed</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="7"><span class="go">Vector[(3, 8, 5)]</span>
+</span><span data-line="8"><span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span><span class="p">,</span> <span class="n">b2</span> <span class="o">=</span> <span class="n">unpack</span><span class="p">(</span><span class="n">packed</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="s1">'j * k'</span><span class="p">)</span>
+</span><span data-line="9"><span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span> <span class="ow">and</span> <span class="n">b2</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">b</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="10"><span class="go">True</span>
+</span></pre></div>
+</div>
+<p>Again, notice how the einops patterns <code class="code docutils literal notranslate"><span class="pre">'j</span> <span class="pre">*</span> <span class="pre">k'</span></code> only make reference to the non-blade
+dimensions of the multivectors as these need to match the blades of the multivector and can therefore not be modified.</p>
+<p>The multivectors that are packed together must all be of the same type. Their keys however may differ:
+the result gets the union of the keys of its inputs, and a blade that an input does not have simply contributes zeros.
+So packing a general vector together with one that only lives on <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span> gives the
+latter an explicit zero on <span class="math notranslate nohighlight">\(\mathbf{e}_2\)</span>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="n">e1</span><span class="o">=</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/generated/numpy.ones.html#numpy.ones" title="numpy.ones"><span class="n">np</span><span class="o">.</span><span class="n">ones</span></a><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">]))</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</span><span data-line="3"><span class="go">(1,)</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">packed</span><span class="p">,</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">pack</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">],</span> <span class="s1">'j * k'</span><span class="p">)</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span><span class="n">packed</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</span><span data-line="6"><span class="go">(1, 2)</span>
+</span><span data-line="7"><span class="gp">&gt;&gt;&gt; </span><span class="n">packed</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="8"><span class="go">Vector[(3, 8, 5)]</span>
+</span><span data-line="9"><span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">unpack</span><span class="p">(</span><span class="n">packed</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="s1">'j * k'</span><span class="p">)</span>
+</span><span data-line="10"><span class="gp">&gt;&gt;&gt; </span><span class="n">c2</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">c2</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="11"><span class="go">((1, 2), Vector[(3, 7, 5)])</span>
+</span><span data-line="12"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/functions.html#bool"><span class="nb">bool</span></a><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/generated/numpy.all.html#numpy.all" title="numpy.all"><span class="n">np</span><span class="o">.</span><span class="n">all</span></a><span class="p">(</span><span class="n">c2</span><span class="o">.</span><span class="n">e2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span>
+</span><span data-line="13"><span class="go">True</span>
+</span></pre></div>
+</div>
+<p>Those zeros are made from the coefficients that the sparse multivector does have, in such a way that they carry
+the same dtype and live on the same device, whichever array type you are working over.</p>
+</section>
+<section id="einsum">
+<h3>Einsum<a class="headerlink" href="#einsum" title="Link to this heading">#</a></h3>
+<p><code class="code docutils literal notranslate"><span class="pre">einsum</span></code> performs einstein summation on multivectors, useful for e.g. traces or
+matrix multiplications over batch dimensions.
+Just like the other <code class="code docutils literal notranslate"><span class="pre">einops</span></code> functions, the pattern only makes reference to
+<code class="code docutils literal notranslate"><span class="pre">mv.shape</span></code> and thus ignores the coefficient dimension: the summation is performed
+blade by blade.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">einops</span><span class="w"> </span><span class="kn">import</span> <span class="n">einsum</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt;</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.randn.html#numpy.random.randn" title="numpy.random.randn"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">einsum</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="s1">'i i -&gt;'</span><span class="p">)</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="6"><span class="go">Vector[()]</span>
+</span><span data-line="7"><span class="gp">&gt;&gt;&gt; </span><span class="n">weight</span> <span class="o">=</span> <a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.randn.html#numpy.random.randn" title="numpy.random.randn"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span></a><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</span><span data-line="8"><span class="gp">&gt;&gt;&gt; </span><span class="n">matmul</span> <span class="o">=</span> <span class="n">einsum</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="s1">'i j, j k -&gt; i k'</span><span class="p">)</span>
+</span><span data-line="9"><span class="gp">&gt;&gt;&gt; </span><span class="n">matmul</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="10"><span class="go">Vector[(10, 20)]</span>
+</span></pre></div>
+</div>
+<p>Because the summation happens blade by blade, all multivectors in an <code class="code docutils literal notranslate"><span class="pre">einsum</span></code> must
+have the same keys (i.e. basis blades). The exception are scalars, which multiply every
+blade and can therefore be combined with any multivector:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><a class="sphinx-codeautolink-a" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.randn.html#numpy.random.randn" title="numpy.random.randn"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">scaled</span> <span class="o">=</span> <span class="n">einsum</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="s1">'i j, j -&gt; i j'</span><span class="p">)</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">scaled</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="4"><span class="go">Vector[(10, 10)]</span>
+</span></pre></div>
+</div>
+<p>To multiply two multivectors of different types, use one of the products of the algebra
+instead, e.g. <code class="code docutils literal notranslate"><span class="pre">vec</span> <span class="pre">*</span> <span class="pre">bivec</span></code>. Do mind that such a product multiplies the underlying
+arrays elementwise (with the usual broadcasting rules), and cannot be combined with
+<code class="code docutils literal notranslate"><span class="pre">einsum</span></code>: there is no pattern which contracts array dimensions and performs a
+geometric product at the same time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="code docutils literal notranslate"><span class="pre">einops</span></code> selects its backend on the basis of the first argument only, so when mixing
+multivectors with e.g. <code class="code docutils literal notranslate"><span class="pre">numpy</span></code> arrays, make sure a multivector comes first.
+Put the array first and <code class="code docutils literal notranslate"><span class="pre">einops</span></code> hands the whole expression to <code class="code docutils literal notranslate"><span class="pre">numpy</span></code>, which
+silently degrades the multivector into an object array instead of raising:
+<code class="code docutils literal notranslate"><span class="pre">einsum(weight,</span> <span class="pre">vec,</span> <span class="pre">'i</span> <span class="pre">j,</span> <span class="pre">i</span> <span class="pre">-&gt;</span> <span class="pre">j')</span></code> returns an <code class="code docutils literal notranslate"><span class="pre">ndarray</span></code> of multivectors,
+not a multivector of arrays.</p>
+</div>
+</section>
+<section id="parse-shape-asnumpy">
+<h3>Parse_shape &amp; asnumpy<a class="headerlink" href="#parse-shape-asnumpy" title="Link to this heading">#</a></h3>
+<p><code class="code docutils literal notranslate"><span class="pre">parse_shape</span></code> names the array dimensions of a multivector, which is convenient to
+feed the lengths of the batch dimensions back into another einops call:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">einops</span><span class="w"> </span><span class="kn">import</span> <span class="n">parse_shape</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt;</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_shape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">'a b'</span><span class="p">)</span>
+</span><span data-line="4"><span class="go">{'a': 3, 'b': 4}</span>
+</span></pre></div>
+</div>
+<p><code class="code docutils literal notranslate"><span class="pre">asnumpy</span></code> converts the coefficients of a multivector to <code class="code docutils literal notranslate"><span class="pre">numpy</span></code> arrays, e.g. to
+get a multivector over <code class="code docutils literal notranslate"><span class="pre">torch</span></code> tensors back to the cpu:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">einops</span><span class="w"> </span><span class="kn">import</span> <span class="n">asnumpy</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt;</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="https://docs.python.org/3/library/typing.html#typing.Any" title="typing.Any"><span class="n">y</span></a> <span class="o">=</span> <span class="n">asnumpy</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+</span><span data-line="5"><span class="go">Vector[(3, 4)]</span>
+</span></pre></div>
+</div>
+<p>For other backends <code class="code docutils literal notranslate"><span class="pre">asnumpy</span></code> returns a <code class="code docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>, but for <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> it
+returns a multivector whose coefficients are <code class="code docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>, since a multivector is a
+container of arrays rather than an array itself. Call <code class="code docutils literal notranslate"><span class="pre">y.values()</span></code> if you need the
+underlying array, which does have the blades as its first dimension.</p>
+</section>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="operators.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Operators</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="types.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Type system</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2022, Martin Roelfs</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=796a81b5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="_static/shibuya.js?v=50760d75"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+      <script src="_static/kingdon.js?v=5907dcdc"></script></body>
+</html>

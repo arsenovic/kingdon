@@ -1,0 +1,6 @@
+﻿rp
+==
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: rp

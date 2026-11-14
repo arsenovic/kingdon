@@ -1,0 +1,6 @@
+﻿poly\_cse
+=========
+
+.. currentmodule:: kingdon.polynomial
+
+.. autofunction:: poly_cse

@@ -1,0 +1,6 @@
+﻿poly\_format
+============
+
+.. currentmodule:: kingdon.polynomial
+
+.. autofunction:: poly_format

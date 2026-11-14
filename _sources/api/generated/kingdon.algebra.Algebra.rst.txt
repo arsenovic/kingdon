@@ -1,0 +1,31 @@
+﻿Algebra
+=======
+
+.. currentmodule:: kingdon.algebra
+
+.. autoclass:: Algebra
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~Algebra.add_operator
+      ~Algebra.codegen_symbolcls
+      ~Algebra.compile
+      ~Algebra.evenmv
+      ~Algebra.fromname
+      ~Algebra.graph
+      ~Algebra.indices_for_grade
+      ~Algebra.indices_for_grades
+      ~Algebra.multivector
+      ~Algebra.oddmv
+      ~Algebra.purevector
+      ~Algebra.register
+      ~Algebra.simp_func
+   

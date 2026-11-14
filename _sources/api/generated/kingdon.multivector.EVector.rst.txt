@@ -1,0 +1,19 @@
+﻿EVector
+=======
+
+.. currentmodule:: kingdon.multivector
+
+.. autoclass:: EVector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~EVector.layout
+   

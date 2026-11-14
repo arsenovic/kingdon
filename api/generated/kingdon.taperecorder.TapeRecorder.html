@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="cyan" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>TapeRecorder - Kingdon</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="History" href="../../history.html" /><link rel="prev" title="kingdon.taperecorder" href="../taperecorder.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=ad592e98" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-codeautolink.css?v=b2176991" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kingdon.css?v=be060e35" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="TapeRecorder"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      <img class="light-logo" src="../../_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <img class="dark-logo" src="../../_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <strong>Kingdon</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link"><a href="../../index.html">Home</a></li><li class="link"><a href="../../examples/index.html">Examples</a></li><li class="link"><a href="../index.html">API</a></li><li class="link">
+          <a href="https://tbuli.github.io/teahouse/">
+            <span>Teahouse</span><i class="i-lucide external-link"></i></a>
+        </li><li class="link">
+          <a href="https://github.com/tBuLi/kingdon">
+            <span>GitHub</span><i class="i-lucide external-link"></i></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../operators.html">Operators</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../arrays.html">Array Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../types.html">Type system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">History</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../workings.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder"><code class="docutils literal notranslate"><span class="pre">TapeRecorder</span></code></a><ul>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.acp"><code class="docutils literal notranslate"><span class="pre">acp()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.add"><code class="docutils literal notranslate"><span class="pre">add()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.algebra"><code class="docutils literal notranslate"><span class="pre">algebra</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.binary_operator"><code class="docutils literal notranslate"><span class="pre">binary_operator()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.conjugate"><code class="docutils literal notranslate"><span class="pre">conjugate()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.cp"><code class="docutils literal notranslate"><span class="pre">cp()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.div"><code class="docutils literal notranslate"><span class="pre">div()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.dual"><code class="docutils literal notranslate"><span class="pre">dual()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.expr"><code class="docutils literal notranslate"><span class="pre">expr</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.fromname"><code class="docutils literal notranslate"><span class="pre">fromname()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.gp"><code class="docutils literal notranslate"><span class="pre">gp()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.grade"><code class="docutils literal notranslate"><span class="pre">grade()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.hodge"><code class="docutils literal notranslate"><span class="pre">hodge()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.inv"><code class="docutils literal notranslate"><span class="pre">inv()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.involute"><code class="docutils literal notranslate"><span class="pre">involute()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.ip"><code class="docutils literal notranslate"><span class="pre">ip()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.keys"><code class="docutils literal notranslate"><span class="pre">keys()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.lc"><code class="docutils literal notranslate"><span class="pre">lc()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.mvtype"><code class="docutils literal notranslate"><span class="pre">mvtype</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.neg"><code class="docutils literal notranslate"><span class="pre">neg()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.norm"><code class="docutils literal notranslate"><span class="pre">norm()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.normalized"><code class="docutils literal notranslate"><span class="pre">normalized()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.normsq"><code class="docutils literal notranslate"><span class="pre">normsq()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.op"><code class="docutils literal notranslate"><span class="pre">op()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.outercos"><code class="docutils literal notranslate"><span class="pre">outercos()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.outerexp"><code class="docutils literal notranslate"><span class="pre">outerexp()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.outersin"><code class="docutils literal notranslate"><span class="pre">outersin()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.outertan"><code class="docutils literal notranslate"><span class="pre">outertan()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.polarity"><code class="docutils literal notranslate"><span class="pre">polarity()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.proj"><code class="docutils literal notranslate"><span class="pre">proj()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.rc"><code class="docutils literal notranslate"><span class="pre">rc()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.reverse"><code class="docutils literal notranslate"><span class="pre">reverse()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.rp"><code class="docutils literal notranslate"><span class="pre">rp()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.shape"><code class="docutils literal notranslate"><span class="pre">shape</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.sp"><code class="docutils literal notranslate"><span class="pre">sp()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.sqrt"><code class="docutils literal notranslate"><span class="pre">sqrt()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.square"><code class="docutils literal notranslate"><span class="pre">square()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.sub"><code class="docutils literal notranslate"><span class="pre">sub()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.sw"><code class="docutils literal notranslate"><span class="pre">sw()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.type_number"><code class="docutils literal notranslate"><span class="pre">type_number</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.unary_operator"><code class="docutils literal notranslate"><span class="pre">unary_operator()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.undual"><code class="docutils literal notranslate"><span class="pre">undual()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.unhodge"><code class="docutils literal notranslate"><span class="pre">unhodge()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.unpolarity"><code class="docutils literal notranslate"><span class="pre">unpolarity()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">Kingdon</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../taperecorder.html"><span itemprop="name">kingdon.taperecorder</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="3" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">TapeRecorder</strong>
+        <meta itemprop="position" content="4" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="taperecorder">
+<h1>TapeRecorder<a class="headerlink" href="#taperecorder" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">kingdon.taperecorder.</span></span><span class="sig-name descname"><span class="pre">TapeRecorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algebra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mvtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/taperecorder.html#TapeRecorder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/builtins/functions.html#object" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p class="rubric">Methods</p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.acp" title="kingdon.taperecorder.TapeRecorder.acp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">acp</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.add" title="kingdon.taperecorder.TapeRecorder.add"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.binary_operator" title="kingdon.taperecorder.TapeRecorder.binary_operator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">binary_operator</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.conjugate" title="kingdon.taperecorder.TapeRecorder.conjugate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">conjugate</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.cp" title="kingdon.taperecorder.TapeRecorder.cp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cp</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.div" title="kingdon.taperecorder.TapeRecorder.div"><code class="xref py py-obj docutils literal notranslate"><span class="pre">div</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.dual" title="kingdon.taperecorder.TapeRecorder.dual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dual</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.fromname" title="kingdon.taperecorder.TapeRecorder.fromname"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromname</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.gp" title="kingdon.taperecorder.TapeRecorder.gp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gp</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.grade" title="kingdon.taperecorder.TapeRecorder.grade"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grade</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.hodge" title="kingdon.taperecorder.TapeRecorder.hodge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hodge</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.inv" title="kingdon.taperecorder.TapeRecorder.inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inv</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.involute" title="kingdon.taperecorder.TapeRecorder.involute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">involute</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.ip" title="kingdon.taperecorder.TapeRecorder.ip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ip</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.keys" title="kingdon.taperecorder.TapeRecorder.keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keys</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.lc" title="kingdon.taperecorder.TapeRecorder.lc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lc</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.neg" title="kingdon.taperecorder.TapeRecorder.neg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">neg</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.norm" title="kingdon.taperecorder.TapeRecorder.norm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">norm</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.normalized" title="kingdon.taperecorder.TapeRecorder.normalized"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalized</span></code></a></p></td>
+<td><p>Normalized version of this multivector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.normsq" title="kingdon.taperecorder.TapeRecorder.normsq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normsq</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.op" title="kingdon.taperecorder.TapeRecorder.op"><code class="xref py py-obj docutils literal notranslate"><span class="pre">op</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.outercos" title="kingdon.taperecorder.TapeRecorder.outercos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outercos</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.outerexp" title="kingdon.taperecorder.TapeRecorder.outerexp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outerexp</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.outersin" title="kingdon.taperecorder.TapeRecorder.outersin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outersin</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.outertan" title="kingdon.taperecorder.TapeRecorder.outertan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outertan</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.polarity" title="kingdon.taperecorder.TapeRecorder.polarity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polarity</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.proj" title="kingdon.taperecorder.TapeRecorder.proj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proj</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.rc" title="kingdon.taperecorder.TapeRecorder.rc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rc</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.reverse" title="kingdon.taperecorder.TapeRecorder.reverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reverse</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.rp" title="kingdon.taperecorder.TapeRecorder.rp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rp</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.sp" title="kingdon.taperecorder.TapeRecorder.sp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sp</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.sqrt" title="kingdon.taperecorder.TapeRecorder.sqrt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sqrt</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.square" title="kingdon.taperecorder.TapeRecorder.square"><code class="xref py py-obj docutils literal notranslate"><span class="pre">square</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.sub" title="kingdon.taperecorder.TapeRecorder.sub"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sub</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.sw" title="kingdon.taperecorder.TapeRecorder.sw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sw</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.unary_operator" title="kingdon.taperecorder.TapeRecorder.unary_operator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unary_operator</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.undual" title="kingdon.taperecorder.TapeRecorder.undual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">undual</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.unhodge" title="kingdon.taperecorder.TapeRecorder.unhodge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unhodge</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.taperecorder.TapeRecorder.unpolarity" title="kingdon.taperecorder.TapeRecorder.unpolarity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unpolarity</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.acp">
+<span class="sig-name descname"><span class="pre">acp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'acp'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.acp" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'add'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.add" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.algebra">
+<span class="sig-name descname"><span class="pre">algebra</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.algebra.Algebra.html#kingdon.algebra.Algebra" title="kingdon.algebra.Algebra"><span class="pre">Algebra</span></a></span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.algebra" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.binary_operator">
+<span class="sig-name descname"><span class="pre">binary_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/taperecorder.html#TapeRecorder.binary_operator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.binary_operator" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.conjugate">
+<span class="sig-name descname"><span class="pre">conjugate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'conjugate'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.conjugate" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.cp">
+<span class="sig-name descname"><span class="pre">cp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cp'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.cp" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.div">
+<span class="sig-name descname"><span class="pre">div</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'div'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.div" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.dual">
+<span class="sig-name descname"><span class="pre">dual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/taperecorder.html#TapeRecorder.dual"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.dual" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.expr">
+<span class="sig-name descname"><span class="pre">expr</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.expr" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.fromname">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">fromname</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algebra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mvtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/taperecorder.html#TapeRecorder.fromname"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.fromname" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.gp">
+<span class="sig-name descname"><span class="pre">gp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'gp'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.gp" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.grade">
+<span class="sig-name descname"><span class="pre">grade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">grades</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/taperecorder.html#TapeRecorder.grade"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.grade" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.hodge">
+<span class="sig-name descname"><span class="pre">hodge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'hodge'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.hodge" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.inv">
+<span class="sig-name descname"><span class="pre">inv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'inv'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.inv" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.involute">
+<span class="sig-name descname"><span class="pre">involute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'involute'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.involute" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.ip">
+<span class="sig-name descname"><span class="pre">ip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ip'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.ip" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.keys">
+<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/taperecorder.html#TapeRecorder.keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.keys" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.lc">
+<span class="sig-name descname"><span class="pre">lc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'lc'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.lc" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.mvtype">
+<span class="sig-name descname"><span class="pre">mvtype</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.multivector.MultiVectorType.html#kingdon.multivector.MultiVectorType" title="kingdon.multivector.MultiVectorType"><span class="pre">MultiVectorType</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.mvtype" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.neg">
+<span class="sig-name descname"><span class="pre">neg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'neg'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.neg" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.norm">
+<span class="sig-name descname"><span class="pre">norm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/taperecorder.html#TapeRecorder.norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.norm" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.normalized">
+<span class="sig-name descname"><span class="pre">normalized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/taperecorder.html#TapeRecorder.normalized"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.normalized" title="Link to this definition">#</a></dt>
+<dd><p>Normalized version of this multivector.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.normsq">
+<span class="sig-name descname"><span class="pre">normsq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normsq'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.normsq" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.op">
+<span class="sig-name descname"><span class="pre">op</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'op'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.op" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.outercos">
+<span class="sig-name descname"><span class="pre">outercos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'outercos'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.outercos" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.outerexp">
+<span class="sig-name descname"><span class="pre">outerexp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'outerexp'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.outerexp" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.outersin">
+<span class="sig-name descname"><span class="pre">outersin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'outersin'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.outersin" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.outertan">
+<span class="sig-name descname"><span class="pre">outertan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'outertan'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.outertan" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.polarity">
+<span class="sig-name descname"><span class="pre">polarity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'polarity'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.polarity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.proj">
+<span class="sig-name descname"><span class="pre">proj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'proj'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.proj" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.rc">
+<span class="sig-name descname"><span class="pre">rc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'rc'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.rc" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.reverse">
+<span class="sig-name descname"><span class="pre">reverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'reverse'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.reverse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.rp">
+<span class="sig-name descname"><span class="pre">rp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'rp'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.rp" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.shape">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.shape" title="Link to this definition">#</a></dt>
+<dd><p>Return the shape of the .values() attribute of this multivector.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.sp">
+<span class="sig-name descname"><span class="pre">sp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'sp'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.sp" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.sqrt">
+<span class="sig-name descname"><span class="pre">sqrt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'sqrt'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.sqrt" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.square">
+<span class="sig-name descname"><span class="pre">square</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'square'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.square" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.sub">
+<span class="sig-name descname"><span class="pre">sub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'sub'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.sub" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.sw">
+<span class="sig-name descname"><span class="pre">sw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'sw'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.sw" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.type_number">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">type_number</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a></span><a class="reference internal" href="../../_modules/kingdon/taperecorder.html#TapeRecorder.type_number"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.type_number" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.unary_operator">
+<span class="sig-name descname"><span class="pre">unary_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/taperecorder.html#TapeRecorder.unary_operator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.unary_operator" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.undual">
+<span class="sig-name descname"><span class="pre">undual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/taperecorder.html#TapeRecorder.undual"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.undual" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.unhodge">
+<span class="sig-name descname"><span class="pre">unhodge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'unhodge'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.unhodge" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.taperecorder.TapeRecorder.unpolarity">
+<span class="sig-name descname"><span class="pre">unpolarity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'unpolarity'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.taperecorder.TapeRecorder.unpolarity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../taperecorder.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">kingdon.taperecorder</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="../../history.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">History</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2022, Martin Roelfs</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=796a81b5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="../../_static/shibuya.js?v=50760d75"></script>
+      <script src="../../_static/kingdon.js?v=5907dcdc"></script></body>
+</html>

@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="cyan" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Algebra - Kingdon</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="BladeDict" href="kingdon.algebra.BladeDict.html" /><link rel="prev" title="kingdon.algebra" href="../algebra.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=ad592e98" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-codeautolink.css?v=b2176991" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kingdon.css?v=be060e35" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="Algebra"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      <img class="light-logo" src="../../_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <img class="dark-logo" src="../../_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <strong>Kingdon</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link"><a href="../../index.html">Home</a></li><li class="link"><a href="../../examples/index.html">Examples</a></li><li class="link"><a href="../index.html">API</a></li><li class="link">
+          <a href="https://tbuli.github.io/teahouse/">
+            <span>Teahouse</span><i class="i-lucide external-link"></i></a>
+        </li><li class="link">
+          <a href="https://github.com/tBuLi/kingdon">
+            <span>GitHub</span><i class="i-lucide external-link"></i></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../operators.html">Operators</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../arrays.html">Array Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../types.html">Type system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">History</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../workings.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra"><code class="docutils literal notranslate"><span class="pre">Algebra</span></code></a><ul>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.acp"><code class="docutils literal notranslate"><span class="pre">acp</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.add"><code class="docutils literal notranslate"><span class="pre">add</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.add_operator"><code class="docutils literal notranslate"><span class="pre">add_operator()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.basis"><code class="docutils literal notranslate"><span class="pre">basis</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.bin2canon"><code class="docutils literal notranslate"><span class="pre">bin2canon</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.blades"><code class="docutils literal notranslate"><span class="pre">blades</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.canon2bin"><code class="docutils literal notranslate"><span class="pre">canon2bin</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.cayley"><code class="docutils literal notranslate"><span class="pre">cayley</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.codegen_symbolcls"><code class="docutils literal notranslate"><span class="pre">codegen_symbolcls()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.compile"><code class="docutils literal notranslate"><span class="pre">compile()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.conjugate"><code class="docutils literal notranslate"><span class="pre">conjugate</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.cp"><code class="docutils literal notranslate"><span class="pre">cp</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.cse"><code class="docutils literal notranslate"><span class="pre">cse</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.d"><code class="docutils literal notranslate"><span class="pre">d</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.div"><code class="docutils literal notranslate"><span class="pre">div</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.evenmv"><code class="docutils literal notranslate"><span class="pre">evenmv()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.extra_types"><code class="docutils literal notranslate"><span class="pre">extra_types</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.frame"><code class="docutils literal notranslate"><span class="pre">frame</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.fromname"><code class="docutils literal notranslate"><span class="pre">fromname()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.full_layout"><code class="docutils literal notranslate"><span class="pre">full_layout</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.gp"><code class="docutils literal notranslate"><span class="pre">gp</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.graded"><code class="docutils literal notranslate"><span class="pre">graded</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.graph"><code class="docutils literal notranslate"><span class="pre">graph()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.hodge"><code class="docutils literal notranslate"><span class="pre">hodge</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.indices_for_grade"><code class="docutils literal notranslate"><span class="pre">indices_for_grade()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.indices_for_grades"><code class="docutils literal notranslate"><span class="pre">indices_for_grades()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.inv"><code class="docutils literal notranslate"><span class="pre">inv</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.involute"><code class="docutils literal notranslate"><span class="pre">involute</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.ip"><code class="docutils literal notranslate"><span class="pre">ip</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.lambdifier"><code class="docutils literal notranslate"><span class="pre">lambdifier</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.large"><code class="docutils literal notranslate"><span class="pre">large</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.lc"><code class="docutils literal notranslate"><span class="pre">lc</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.matrix_basis"><code class="docutils literal notranslate"><span class="pre">matrix_basis</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.multivector"><code class="docutils literal notranslate"><span class="pre">multivector()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.mvtype"><code class="docutils literal notranslate"><span class="pre">mvtype</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.neg"><code class="docutils literal notranslate"><span class="pre">neg</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.normsq"><code class="docutils literal notranslate"><span class="pre">normsq</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.numspace"><code class="docutils literal notranslate"><span class="pre">numspace</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.oddmv"><code class="docutils literal notranslate"><span class="pre">oddmv()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.op"><code class="docutils literal notranslate"><span class="pre">op</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.outercos"><code class="docutils literal notranslate"><span class="pre">outercos</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.outerexp"><code class="docutils literal notranslate"><span class="pre">outerexp</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.outersin"><code class="docutils literal notranslate"><span class="pre">outersin</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.outertan"><code class="docutils literal notranslate"><span class="pre">outertan</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.p"><code class="docutils literal notranslate"><span class="pre">p</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.polarity"><code class="docutils literal notranslate"><span class="pre">polarity</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.pretty_blade"><code class="docutils literal notranslate"><span class="pre">pretty_blade</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.pretty_digits"><code class="docutils literal notranslate"><span class="pre">pretty_digits</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.proj"><code class="docutils literal notranslate"><span class="pre">proj</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.pss"><code class="docutils literal notranslate"><span class="pre">pss</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.purevector"><code class="docutils literal notranslate"><span class="pre">purevector()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.q"><code class="docutils literal notranslate"><span class="pre">q</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.r"><code class="docutils literal notranslate"><span class="pre">r</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.rc"><code class="docutils literal notranslate"><span class="pre">rc</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.reciprocal_frame"><code class="docutils literal notranslate"><span class="pre">reciprocal_frame</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.register"><code class="docutils literal notranslate"><span class="pre">register()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.registry"><code class="docutils literal notranslate"><span class="pre">registry</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.reverse"><code class="docutils literal notranslate"><span class="pre">reverse</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.rp"><code class="docutils literal notranslate"><span class="pre">rp</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.signature"><code class="docutils literal notranslate"><span class="pre">signature</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.signs"><code class="docutils literal notranslate"><span class="pre">signs</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.simp_func"><code class="docutils literal notranslate"><span class="pre">simp_func()</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.sp"><code class="docutils literal notranslate"><span class="pre">sp</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.sqrt"><code class="docutils literal notranslate"><span class="pre">sqrt</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.square"><code class="docutils literal notranslate"><span class="pre">square</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.start_index"><code class="docutils literal notranslate"><span class="pre">start_index</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.sub"><code class="docutils literal notranslate"><span class="pre">sub</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.sw"><code class="docutils literal notranslate"><span class="pre">sw</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.symbolcls"><code class="docutils literal notranslate"><span class="pre">symbolcls</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.types"><code class="docutils literal notranslate"><span class="pre">types</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.unhodge"><code class="docutils literal notranslate"><span class="pre">unhodge</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.unpolarity"><code class="docutils literal notranslate"><span class="pre">unpolarity</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.values_asarray"><code class="docutils literal notranslate"><span class="pre">values_asarray</span></code></a></li>
+<li><a class="reference internal" href="#kingdon.algebra.Algebra.wrapper"><code class="docutils literal notranslate"><span class="pre">wrapper</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">Kingdon</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../algebra.html"><span itemprop="name">kingdon.algebra</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="3" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Algebra</strong>
+        <meta itemprop="position" content="4" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="algebra">
+<h1>Algebra<a class="headerlink" href="#algebra" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">kingdon.algebra.</span></span><span class="sig-name descname"><span class="pre">Algebra</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="(in Python v3.15)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="(in Python v3.15)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><span class="pre">dict</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numspace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><span class="pre">dict</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cse</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full_layout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/dataclasses.html#dataclasses.InitVar" title="(in Python v3.15)"><span class="pre">dataclasses.InitVar</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pretty_blade</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'𝐞'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">large</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/dataclasses.html#dataclasses.InitVar" title="(in Python v3.15)"><span class="pre">dataclasses.InitVar</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="(in Python v3.15)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="(in Python v3.15)"><span class="pre">list</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbolcls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#object" title="(in Python v3.15)"><span class="pre">object</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">codegen_symbolcls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#object" title="(in Python v3.15)"><span class="pre">object</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;bound</span> <span class="pre">method</span> <span class="pre">RationalPolynomial.fromname</span> <span class="pre">of</span> <span class="pre">&lt;class</span> <span class="pre">'kingdon.polynomial.RationalPolynomial'&gt;&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambdifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.15)"><span class="pre">Callable</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrapper</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.15)"><span class="pre">Callable</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_asarray</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.15)"><span class="pre">Callable</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;class</span> <span class="pre">'list'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simp_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.15)"><span class="pre">Callable</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;function</span> <span class="pre">Algebra.&lt;lambda&gt;&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/algebra.html#Algebra"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.algebra.Algebra" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/builtins/functions.html#object" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A Geometric (Clifford) algebra with <code class="code docutils literal notranslate"><span class="pre">p</span></code> positive dimensions,
+<code class="code docutils literal notranslate"><span class="pre">q</span></code> negative dimensions, and <code class="code docutils literal notranslate"><span class="pre">r</span></code> null dimensions.</p>
+<p>The default settings of <code class="code docutils literal notranslate"><span class="pre">cse</span> <span class="pre">=</span> <span class="pre">simplify</span> <span class="pre">=</span> <span class="pre">True</span></code> usually strike a good balance between
+initiation times and subsequent code execution times.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> – number of positive dimensions.</p></li>
+<li><p><strong>q</strong> – number of negative dimensions.</p></li>
+<li><p><strong>r</strong> – number of null dimensions.</p></li>
+<li><p><strong>signature</strong> – Optional signature of the algebra, e.g. [0, 1, 1] for 2DPGA.
+Mutually exclusive with <cite>p</cite>, <cite>q</cite>, <cite>r</cite>.</p></li>
+<li><p><strong>start_index</strong> – Optionally set the start index of the dimensions. For PGA this defaults to <cite>0</cite>, otherwise <cite>1</cite>.</p></li>
+<li><p><strong>basis</strong> – Custom basis order, e.g. <cite>[“e”, “e1”, “e2”, “e0”, “e20”, “e01”, “e12”, “e012”]</cite> for 2DPGA.</p></li>
+<li><p><strong>cse</strong> – If <code class="code docutils literal notranslate"><span class="pre">True</span></code> (default), attempt Common Subexpression Elimination (CSE)
+on symbolically optimized expressions.</p></li>
+<li><p><strong>full_layout</strong> – If <code class="code docutils literal notranslate"><span class="pre">True</span></code> (default is <code class="code docutils literal notranslate"><span class="pre">False</span></code>), every multivector carries the full layout of its
+type, so binary and unary operations are performed per type rather than per set of basis blades.
+This will still be more sparse than computing with a full multivector, but not as sparse as possible.
+It does however, vastly reduce the number of possible expressions that have to be symbolically optimized.</p></li>
+<li><p><strong>graded</strong> – Deprecated alias for <code class="code docutils literal notranslate"><span class="pre">full_layout</span></code>, which raises a <a class="reference external" href="https://docs.python.org/3/builtins/exceptions.html#FutureWarning" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FutureWarning</span></code></a> when given.</p></li>
+<li><p><strong>extra_types</strong> – multivector types to use in addition to the standard ones already provided by kingdon. See <a class="reference internal" href="../../usage.html#multivector-types"><span class="std std-ref">multivector types</span></a>.</p></li>
+<li><p><strong>types</strong> – Complete list of multivector types to use. This will replace the standard ones. See <a class="reference internal" href="../../usage.html#multivector-types"><span class="std std-ref">multivector types</span></a>.</p></li>
+<li><p><strong>simplify</strong> – If <code class="code docutils literal notranslate"><span class="pre">True</span></code> (default), we attempt to simplify as much as possible. Setting this to
+<code class="code docutils literal notranslate"><span class="pre">False</span></code> will reduce the number of calls to simplify. However, it seems that <code class="code docutils literal notranslate"><span class="pre">True</span></code> is still faster,
+because it keeps sympy expressions from growing too large, which makes both symbolic computations and
+printing into a python function slower.</p></li>
+<li><p><strong>wrapper</strong> – A function that is always applied to the generated functions as a decorator. For example,
+using <code class="code docutils literal notranslate"><span class="pre">numba.njit</span></code> as a wrapper will ensure that all kingdon code is jitted using numba.</p></li>
+<li><p><strong>values_asarray</strong> – An array construction function that is always applied to values of a multivector upon
+creation of a new mv. For example, this could be <code class="code docutils literal notranslate"><span class="pre">numpy.array</span></code> or <code class="code docutils literal notranslate"><span class="pre">torch.asarray</span></code> to ensure
+that mv’s are always your favorite arrays.</p></li>
+<li><p><strong>symbolcls</strong> – The symbol class used for symbolic multivectors. By default, this <a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.Symbol" title="(in SymPy v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.symbol.Symbol</span></code></a>.</p></li>
+<li><p><strong>codegen_symbolcls</strong> – The symbol class used during codegen. By default, this is our own fast
+<a class="reference internal" href="kingdon.polynomial.RationalPolynomial.html#kingdon.polynomial.RationalPolynomial" title="kingdon.polynomial.RationalPolynomial"><code class="xref py py-class docutils literal notranslate"><span class="pre">RationalPolynomial</span></code></a> class.</p></li>
+<li><p><strong>lambdifier</strong> – The function that turns the symbolic expressions of an operation into a python function.
+Defaults to <a class="reference internal" href="kingdon.codegen.lambdify.html#kingdon.codegen.lambdify" title="kingdon.codegen.lambdify"><code class="xref py py-func docutils literal notranslate"><span class="pre">lambdify()</span></code></a>; provide your own to take over code generation entirely.</p></li>
+<li><p><strong>simp_func</strong> – This function is applied as a filter function to every multivector coefficient.</p></li>
+<li><p><strong>pretty_blade</strong> – character to use for basis blades when pretty printing to string. Default is 𝐞.</p></li>
+<li><p><strong>large</strong> – if true this is considered a large algebra. This means various cashing options are removed to save
+memory, and codegen is replaced by direct computation since codegen is very resource intensive for big
+expressions. By default, algebras of <span class="math notranslate nohighlight">\(d &gt; 6\)</span> are considered large, but the user can override this setting
+because also in large algebras it is still true that the generated code will perform order(s) of magnitude
+better than direct computation. A large algebra has no multivector types: every multivector is a
+<a class="reference internal" href="kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiVector</span></code></a>, and <code class="code docutils literal notranslate"><span class="pre">types</span></code>, <code class="code docutils literal notranslate"><span class="pre">extra_types</span></code> and <code class="code docutils literal notranslate"><span class="pre">full_layout</span></code>
+are therefore not available.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.algebra.Algebra.add_operator" title="kingdon.algebra.Algebra.add_operator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_operator</span></code></a></p></td>
+<td><p>Add a new operator to the algebra, compiled to optimize its execution times.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.algebra.Algebra.codegen_symbolcls" title="kingdon.algebra.Algebra.codegen_symbolcls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">codegen_symbolcls</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.algebra.Algebra.compile" title="kingdon.algebra.Algebra.compile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compile</span></code></a></p></td>
+<td><p>Compile a GA <code class="code docutils literal notranslate"><span class="pre">expr</span></code> with specific symbolic multivectors. For typical use cases you'll probably want to use <code class="code docutils literal notranslate"><span class="pre">Algebra.add_operator</span></code> instead, since that does not require you to provide the symbolical multivectors yourself, and it caches the resulting compiled functions so you don't have to track them yourself. However, the finer level of control of <code class="code docutils literal notranslate"><span class="pre">compile</span></code> is extremely powerful in certain use cases. For example, consider that we need to repeatedly rotate the unit vectors of our algebra in order to compute the evolution of the frame vectors::.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.algebra.Algebra.evenmv" title="kingdon.algebra.Algebra.evenmv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evenmv</span></code></a></p></td>
+<td><p>Create a new <a class="reference internal" href="kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiVector</span></code></a> in the even subalgebra.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.algebra.Algebra.fromname" title="kingdon.algebra.Algebra.fromname"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromname</span></code></a></p></td>
+<td><p>Initialize a well known algebra by its name.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.algebra.Algebra.graph" title="kingdon.algebra.Algebra.graph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">graph</span></code></a></p></td>
+<td><p>The graph function outputs <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code> renders and is meant for use in jupyter notebooks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.algebra.Algebra.indices_for_grade" title="kingdon.algebra.Algebra.indices_for_grade"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indices_for_grade</span></code></a></p></td>
+<td><p>Function that returns a generator for all the indices for a given grade.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.algebra.Algebra.indices_for_grades" title="kingdon.algebra.Algebra.indices_for_grades"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indices_for_grades</span></code></a></p></td>
+<td><p>Function that returns a generator for all the indices from a sequence of grades.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.algebra.Algebra.multivector" title="kingdon.algebra.Algebra.multivector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multivector</span></code></a></p></td>
+<td><p>Create a new <a class="reference internal" href="kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiVector</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.algebra.Algebra.oddmv" title="kingdon.algebra.Algebra.oddmv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">oddmv</span></code></a></p></td>
+<td><p>Create a new <a class="reference internal" href="kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiVector</span></code></a> of odd grades.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.algebra.Algebra.purevector" title="kingdon.algebra.Algebra.purevector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">purevector</span></code></a></p></td>
+<td><p>Create a new k-vector of the desired grade.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#kingdon.algebra.Algebra.register" title="kingdon.algebra.Algebra.register"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register</span></code></a></p></td>
+<td><p>Register a function with the algebra to optimize its execution times.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#kingdon.algebra.Algebra.simp_func" title="kingdon.algebra.Algebra.simp_func"><code class="xref py py-obj docutils literal notranslate"><span class="pre">simp_func</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.acp">
+<span class="sig-name descname"><span class="pre">acp</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.OperatorDict.html#kingdon.operator_dict.OperatorDict" title="kingdon.operator_dict.OperatorDict"><span class="pre">OperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.acp" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.OperatorDict.html#kingdon.operator_dict.OperatorDict" title="kingdon.operator_dict.OperatorDict"><span class="pre">OperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.add" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.add_operator">
+<span class="sig-name descname"><span class="pre">add_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbolic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">codegen_symbolcls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambdifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrapper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_asarray</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">lambdifier_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/algebra.html#Algebra.add_operator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.algebra.Algebra.add_operator" title="Link to this definition">#</a></dt>
+<dd><p>Add a new operator to the algebra, compiled to optimize its execution times.
+The function must accept multivectors as input arguments and is assumed to either
+return a single multivector or to <code class="code docutils literal notranslate"><span class="pre">set</span></code> one of the input multivectors.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="nd">@alg</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">symbolic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="2"><span class="k">def</span><span class="w"> </span><span class="nf">proj</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span><span data-line="3">    <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">|</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="n">b</span>
+</span><span data-line="4">
+</span><span data-line="5"><span class="nd">@alg</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">symbolic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="6"><span class="k">def</span><span class="w"> </span><span class="nf">proj_allocated</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+</span><span data-line="7">    <span class="n">c</span><span class="o">.</span><span class="n">set</span><span class="p">((</span><span class="n">a</span> <span class="o">|</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="n">b</span><span class="p">)</span>
+</span><span data-line="8">
+</span><span data-line="9"><span class="nd">@alg</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="n">symbolic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="10"><span class="k">def</span><span class="w"> </span><span class="nf">proj</span><span class="p">(</span><span class="n">mvs</span><span class="p">:</span> <span class="n">MultiVector</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span>
+</span><span data-line="11">    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">mvs</span>
+</span><span data-line="12">    <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">|</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="n">b</span>
+</span></pre></div>
+</div>
+<p>The examples above show three different ways to compile a function.
+Firstly and most straightforwardly, simply decorate a function that takes MultiVectors as input and a single MultiVector as output.
+Secondly, rather than returning a MultiVector, one can modify one existing MultiVector in place using the <cite>set</cite> method.
+This is useful in combination with e.g. pre-allocated memory like is sometimes the case with PyTorch tensors.
+Thirdly, using the type annotation <cite>MultiVector[N]</cite> we can signal to compile that the function takes a multivector of shape (:, N).</p>
+<p>With default settings (symbolic=False), the decorator will ensure that every GA unary or binary
+operator is replaced by the corresponding numerical function, and produces
+numerically much more performant code.
+However, when <cite>symbolic=True</cite> the expression is symbolically optimized before being turned
+into a numerical function.
+This typically results in even more performant code, at the expense of extra cost for the first execution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expr</strong> – Python function of a valid kingdon GA expression.</p></li>
+<li><p><strong>name</strong> – (optional) name by which the function will be known to the algebra.
+By default, this is the <cite>expr.__name__</cite>.</p></li>
+<li><p><strong>symbolic</strong> – (optional) If true, the expression is symbolically optimized.
+By default this is False, given the cost of optimizing large expressions.</p></li>
+<li><p><strong>codegen_symbolcls</strong> – (optional) The class to use for symbolic multivectors.
+By default the codegen_symbolcls from Algebra is used.</p></li>
+<li><p><strong>lambdifier</strong> – (optional) The function that turns the symbolic expressions into a python function.
+By default the lambdifier from Algebra is used.</p></li>
+<li><p><strong>wrapper</strong> – (optional) The wrapper function used to wrap the compiled function.
+By default the wrapper from Algebra is used.</p></li>
+<li><p><strong>values_asarray</strong> – (optional) The values_asarray function used to cast the values to the correct array type.
+By default values_asarray from Algebra is used.</p></li>
+<li><p><strong>lambdifier_kwargs</strong> – Any remaining keyword arguments are passed on to the <cite>lambdifier</cite>.
+For the default <a class="reference internal" href="kingdon.codegen.lambdify.html#kingdon.codegen.lambdify" title="kingdon.codegen.lambdify"><code class="xref py py-func docutils literal notranslate"><span class="pre">lambdify()</span></code></a> these are <code class="code docutils literal notranslate"><span class="pre">printer</span></code> and
+<code class="code docutils literal notranslate"><span class="pre">func_printer</span></code>, the sympy style printers used to print the expressions.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.basis">
+<span class="sig-name descname"><span class="pre">basis</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="(in Python v3.15)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#kingdon.algebra.Algebra.basis" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.bin2canon">
+<span class="sig-name descname"><span class="pre">bin2canon</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><span class="pre">dict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.bin2canon" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.blades">
+<span class="sig-name descname"><span class="pre">blades</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.algebra.BladeDict.html#kingdon.algebra.BladeDict" title="kingdon.algebra.BladeDict"><span class="pre">BladeDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.blades" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.canon2bin">
+<span class="sig-name descname"><span class="pre">canon2bin</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><span class="pre">dict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.canon2bin" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.cayley">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">cayley</span></span><a class="reference internal" href="../../_modules/kingdon/algebra.html#Algebra.cayley"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.algebra.Algebra.cayley" title="Link to this definition">#</a></dt>
+<dd><p>Cayley table of the algebra.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.codegen_symbolcls">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">codegen_symbolcls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.algebra.Algebra.codegen_symbolcls" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.compile">
+<span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">mvs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbolic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambdifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrapper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_asarray</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">lambdifier_kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="kingdon.codegen.CompiledExpression.html#kingdon.codegen.CompiledExpression" title="kingdon.codegen.CompiledExpression"><span class="pre">CompiledExpression</span></a></span></span><a class="reference internal" href="../../_modules/kingdon/algebra.html#Algebra.compile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.algebra.Algebra.compile" title="Link to this definition">#</a></dt>
+<dd><p>Compile a GA <code class="code docutils literal notranslate"><span class="pre">expr</span></code> with specific symbolic multivectors.
+For typical use cases you’ll probably want to use <code class="code docutils literal notranslate"><span class="pre">Algebra.add_operator</span></code> instead, since that does not require you
+to provide the symbolical multivectors yourself, and it caches the resulting compiled functions so you don’t have to track them yourself.
+However, the finer level of control of <code class="code docutils literal notranslate"><span class="pre">compile</span></code> is extremely powerful in certain use cases.
+For example, consider that we need to repeatedly rotate the unit vectors of our algebra in order to compute the evolution of the frame vectors:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="k">def</span><span class="w"> </span><span class="nf">rotate_blade</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">blade</span><span class="p">):</span>
+</span><span data-line="2">    <span class="k">return</span> <span class="n">R</span> <span class="o">&gt;&gt;</span> <span class="n">blade</span>
+</span><span data-line="3">
+</span><span data-line="4"><span class="n">alg</span> <span class="o">=</span> <span class="n">Algebra</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span><span data-line="5"><span class="n">R</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">bireflection</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>  <span class="c1"># Either a symbolic or a numeric rotation</span>
+</span><span data-line="6"><span class="n">e1</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="n">e1</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span data-line="7"><span class="n">e1_prime</span> <span class="o">=</span> <span class="n">rotate_blade</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">e1</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>By inspecting the code generated in <code class="code docutils literal notranslate"><span class="pre">alg.sw[R,</span> <span class="pre">e1].func</span></code> or by looking at its docstring
+<code class="code docutils literal notranslate"><span class="pre">alg.sw[R,</span> <span class="pre">e1].func.__doc__</span></code>, we find that the generated code uses 14 muls and 5 adds.
+(Mind you that the built-in <code class="code docutils literal notranslate"><span class="pre">sw</span></code> operator already benefits from CSE; without it the same
+expression needs 18 muls and 7 adds.)
+However <code class="code docutils literal notranslate"><span class="pre">Algebra.add_operator</span></code> can never use the runtime values of the multivector coefficients,
+whereas we know that we only want to rotate unit vectors.
+So we can use <code class="code docutils literal notranslate"><span class="pre">Algebra.compile</span></code> to generate an even more specialized function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">rotation</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">bireflection</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'R'</span><span class="p">,</span> <span class="n">symbolcls</span><span class="o">=</span><span class="n">alg</span><span class="o">.</span><span class="n">codegen_symbolcls</span><span class="p">)</span>
+</span><span data-line="2"><span class="n">e1</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="n">e1</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span data-line="3"><span class="n">rotate_e1</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">rotate_blade</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">e1</span><span class="p">)</span>  <span class="c1"># compile the function for these specific mvs.</span>
+</span><span data-line="4"><span class="n">e1_prime</span> <span class="o">=</span> <span class="n">rotate_e1</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">e1</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>If we look at <code class="code docutils literal notranslate"><span class="pre">rotate_e1</span></code> we find that it has only 9 muls and 5 adds!
+Compiling common operations involving constant multivectors such as frames can therefore be highly beneficial.</p>
+<p>Beware that <code class="code docutils literal notranslate"><span class="pre">rotate_e1</span></code> should not be used on non-unit vectors, so the onus falls on you to enure you only call it with appropriate vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expr</strong> – Python function of a valid kingdon GA expression.</p></li>
+<li><p><strong>mvs</strong> – The symbolic multivectors to compile <cite>expr</cite> for.</p></li>
+<li><p><strong>symbolic</strong> – (optional) If true (default), the expression is symbolically optimized.</p></li>
+<li><p><strong>lambdifier</strong> – (optional) The function that turns the symbolic expressions into a python function.
+By default the lambdifier from Algebra is used.</p></li>
+<li><p><strong>wrapper</strong> – (optional) The wrapper function used to wrap the compiled function.
+By default the wrapper from Algebra is used.</p></li>
+<li><p><strong>values_asarray</strong> – (optional) The values_asarray function used to cast the values to the correct array type.
+By default values_asarray from Algebra is used.</p></li>
+<li><p><strong>lambdifier_kwargs</strong> – Any remaining keyword arguments are passed on to the <cite>lambdifier</cite>.
+For the default <a class="reference internal" href="kingdon.codegen.lambdify.html#kingdon.codegen.lambdify" title="kingdon.codegen.lambdify"><code class="xref py py-func docutils literal notranslate"><span class="pre">lambdify()</span></code></a> these are <code class="code docutils literal notranslate"><span class="pre">printer</span></code> and
+<code class="code docutils literal notranslate"><span class="pre">func_printer</span></code>, the sympy style printers used to print the expressions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Instance of <a class="reference internal" href="kingdon.codegen.CompiledExpression.html#kingdon.codegen.CompiledExpression" title="kingdon.codegen.CompiledExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">CompiledExpression</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.conjugate">
+<span class="sig-name descname"><span class="pre">conjugate</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.UnaryOperatorDict.html#kingdon.operator_dict.UnaryOperatorDict" title="kingdon.operator_dict.UnaryOperatorDict"><span class="pre">UnaryOperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.conjugate" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.cp">
+<span class="sig-name descname"><span class="pre">cp</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.OperatorDict.html#kingdon.operator_dict.OperatorDict" title="kingdon.operator_dict.OperatorDict"><span class="pre">OperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.cp" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.cse">
+<span class="sig-name descname"><span class="pre">cse</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><span class="pre">bool</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#kingdon.algebra.Algebra.cse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.d">
+<span class="sig-name descname"><span class="pre">d</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.d" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.div">
+<span class="sig-name descname"><span class="pre">div</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.OperatorDict.html#kingdon.operator_dict.OperatorDict" title="kingdon.operator_dict.OperatorDict"><span class="pre">OperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.div" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.evenmv">
+<span class="sig-name descname"><span class="pre">evenmv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="pre">MultiVector</span></a></span></span><a class="reference internal" href="../../_modules/kingdon/algebra.html#Algebra.evenmv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.algebra.Algebra.evenmv" title="Link to this definition">#</a></dt>
+<dd><p>Create a new <a class="reference internal" href="kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiVector</span></code></a> in the even subalgebra.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.extra_types">
+<span class="sig-name descname"><span class="pre">extra_types</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/dataclasses.html#dataclasses.InitVar" title="(in Python v3.15)"><span class="pre">dataclasses.InitVar</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="(in Python v3.15)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#kingdon.algebra.Algebra.extra_types" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.frame">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">frame</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="(in Python v3.15)"><span class="pre">list</span></a></span><a class="reference internal" href="../../_modules/kingdon/algebra.html#Algebra.frame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.algebra.Algebra.frame" title="Link to this definition">#</a></dt>
+<dd><p>The set of orthogonal basis vectors, <span class="math notranslate nohighlight">\(\{ e_i \}\)</span>. Note that for a frame linear independence suffices,
+but we already have orthogonal basis vectors so why not use those?</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.fromname">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">fromname</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/algebra.html#Algebra.fromname"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.algebra.Algebra.fromname" title="Link to this definition">#</a></dt>
+<dd><p>Initialize a well known algebra by its name. Options are 2DPGA, 3DPGA, and STAP.
+This uses sensible ordering of the basis vectors in the basis blades to avoid minus superfluous signs.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.full_layout">
+<span class="sig-name descname"><span class="pre">full_layout</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><span class="pre">bool</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#kingdon.algebra.Algebra.full_layout" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.gp">
+<span class="sig-name descname"><span class="pre">gp</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.OperatorDict.html#kingdon.operator_dict.OperatorDict" title="kingdon.operator_dict.OperatorDict"><span class="pre">OperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.gp" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.graded">
+<span class="sig-name descname"><span class="pre">graded</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/dataclasses.html#dataclasses.InitVar" title="(in Python v3.15)"><span class="pre">dataclasses.InitVar</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#kingdon.algebra.Algebra.graded" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.graph">
+<span class="sig-name descname"><span class="pre">graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">subjects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph_widget</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/algebra.html#Algebra.graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.algebra.Algebra.graph" title="Link to this definition">#</a></dt>
+<dd><p>The graph function outputs <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code> renders and is meant
+for use in jupyter notebooks. The syntax of the graph function will feel
+familiar to users of <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code>: all position arguments are considered
+as subjects to graph, while all keyword arguments are interpreted as options
+to <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code>’s <code class="code docutils literal notranslate"><span class="pre">Algebra.graph</span></code> method.</p>
+<p>Example usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">alg</span><span class="o">.</span><span class="n">graph</span><span class="p">(</span>
+</span><span data-line="2">    <span class="mh">0xD0FFE1</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">],</span>
+</span><span data-line="3">    <span class="mh">0x224488</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span>
+</span><span data-line="4">    <span class="n">lineWidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="mi">1</span>
+</span><span data-line="5"><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Will create</p>
+<a class="reference internal image-reference" href="../../_images/graph_triangle.png"><img alt="../../_images/graph_triangle.png" class="align-center" height="520" src="../../_images/graph_triangle.png" width="518"/>
+</a>
+<p>If a function is given to <code class="code docutils literal notranslate"><span class="pre">Algebra.graph</span></code> then it is called without arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="k">def</span><span class="w"> </span><span class="nf">graph_func</span><span class="p">():</span>
+</span><span data-line="2">    <span class="k">return</span> <span class="p">[</span>
+</span><span data-line="3">        <span class="mh">0xD0FFE1</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">],</span>
+</span><span data-line="4">        <span class="mh">0x224488</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s2">"C"</span>
+</span><span data-line="5">    <span class="p">]</span>
+</span><span data-line="6">
+</span><span data-line="7"><span class="n">alg</span><span class="o">.</span><span class="n">graph</span><span class="p">(</span>
+</span><span data-line="8">    <span class="n">graph_func</span><span class="p">,</span>
+</span><span data-line="9">    <span class="n">lineWidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="mi">1</span>
+</span><span data-line="10"><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>This can be used to make animations in a manner identical to <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code> by making
+<code class="code docutils literal notranslate"><span class="pre">graph_func</span></code> depend on time and setting <code class="code docutils literal notranslate"><span class="pre">animate=True</span></code>.</p>
+<p class="rubric">Subjects</p>
+<p>The following types are accepted as positional arguments:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiVector</span></code></a>: rendered according to its grade and the
+algebra’s signature, e.g. as a point, line, plane, circle, sphere, etc.
+A multivector with array-valued coefficients (e.g. <code class="code docutils literal notranslate"><span class="pre">numpy</span></code> arrays) is unpacked
+into the individual multivectors it represents, see <a class="reference internal" href="../../usage.html#meshes-and-point-clouds"><span class="std std-ref">Meshes and point clouds</span></a>.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">int</span></code>: a hexadecimal color such as <code class="code docutils literal notranslate"><span class="pre">0x224488</span></code>, which sets the color of all
+subsequent subjects until the next color.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">str</span></code>: a label, drawn at the position of the last drawn subject. Strings starting
+with <code class="code docutils literal notranslate"><span class="pre">"&lt;"</span></code> are inserted verbatim as SVG, strings enclosed in <code class="code docutils literal notranslate"><span class="pre">$</span></code> are typeset
+as TeX (when a TeX renderer is loaded on the page), and strings starting with <code class="code docutils literal notranslate"><span class="pre">"_"</span></code> are not drawn but
+do advance the text cursor.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">list</span></code> or <code class="code docutils literal notranslate"><span class="pre">tuple</span></code>: two multivectors are drawn as a line segment, three or more
+as a filled polygon. Lists may be nested, and may contain any of the types above.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">Callable</span></code>: called without arguments, and the result is graphed. A single callable
+returning a list of subjects is typically used for animations; callables
+nested deeper in the input are re-evaluated in the same way.</p></li>
+</ul>
+<p>Multivectors passed directly as positional arguments (i.e. not nested inside a list) may be
+draggable: dragging them in the canvas writes the new coefficients back into the Python
+object in-place. In PGA only points (grade <span class="math notranslate nohighlight">\(d-1\)</span>) are draggable, in conformal
+algebras (<code class="code docutils literal notranslate"><span class="pre">conformal=True</span></code>) only grade 1 elements are draggable. Shaped multivectors
+are never draggable.</p>
+<p class="rubric">Meshes and point clouds</p>
+<p>A multivector of shape <code class="code docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">...)</span></code> is spliced into the list of subjects instead of
+being drawn as a single element, so a mesh or point cloud is a single subject rather than
+thousands. Just like a python list, the trailing axis decides what is drawn: shape
+<code class="code docutils literal notranslate"><span class="pre">(N,)</span></code> gives <span class="math notranslate nohighlight">\(N\)</span> separate elements (a point cloud), <code class="code docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">2)</span></code> gives
+<span class="math notranslate nohighlight">\(N\)</span> line segments (edges), and <code class="code docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">3)</span></code> gives <span class="math notranslate nohighlight">\(N\)</span> filled triangles (faces).
+Given a <code class="code docutils literal notranslate"><span class="pre">vertices</span></code> array of shape <span class="math notranslate nohighlight">\((N, 3)\)</span> and an integer <code class="code docutils literal notranslate"><span class="pre">faces</span></code> array
+of shape <span class="math notranslate nohighlight">\((M, 3)\)</span> indexing into it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">v</span> <span class="o">=</span> <span class="n">alg</span><span class="o">.</span><span class="n">upoint</span><span class="p">(</span><span class="n">vertices</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">dual</span><span class="p">()</span>  <span class="c1"># Point[(N,)]</span>
+</span><span data-line="2"><span class="n">facets</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">faces</span><span class="p">]</span>                  <span class="c1"># Point[(M, 3)]</span>
+</span><span data-line="3"><span class="n">alg</span><span class="o">.</span><span class="n">graph</span><span class="p">(</span><span class="mh">0xEE8888</span><span class="p">,</span> <span class="n">facets</span><span class="p">,</span> <span class="mh">0x000000</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">pointRadius</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Build the points as <code class="code docutils literal notranslate"><span class="pre">upoint(...).dual()</span></code> rather than <code class="code docutils literal notranslate"><span class="pre">point(vertices.T)</span></code>: the
+positional values of a type are its free coefficients in layout order, which for a
+<a class="reference internal" href="kingdon.multivector.Point.html#kingdon.multivector.Point" title="kingdon.multivector.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> in <code class="code docutils literal notranslate"><span class="pre">Algebra(3,</span> <span class="pre">0,</span> <span class="pre">1)</span></code> is <span class="math notranslate nohighlight">\((-z, y, -x)\)</span>, not
+<span class="math notranslate nohighlight">\((x, y, z)\)</span>. Note also that <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code> only renders the lexicographical basis,
+so use <code class="code docutils literal notranslate"><span class="pre">Algebra(3,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">extra_types=[...])</span></code> and not <code class="code docutils literal notranslate"><span class="pre">Algebra.fromname('3DPGA')</span></code>.</p>
+<p class="rubric">Options</p>
+<p>All keyword arguments are passed on to <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code>’s <code class="code docutils literal notranslate"><span class="pre">Algebra.graph</span></code> directly,
+with the exception of <code class="code docutils literal notranslate"><span class="pre">camera</span></code>, <code class="code docutils literal notranslate"><span class="pre">up</span></code>, <code class="code docutils literal notranslate"><span class="pre">width</span></code>, <code class="code docutils literal notranslate"><span class="pre">height</span></code> and <code class="code docutils literal notranslate"><span class="pre">style</span></code>,
+which are (also) interpreted by <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code>.
+As such, <code class="code docutils literal notranslate"><span class="pre">kingdon</span></code> automatically inherits all the options from <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code>.
+The most useful ones are mentioned in the list below.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*subjects</strong> – The subjects to be graphed, see above.</p></li>
+<li><p><strong>camera</strong> – A motor which places the camera at the desired viewpoint. Defaults to the
+identity motor.</p></li>
+<li><p><strong>width</strong> – CSS width of the canvas, e.g. <code class="code docutils literal notranslate"><span class="pre">'600px'</span></code> or <code class="code docutils literal notranslate"><span class="pre">'100%'</span></code>.
+Defaults to <code class="code docutils literal notranslate"><span class="pre">'min(</span> <span class="pre">100%,</span> <span class="pre">1024px</span> <span class="pre">)'</span></code>.</p></li>
+<li><p><strong>height</strong> – CSS height of the canvas, e.g. <code class="code docutils literal notranslate"><span class="pre">'400px'</span></code>. Defaults to <code class="code docutils literal notranslate"><span class="pre">'auto'</span></code>,
+in which case the aspect ratio of 16 / 6 determines the height.</p></li>
+<li><p><strong>style</strong> – Dictionary of additional CSS properties (camelCased, as in JS) applied to the
+canvas, e.g. <code class="code docutils literal notranslate"><span class="pre">{'background':</span> <span class="pre">'black',</span> <span class="pre">'aspectRatio':</span> <span class="pre">'1</span> <span class="pre">/</span> <span class="pre">1'}</span></code>.</p></li>
+<li><p><strong>animate</strong> – If truthy, the scene is redrawn every frame and all callables are
+re-evaluated, which is what drives animations. Defaults to <code class="code docutils literal notranslate"><span class="pre">False</span></code>, in which case
+the scene is only redrawn when a subject changes or the user interacts with it.</p></li>
+<li><p><strong>grid</strong> – Draw a grid.</p></li>
+<li><p><strong>labels</strong> – Label the grid lines.</p></li>
+<li><p><strong>gridSize</strong> – Size of the grid in world units.</p></li>
+<li><p><strong>gridFontSize</strong> – Scale of the grid labels.</p></li>
+<li><p><strong>scale</strong> – Zoom level of the scene (2D/SVG rendering), default 1.</p></li>
+<li><p><strong>lineWidth</strong> – Line width multiplier.</p></li>
+<li><p><strong>pointRadius</strong> – Point radius multiplier.</p></li>
+<li><p><strong>fontSize</strong> – Label size multiplier.</p></li>
+<li><p><strong>conformal</strong> – Use the conformal renderer, needed for CGA.</p></li>
+<li><p><strong>up</strong> – The ‘up’ (<span class="math notranslate nohighlight">\(C\)</span>) function, a callable taking Euclidean coordinates and
+returning the corresponding element of the (larger) embedding space. Providing an <cite>up</cite> function
+invokes ganja’s OPNS renderer, which can render any algebra, e.g. CGA, 2D CSGA, 3D CCGA,
+3D Mother Algebra. The function is traced symbolically and compiled to GLSL, so it must
+consist of algebraic operations only. See the teahouse for examples.</p></li>
+<li><p><strong>ipns</strong> – Interpret the subjects as IPNS (dual) elements instead of OPNS.</p></li>
+<li><p><strong>gl</strong> – Force the WebGL renderer (the default in 3D), which supports raytraced surfaces.</p></li>
+<li><p><strong>spin</strong> – Rotate the camera continuously at the given rate (WebGL only).</p></li>
+<li><p><strong>thresh</strong> – Threshold used by the raymarcher to decide when a surface is hit.</p></li>
+<li><p><strong>graph_widget</strong> – The graph widget to use. Defaults to <a class="reference internal" href="kingdon.graph.GraphWidget.html#kingdon.graph.GraphWidget" title="kingdon.graph.GraphWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">kingdon.graph.GraphWidget</span></code></a>.`</p></li>
+<li><p><strong>**options</strong> – Any other option supported by <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code>’s
+<code class="code docutils literal notranslate"><span class="pre">Algebra.graph</span></code>, such as <code class="code docutils literal notranslate"><span class="pre">alpha</span></code>, <code class="code docutils literal notranslate"><span class="pre">cull</span></code>, <code class="code docutils literal notranslate"><span class="pre">noZ</span></code>,
+<code class="code docutils literal notranslate"><span class="pre">htmlText</span></code>, <code class="code docutils literal notranslate"><span class="pre">devicePixelRatio</span></code>, <code class="code docutils literal notranslate"><span class="pre">clip</span></code>, <code class="code docutils literal notranslate"><span class="pre">still</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A <a class="reference internal" href="kingdon.graph.GraphWidget.html#kingdon.graph.GraphWidget" title="kingdon.graph.GraphWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">GraphWidget</span></code></a> displaying the scene with <code class="code docutils literal notranslate"><span class="pre">ganja.js</span></code>.
+The <a class="reference internal" href="kingdon.graph.GraphWidget.html#kingdon.graph.GraphWidget.update" title="kingdon.graph.GraphWidget.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update()</span></code></a> method can be used to redraw an existing figure.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.hodge">
+<span class="sig-name descname"><span class="pre">hodge</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.UnaryOperatorDict.html#kingdon.operator_dict.UnaryOperatorDict" title="kingdon.operator_dict.UnaryOperatorDict"><span class="pre">UnaryOperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.hodge" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.indices_for_grade">
+<span class="sig-name descname"><span class="pre">indices_for_grade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grade</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/algebra.html#Algebra.indices_for_grade"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.algebra.Algebra.indices_for_grade" title="Link to this definition">#</a></dt>
+<dd><p>Function that returns a generator for all the indices for a given grade. E.g. in 2D VGA, this returns</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">alg</span> <span class="o">=</span> <span class="n">Algebra</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/stdtypes.html#tuple"><span class="nb">tuple</span></a><span class="p">(</span><span class="n">alg</span><span class="o">.</span><span class="n">indices_for_grade</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</span><span data-line="3"><span class="go">(1, 2)</span>
+</span></pre></div>
+</div>
+<p>The indices are returned in the same order as the basis blades.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.indices_for_grades">
+<span class="sig-name descname"><span class="pre">indices_for_grades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grades</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple" title="(in Python v3.15)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/algebra.html#Algebra.indices_for_grades"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.algebra.Algebra.indices_for_grades" title="Link to this definition">#</a></dt>
+<dd><p>Function that returns a generator for all the indices from a sequence of grades.
+E.g. in 2D VGA, this returns</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">alg</span> <span class="o">=</span> <span class="n">Algebra</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><a class="sphinx-codeautolink-a" href="https://docs.python.org/3/builtins/stdtypes.html#tuple"><span class="nb">tuple</span></a><span class="p">(</span><span class="n">alg</span><span class="o">.</span><span class="n">indices_for_grades</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+</span><span data-line="3"><span class="go">(1, 2, 3)</span>
+</span></pre></div>
+</div>
+<p>The indices are returned in the same order as the basis blades.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.inv">
+<span class="sig-name descname"><span class="pre">inv</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.UnaryOperatorDict.html#kingdon.operator_dict.UnaryOperatorDict" title="kingdon.operator_dict.UnaryOperatorDict"><span class="pre">UnaryOperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.inv" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.involute">
+<span class="sig-name descname"><span class="pre">involute</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.UnaryOperatorDict.html#kingdon.operator_dict.UnaryOperatorDict" title="kingdon.operator_dict.UnaryOperatorDict"><span class="pre">UnaryOperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.involute" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.ip">
+<span class="sig-name descname"><span class="pre">ip</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.OperatorDict.html#kingdon.operator_dict.OperatorDict" title="kingdon.operator_dict.OperatorDict"><span class="pre">OperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.ip" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.lambdifier">
+<span class="sig-name descname"><span class="pre">lambdifier</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.15)"><span class="pre">Callable</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#kingdon.algebra.Algebra.lambdifier" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.large">
+<span class="sig-name descname"><span class="pre">large</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><span class="pre">bool</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#kingdon.algebra.Algebra.large" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.lc">
+<span class="sig-name descname"><span class="pre">lc</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.OperatorDict.html#kingdon.operator_dict.OperatorDict" title="kingdon.operator_dict.OperatorDict"><span class="pre">OperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.lc" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.matrix_basis">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">matrix_basis</span></span><a class="reference internal" href="../../_modules/kingdon/algebra.html#Algebra.matrix_basis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.algebra.Algebra.matrix_basis" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.multivector">
+<span class="sig-name descname"><span class="pre">multivector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="pre">MultiVector</span></a></span></span><a class="reference internal" href="../../_modules/kingdon/algebra.html#Algebra.multivector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.algebra.Algebra.multivector" title="Link to this definition">#</a></dt>
+<dd><p>Create a new <a class="reference internal" href="kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiVector</span></code></a>.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.mvtype">
+<span class="sig-name descname"><span class="pre">mvtype</span></span><a class="headerlink" href="#kingdon.algebra.Algebra.mvtype" title="Link to this definition">#</a></dt>
+<dd><p>alias of <a class="reference internal" href="kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiVector</span></code></a></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.neg">
+<span class="sig-name descname"><span class="pre">neg</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.UnaryOperatorDict.html#kingdon.operator_dict.UnaryOperatorDict" title="kingdon.operator_dict.UnaryOperatorDict"><span class="pre">UnaryOperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.neg" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.normsq">
+<span class="sig-name descname"><span class="pre">normsq</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.UnaryOperatorDict.html#kingdon.operator_dict.UnaryOperatorDict" title="kingdon.operator_dict.UnaryOperatorDict"><span class="pre">UnaryOperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.normsq" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.numspace">
+<span class="sig-name descname"><span class="pre">numspace</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><span class="pre">dict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.numspace" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.oddmv">
+<span class="sig-name descname"><span class="pre">oddmv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="pre">MultiVector</span></a></span></span><a class="reference internal" href="../../_modules/kingdon/algebra.html#Algebra.oddmv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.algebra.Algebra.oddmv" title="Link to this definition">#</a></dt>
+<dd><p>Create a new <a class="reference internal" href="kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiVector</span></code></a> of odd grades.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.op">
+<span class="sig-name descname"><span class="pre">op</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.OperatorDict.html#kingdon.operator_dict.OperatorDict" title="kingdon.operator_dict.OperatorDict"><span class="pre">OperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.op" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.outercos">
+<span class="sig-name descname"><span class="pre">outercos</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.UnaryOperatorDict.html#kingdon.operator_dict.UnaryOperatorDict" title="kingdon.operator_dict.UnaryOperatorDict"><span class="pre">UnaryOperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.outercos" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.outerexp">
+<span class="sig-name descname"><span class="pre">outerexp</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.UnaryOperatorDict.html#kingdon.operator_dict.UnaryOperatorDict" title="kingdon.operator_dict.UnaryOperatorDict"><span class="pre">UnaryOperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.outerexp" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.outersin">
+<span class="sig-name descname"><span class="pre">outersin</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.UnaryOperatorDict.html#kingdon.operator_dict.UnaryOperatorDict" title="kingdon.operator_dict.UnaryOperatorDict"><span class="pre">UnaryOperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.outersin" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.outertan">
+<span class="sig-name descname"><span class="pre">outertan</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.UnaryOperatorDict.html#kingdon.operator_dict.UnaryOperatorDict" title="kingdon.operator_dict.UnaryOperatorDict"><span class="pre">UnaryOperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.outertan" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.p">
+<span class="sig-name descname"><span class="pre">p</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#kingdon.algebra.Algebra.p" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.polarity">
+<span class="sig-name descname"><span class="pre">polarity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.UnaryOperatorDict.html#kingdon.operator_dict.UnaryOperatorDict" title="kingdon.operator_dict.UnaryOperatorDict"><span class="pre">UnaryOperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.polarity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.pretty_blade">
+<span class="sig-name descname"><span class="pre">pretty_blade</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'𝐞'</span></span><a class="headerlink" href="#kingdon.algebra.Algebra.pretty_blade" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.pretty_digits">
+<span class="sig-name descname"><span class="pre">pretty_digits</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><span class="pre">dict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.pretty_digits" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.proj">
+<span class="sig-name descname"><span class="pre">proj</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.OperatorDict.html#kingdon.operator_dict.OperatorDict" title="kingdon.operator_dict.OperatorDict"><span class="pre">OperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.proj" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.pss">
+<span class="sig-name descname"><span class="pre">pss</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#object" title="(in Python v3.15)"><span class="pre">object</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.pss" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.purevector">
+<span class="sig-name descname"><span class="pre">purevector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grade</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="kingdon.multivector.MultiVector.html#kingdon.multivector.MultiVector" title="kingdon.multivector.MultiVector"><span class="pre">MultiVector</span></a></span></span><a class="reference internal" href="../../_modules/kingdon/algebra.html#Algebra.purevector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.algebra.Algebra.purevector" title="Link to this definition">#</a></dt>
+<dd><p>Create a new k-vector of the desired grade.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>grade</strong> – Grade of the multivector to create.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.q">
+<span class="sig-name descname"><span class="pre">q</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#kingdon.algebra.Algebra.q" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.r">
+<span class="sig-name descname"><span class="pre">r</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#kingdon.algebra.Algebra.r" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.rc">
+<span class="sig-name descname"><span class="pre">rc</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.OperatorDict.html#kingdon.operator_dict.OperatorDict" title="kingdon.operator_dict.OperatorDict"><span class="pre">OperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.rc" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.reciprocal_frame">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">reciprocal_frame</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="(in Python v3.15)"><span class="pre">list</span></a></span><a class="reference internal" href="../../_modules/kingdon/algebra.html#Algebra.reciprocal_frame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.algebra.Algebra.reciprocal_frame" title="Link to this definition">#</a></dt>
+<dd><p>The reciprocal frame is a set of vectors <span class="math notranslate nohighlight">\(\{ e^i \}\)</span> that satisfies
+<span class="math notranslate nohighlight">\(e^i \cdot e_j = \delta^i_j\)</span> with the frame vectors <span class="math notranslate nohighlight">\(\{ e_i \}\)</span>.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.register">
+<span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbolic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/kingdon/algebra.html#Algebra.register"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kingdon.algebra.Algebra.register" title="Link to this definition">#</a></dt>
+<dd><p>Register a function with the algebra to optimize its execution times. Deprecated in favor of <a class="reference internal" href="#kingdon.algebra.Algebra.add_operator" title="kingdon.algebra.Algebra.add_operator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_operator()</span></code></a>.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.registry">
+<span class="sig-name descname"><span class="pre">registry</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><span class="pre">dict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.registry" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.reverse">
+<span class="sig-name descname"><span class="pre">reverse</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.UnaryOperatorDict.html#kingdon.operator_dict.UnaryOperatorDict" title="kingdon.operator_dict.UnaryOperatorDict"><span class="pre">UnaryOperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.reverse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.rp">
+<span class="sig-name descname"><span class="pre">rp</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.OperatorDict.html#kingdon.operator_dict.OperatorDict" title="kingdon.operator_dict.OperatorDict"><span class="pre">OperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.rp" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.signature">
+<span class="sig-name descname"><span class="pre">signature</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="(in Python v3.15)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#kingdon.algebra.Algebra.signature" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.signs">
+<span class="sig-name descname"><span class="pre">signs</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><span class="pre">dict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.signs" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.simp_func">
+<span class="sig-name descname"><span class="pre">simp_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kingdon.algebra.Algebra.simp_func" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.sp">
+<span class="sig-name descname"><span class="pre">sp</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.OperatorDict.html#kingdon.operator_dict.OperatorDict" title="kingdon.operator_dict.OperatorDict"><span class="pre">OperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.sp" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.sqrt">
+<span class="sig-name descname"><span class="pre">sqrt</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.UnaryOperatorDict.html#kingdon.operator_dict.UnaryOperatorDict" title="kingdon.operator_dict.UnaryOperatorDict"><span class="pre">UnaryOperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.sqrt" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.square">
+<span class="sig-name descname"><span class="pre">square</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.UnaryOperatorDict.html#kingdon.operator_dict.UnaryOperatorDict" title="kingdon.operator_dict.UnaryOperatorDict"><span class="pre">UnaryOperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.square" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.start_index">
+<span class="sig-name descname"><span class="pre">start_index</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#kingdon.algebra.Algebra.start_index" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.sub">
+<span class="sig-name descname"><span class="pre">sub</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.OperatorDict.html#kingdon.operator_dict.OperatorDict" title="kingdon.operator_dict.OperatorDict"><span class="pre">OperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.sub" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.sw">
+<span class="sig-name descname"><span class="pre">sw</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.OperatorDict.html#kingdon.operator_dict.OperatorDict" title="kingdon.operator_dict.OperatorDict"><span class="pre">OperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.sw" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.symbolcls">
+<span class="sig-name descname"><span class="pre">symbolcls</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#object" title="(in Python v3.15)"><span class="pre">object</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#kingdon.algebra.Algebra.symbolcls" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.types">
+<span class="sig-name descname"><span class="pre">types</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="(in Python v3.15)"><span class="pre">list</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.types" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.unhodge">
+<span class="sig-name descname"><span class="pre">unhodge</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.UnaryOperatorDict.html#kingdon.operator_dict.UnaryOperatorDict" title="kingdon.operator_dict.UnaryOperatorDict"><span class="pre">UnaryOperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.unhodge" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.unpolarity">
+<span class="sig-name descname"><span class="pre">unpolarity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="kingdon.operator_dict.UnaryOperatorDict.html#kingdon.operator_dict.UnaryOperatorDict" title="kingdon.operator_dict.UnaryOperatorDict"><span class="pre">UnaryOperatorDict</span></a></span><a class="headerlink" href="#kingdon.algebra.Algebra.unpolarity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.values_asarray">
+<span class="sig-name descname"><span class="pre">values_asarray</span></span><a class="headerlink" href="#kingdon.algebra.Algebra.values_asarray" title="Link to this definition">#</a></dt>
+<dd><p>alias of <a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kingdon.algebra.Algebra.wrapper">
+<span class="sig-name descname"><span class="pre">wrapper</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.15)"><span class="pre">Callable</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#kingdon.algebra.Algebra.wrapper" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+</dd></dl>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../algebra.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">kingdon.algebra</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="kingdon.algebra.BladeDict.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">BladeDict</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2022, Martin Roelfs</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=796a81b5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="../../_static/shibuya.js?v=50760d75"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+      <script src="../../_static/kingdon.js?v=5907dcdc"></script></body>
+</html>

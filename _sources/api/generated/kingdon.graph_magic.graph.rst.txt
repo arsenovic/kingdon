@@ -1,0 +1,6 @@
+﻿graph
+=====
+
+.. currentmodule:: kingdon.graph_magic
+
+.. autofunction:: graph

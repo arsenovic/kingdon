@@ -1,0 +1,6 @@
+﻿unhodge
+=======
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: unhodge

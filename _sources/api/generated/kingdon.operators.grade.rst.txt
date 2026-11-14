@@ -1,0 +1,6 @@
+﻿grade
+=====
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: grade

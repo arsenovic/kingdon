@@ -1,0 +1,6 @@
+﻿do\_operation
+=============
+
+.. currentmodule:: kingdon.operator_dict
+
+.. autofunction:: do_operation

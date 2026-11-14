@@ -1,0 +1,6 @@
+﻿outerexp
+========
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: outerexp

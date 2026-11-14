@@ -1,0 +1,19 @@
+﻿Point
+=====
+
+.. currentmodule:: kingdon.multivector
+
+.. autoclass:: Point
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~Point.layout
+   

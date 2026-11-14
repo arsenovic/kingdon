@@ -1,0 +1,6 @@
+﻿register\_magics
+================
+
+.. currentmodule:: kingdon.graph_magic
+
+.. autofunction:: register_magics

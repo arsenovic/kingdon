@@ -1,0 +1,6 @@
+﻿is\_zero
+========
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: is_zero

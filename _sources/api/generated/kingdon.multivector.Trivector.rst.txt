@@ -1,0 +1,12 @@
+﻿Trivector
+=========
+
+.. currentmodule:: kingdon.multivector
+
+.. autoclass:: Trivector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   

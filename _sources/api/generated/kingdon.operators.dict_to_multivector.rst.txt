@@ -1,0 +1,6 @@
+﻿dict\_to\_multivector
+=====================
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: dict_to_multivector

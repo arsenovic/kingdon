@@ -1,0 +1,6 @@
+﻿sqrt
+====
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: sqrt

@@ -1,0 +1,12 @@
+﻿Scalar
+======
+
+.. currentmodule:: kingdon.multivector
+
+.. autoclass:: Scalar
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   

@@ -1,0 +1,12 @@
+﻿UnaryOperatorDict
+=================
+
+.. currentmodule:: kingdon.operator_dict
+
+.. autoclass:: UnaryOperatorDict
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   

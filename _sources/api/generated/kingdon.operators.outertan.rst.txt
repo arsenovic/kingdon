@@ -1,0 +1,6 @@
+﻿outertan
+========
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: outertan

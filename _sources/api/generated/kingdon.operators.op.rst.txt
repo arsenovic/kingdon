@@ -1,0 +1,6 @@
+﻿op
+==
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: op

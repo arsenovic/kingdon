@@ -1,0 +1,6 @@
+﻿cp
+==
+
+.. currentmodule:: kingdon.operators
+
+.. autofunction:: cp

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="cyan" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>kingdon.powers - Kingdon</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=ad592e98" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-codeautolink.css?v=b2176991" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kingdon.css?v=be060e35" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="kingdon.powers"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      <img class="light-logo" src="../../_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <img class="dark-logo" src="../../_static/logo.png" alt="Kingdon" height="28" loading="lazy" />
+      <strong>Kingdon</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link"><a href="../../index.html">Home</a></li><li class="link"><a href="../../examples/index.html">Examples</a></li><li class="link"><a href="../../api/index.html">API</a></li><li class="link">
+          <a href="https://tbuli.github.io/teahouse/">
+            <span>Teahouse</span><i class="i-lucide external-link"></i></a>
+        </li><li class="link">
+          <a href="https://github.com/tBuLi/kingdon">
+            <span>GitHub</span><i class="i-lucide external-link"></i></a>
+        </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../operators.html">Operators</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../arrays.html">Array Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../types.html">Type system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">History</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../workings.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">Kingdon</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">kingdon.powers</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <h1>Source code for kingdon.powers</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="sd">""" Raise multivectors to integer powers using as few multiplications as possible. """</span>
+</span><span data-line="2"><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+</span><span data-line="3">
+</span><span data-line="4"><span class="kn">import</span><span class="w"> </span><span class="nn">operator</span>
+</span><span data-line="5"><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+</span><span data-line="6"><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">cached_property</span>
+</span><span data-line="7"><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+</span><span data-line="8">
+</span><span data-line="9">
+<div class="viewcode-block" id="AdditionChains">
+<a class="viewcode-back" href="../../api/generated/kingdon.powers.AdditionChains.html#kingdon.powers.AdditionChains">[docs]</a>
+</span><span data-line="10"><span class="nd">@dataclass</span>
+</span><span data-line="11"><span class="k">class</span><span class="w"> </span><span class="nc">AdditionChains</span><span class="p">:</span>
+</span><span data-line="12"><span class="w">    </span><span class="sd">""" Shortest addition chains for all integers up to `limit`, as used by :func:`power_supply`. """</span>
+</span><span data-line="13">    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span>
+</span><span data-line="14">
+<div class="viewcode-block" id="AdditionChains.minimal_chains">
+<a class="viewcode-back" href="../../api/generated/kingdon.powers.AdditionChains.html#kingdon.powers.AdditionChains.minimal_chains">[docs]</a>
+</span><span data-line="15">    <span class="nd">@cached_property</span>
+</span><span data-line="16">    <span class="k">def</span><span class="w"> </span><span class="nf">minimal_chains</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]]:</span>
+</span><span data-line="17">        <span class="n">chains</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)}</span>
+</span><span data-line="18">        <span class="k">while</span> <span class="nb">any</span><span class="p">(</span><span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">chains</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)):</span>
+</span><span data-line="19">            <span class="k">for</span> <span class="n">chain</span> <span class="ow">in</span> <span class="n">chains</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+</span><span data-line="20">                <span class="n">right_summand</span> <span class="o">=</span> <span class="n">chain</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span data-line="21">                <span class="k">for</span> <span class="n">left_summand</span> <span class="ow">in</span> <span class="n">chain</span><span class="p">:</span>
+</span><span data-line="22">                    <span class="n">value</span> <span class="o">=</span> <span class="n">left_summand</span> <span class="o">+</span> <span class="n">right_summand</span>
+</span><span data-line="23">                    <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="ow">and</span> <span class="n">value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">chains</span><span class="p">:</span>
+</span><span data-line="24">                        <span class="n">chains</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">chain</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</span><span data-line="25">        <span class="k">return</span> <span class="n">chains</span></div>
+
+</span><span data-line="26">
+</span><span data-line="27">    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
+</span><span data-line="28">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">minimal_chains</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+</span><span data-line="29">
+</span><span data-line="30">    <span class="k">def</span><span class="w"> </span><span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+</span><span data-line="31">        <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="n">item</span><span class="p">]</span></div>
+
+</span><span data-line="32">
+</span><span data-line="33">
+<div class="viewcode-block" id="power_supply">
+<a class="viewcode-back" href="../../api/generated/kingdon.powers.power_supply.html#kingdon.powers.power_supply">[docs]</a>
+</span><span data-line="34"><span class="k">def</span><span class="w"> </span><span class="nf">power_supply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">exponents</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">operation</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">mul</span><span class="p">):</span>
+</span><span data-line="35"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="36"><span class="sd">    Generates powers of a given multivector using the least amount of multiplications.</span>
+</span><span data-line="37"><span class="sd">    For example, to raise a multivector :math:`x` to the power :math:`a = 15`, only 5</span>
+</span><span data-line="38"><span class="sd">    multiplications are needed since :math:`x^{2} = x * x`, :math:`x^{3} = x * x^2`,</span>
+</span><span data-line="39"><span class="sd">    :math:`x^{5} = x^2 * x^3`, :math:`x^{10} = x^5 * x^5`, :math:`x^{15} = x^5 * x^{10}`.</span>
+</span><span data-line="40"><span class="sd">    The :class:`power_supply` uses :class:`AdditionChains` to determine these shortest</span>
+</span><span data-line="41"><span class="sd">    chains.</span>
+</span><span data-line="42">
+</span><span data-line="43"><span class="sd">    When called with only a single integer, e.g. :code:`power_supply(x, 15)`, iterating</span>
+</span><span data-line="44"><span class="sd">    over it yields the above sequence in order; ending with :math:`x^{15}`.</span>
+</span><span data-line="45">
+</span><span data-line="46"><span class="sd">    When called with a sequence of integers, the generator instead returns only the requested terms.</span>
+</span><span data-line="47">
+</span><span data-line="48"><span class="sd">    :param x: The object to be raised to a power.</span>
+</span><span data-line="49"><span class="sd">    :param exponents: When an :code:`int`, this generates the shortest possible way to</span>
+</span><span data-line="50"><span class="sd">        get to :math:`x^a`, where :math:`x`</span>
+</span><span data-line="51"><span class="sd">    """</span>
+</span><span data-line="52">    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">exponents</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+</span><span data-line="53">        <span class="n">target</span> <span class="o">=</span> <span class="n">exponents</span>
+</span><span data-line="54">        <span class="n">addition_chains</span> <span class="o">=</span> <span class="n">AdditionChains</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+</span><span data-line="55">        <span class="n">exponents</span> <span class="o">=</span> <span class="n">addition_chains</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
+</span><span data-line="56">    <span class="k">else</span><span class="p">:</span>
+</span><span data-line="57">        <span class="n">addition_chains</span> <span class="o">=</span> <span class="n">AdditionChains</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">exponents</span><span class="p">))</span>
+</span><span data-line="58">
+</span><span data-line="59">    <span class="n">powers</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="n">x</span><span class="p">}</span>
+</span><span data-line="60">    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">exponents</span><span class="p">:</span>
+</span><span data-line="61">        <span class="k">if</span> <span class="n">step</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">powers</span><span class="p">:</span>
+</span><span data-line="62">            <span class="n">chain</span> <span class="o">=</span> <span class="n">addition_chains</span><span class="p">[</span><span class="n">step</span><span class="p">]</span>
+</span><span data-line="63">            <span class="n">powers</span><span class="p">[</span><span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="n">operation</span><span class="p">(</span><span class="n">powers</span><span class="p">[</span><span class="n">chain</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]],</span> <span class="n">powers</span><span class="p">[</span><span class="n">step</span> <span class="o">-</span> <span class="n">chain</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+</span><span data-line="64">
+</span><span data-line="65">        <span class="k">yield</span> <span class="n">powers</span><span class="p">[</span><span class="n">step</span><span class="p">]</span></div>
+
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2022, Martin Roelfs</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/tBuLi/kingdon" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=796a81b5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="../../_static/shibuya.js?v=50760d75"></script>
+      <script src="../../_static/kingdon.js?v=5907dcdc"></script></body>
+</html>

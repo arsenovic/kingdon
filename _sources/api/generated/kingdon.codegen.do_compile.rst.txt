@@ -1,0 +1,6 @@
+﻿do\_compile
+===========
+
+.. currentmodule:: kingdon.codegen
+
+.. autofunction:: do_compile

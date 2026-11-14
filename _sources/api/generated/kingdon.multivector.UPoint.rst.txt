@@ -1,0 +1,19 @@
+﻿UPoint
+======
+
+.. currentmodule:: kingdon.multivector
+
+.. autoclass:: UPoint
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~UPoint.layout
+   

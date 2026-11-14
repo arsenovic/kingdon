@@ -1,0 +1,12 @@
+﻿DefaultKeyDict
+==============
+
+.. currentmodule:: kingdon.algebra
+
+.. autoclass:: DefaultKeyDict
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   

@@ -1,0 +1,12 @@
+﻿CompiledExpression
+==================
+
+.. currentmodule:: kingdon.codegen
+
+.. autoclass:: CompiledExpression
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+   
+   

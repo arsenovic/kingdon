@@ -1,0 +1,6 @@
+﻿encode\_ndarray
+===============
+
+.. currentmodule:: kingdon.graph
+
+.. autofunction:: encode_ndarray

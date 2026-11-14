@@ -1,0 +1,6 @@
+﻿to\_shape\_tuple
+================
+
+.. currentmodule:: kingdon.multivector
+
+.. autofunction:: to_shape_tuple
